@@ -3,26 +3,27 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3eb;
 `;
+
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  margin-bottom:20vh;
 `;
 
+
 export const Logo = styled.img`
-  width: 125px;
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  align-self: flex-start;
 `;
 
 export const Title = styled.h1`
-margin-top:20px;
-  margin-left: 10px;
+color:#4B5563;
+font-family: 'Poppins', SemiBold;
 `;
 
 export const Form = styled.form`
@@ -36,7 +37,10 @@ export const Input = styled.input`
   font-size: 1rem;
 `;
 
-export const Gato = styled.img`
-  width: 420px;
-  margin-right: 20px;
+export const Cat = styled.img`
+  width: 46vw;
+  height: 91vh;
+  margin-right: 4vw;
+  margin-top:6vh;
+  margin-bottom:3vh;
 `;
