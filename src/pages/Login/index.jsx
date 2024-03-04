@@ -10,10 +10,10 @@ const Login = () => {
         <Content>
         <Title>Acesse sua conta</Title>
             <Form>
-              <Input type="email" placeholder="Email" />
+              <Input type="email" placeholder="E-mail" />
               <Input type="password" placeholder="Senha" />
               <button type="submit">Entrar</button>
-              <p>Esqueceu sua senha?</p>
+              <a>Esqueceu sua senha?</a>
             </Form>
         </Content>
       <Cat src={CatImg} alt="Imagem de um gato" />
