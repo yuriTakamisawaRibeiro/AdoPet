@@ -32,7 +32,6 @@ export const Cat = styled.img`
 `;
 
 export const Title = styled.h1`
-color:#4B5563;
 font-family: 'Poppins', SemiBold;
 font-size: 35px;
 margin-bottom: 20px;

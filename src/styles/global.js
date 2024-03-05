@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body, input, button, textarea{
+    color: #4b5563;
     font-family: 'Poppins', regular;
     font-size: 16px;
     outline: none;
