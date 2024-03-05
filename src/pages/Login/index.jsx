@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Title, Form, Input, Logo, Cat,Content} from './styles';
 import AdopetImg from '../../assets/images/AdopetLogo.png';
 import CatImg from '../../assets/images/CatImage.png';
+import { Button } from '../../components/Button';
 
 const Login = () => {
   return (
@@ -12,7 +13,7 @@ const Login = () => {
             <Form>
               <Input type="email" placeholder="E-mail" />
               <Input type="password" placeholder="Senha" />
-              <button type="submit">Entrar</button>
+              <Button title="Entrar" type="submit"/>
               <a>Esqueceu sua senha?</a>
             </Form>
         </Content>
