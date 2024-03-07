@@ -4,6 +4,7 @@ import AdopetImg from '../../assets/images/AdopetLogo.png';
 import CatImg from '../../assets/images/CatImage.png';
 import { Button } from '../../components/Button';
 import Input from '../../components/Input';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     return (
@@ -17,7 +18,7 @@ const SignUp = () => {
                 <Input type= "email" placeholder="E-mail"/>
                 <Input type= "text" placeholder="Senha"/>
                 <Button title="Cadastrar" type="submit"/>
-                <a href='/'>Já tem uma conta?</a>
+                <Link to="/login">Já tem uma conta?</Link>
             </Form>
             </Content>
             <Cat src={CatImg} alt="Imagem de um gato" />

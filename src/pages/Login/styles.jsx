@@ -25,9 +25,9 @@ export const Logo = styled.img`
 `;
 
 export const Title = styled.h1`
-font-family: 'Poppins', SemiBold;
-font-size: 35px;
-margin-bottom: 20px;
+  font-family: 'Poppins', SemiBold;
+  font-size: 35px;
+  margin-bottom: 20px;
 `;
 
 export const Form = styled.form`
@@ -44,3 +44,4 @@ export const Cat = styled.img`
   margin-top: 30px;
   margin-bottom:20px;
 `;
+
