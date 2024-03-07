@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Title, Form, Logo, Cat,Content} from './styles';
-import AdopetImg from '../../assets/images/AdopetLogo.png';
+import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import CatImg from '../../assets/images/CatImage.png';
 import { Button } from '../../components/Button';
-import Input from '../../components/Input';
+import { Input } from '../../components/Input';
 
 export const SignIn = () => {
   return (

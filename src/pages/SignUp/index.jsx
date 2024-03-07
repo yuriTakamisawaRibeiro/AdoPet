@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Logo, Content, Cat, Title, Form} from './styles';
-import AdopetImg from '../../assets/images/AdopetLogo.png';
+import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import CatImg from '../../assets/images/CatImage.png';
 import { Button } from '../../components/Button';
 import {Input} from '../../components/Input';
