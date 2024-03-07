@@ -3,19 +3,21 @@ import { Container, Logo, Content, Cat, Title, Form} from './styles';
 import AdopetImg from '../../assets/images/AdopetLogo.png';
 import CatImg from '../../assets/images/CatImage.png';
 import { Button } from '../../components/Button';
-import Input from '../../components/Input';
+import {Input} from '../../components/Input';
+import {FaUser, FaLock  } from "react-icons/fa"
+import {MdEmail} from "react-icons/md"
 
-const SignUp = () => {
+export const SignUp = () => {
     return (
         <Container>
             <Logo src={AdopetImg} alt="Logo do site" />
             <Content>
             <Title>Crie sua conta</Title>
             <Form>
-                <Input type= "text" placeholder="Nome completo"/>
-                <Input type= "text" placeholder="CPF"/>
-                <Input type= "email" placeholder="E-mail"/>
-                <Input type= "text" placeholder="Senha"/>
+                <Input  type="text" placeholder="Nome" icon={FaUser} />
+                <Input type= "text" placeholder="CPF" icon={FaUser }/>
+                <Input type= "email" placeholder="E-mail" icon={MdEmail}/>
+                <Input type= "password" placeholder="Senha" icon={FaLock }/>
                 <Button title="Cadastrar" type="submit"/>
                 <a href='/'>Já tem uma conta?</a>
             </Form>
@@ -25,4 +27,3 @@ const SignUp = () => {
     )
 }
 
-export default SignUp;

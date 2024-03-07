@@ -1,48 +1,34 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+export default createGlobalStyle`
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-  body {
-    -webkit-font-smoothing: antialiased ;
-  }
-  
-  body, input, button, textarea{
-    color: #4b5563;
-    font-family: 'Poppins', regular;
-    font-size: 16px;
-    outline: none;
-  }
+    body{
+        background-color: #F5F5F5;
+        color: #4B5563;
+        -webkit-font-smoothing: antialiased ;
+    }
 
-  a{
-    text-decoration: none;
-    
-  }
+    body, input, button, textarea{
+        font-family: 'Poppins', serif;
+        font-size: 16px;
+        outline: none;
+    }
 
-  button, a{
-    cursor: pointer;
-    transition: filter 0.2s;
-  }
+    a{
+        text-decoration: none;
+    }
 
-  button:hover, a:hover{
-    filter: brightness(0.9);
-  }
+    button, a{
+        cursor: pointer;
+        transition: filter 0.2s;
+    }
 
-  *:focus {
-    outline: none;
-  }
-
-  input:focus {
-    outline: auto;
-  }
+    button:hover, a:hover{
+       filter: brightness(0.9);
+    }
 `;
-
-
-
-
-
-export default GlobalStyle;

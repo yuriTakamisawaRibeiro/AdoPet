@@ -1,8 +1,10 @@
-import React from 'react';
-import { StyledInput } from './styles';
+import { Container } from "./styles";
 
-const Input = (props) => {
-    return <StyledInput {...props} />;
+export function Input({ icon: Icon, ...rest}){
+    return(
+        <Container>
+            {Icon && <Icon size={20} />}
+            <input {...rest}/>
+        </Container>
+    )
 }
-
-export default Input;

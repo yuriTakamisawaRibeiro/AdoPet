@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types'; 
 import { Container } from "./styles";
 
 export function Button({title, loading = false, ...rest}){
@@ -12,12 +10,5 @@ export function Button({title, loading = false, ...rest}){
         {loading ? 'Carregando...' : title}
     </Container>
     )
+    
 }
-
-//validação de props
-Button.propTypes = {
-  title: PropTypes.string.isRequired,
-  loading: PropTypes.bool,
-};
-
-export default Button;

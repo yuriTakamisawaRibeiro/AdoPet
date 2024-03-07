@@ -4,7 +4,8 @@ import AdopetImg from '../../assets/images/AdopetLogo.png';
 import CatImg from '../../assets/images/CatImage.png';
 import { Button } from '../../components/Button';
 import Input from '../../components/Input';
-const Login = () => {
+
+export const SignIn = () => {
   return (
   <Container>
       <Logo src={AdopetImg} alt="Logo do site" />
@@ -22,4 +23,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+
