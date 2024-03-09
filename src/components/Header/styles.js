@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.header`
 
-    width: 1220px;
+    width: 100%;
     margin: 10px 90px;
 
 `
 
 export const Content = styled.div`
-
 gap: 200px;
 padding: 20px;
 display: flex;

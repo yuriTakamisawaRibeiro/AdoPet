@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Logo, Content, Cat, Title, Form} from './styles';
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import CatImg from '../../assets/images/CatImage.png';

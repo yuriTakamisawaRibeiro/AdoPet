@@ -30,5 +30,11 @@ export default createGlobalStyle`
 
     button:hover, a:hover{
        filter: brightness(0.9);
+       transition : 708ms;
+    padding: 10px 31px;
+    transform : translateY(-0px);
+    background-color: #fff;
+    color: #e4ac46;
+    border: solid 1px #e4ac46;
     }
 `;
