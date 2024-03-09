@@ -45,6 +45,17 @@ export const ButtonFinder = styled.button`
   align-items: center;
   cursor: pointer;
 `
+
+export const Buttons = styled.div`
+display: flex;
+align-items: center;
+`
+
+export const CallMessage = styled.p`
+  margin-top: 15px;
+  margin-left: 70px;
+`
+
 export const ColoredWord = styled.span`
   color: #e4ac46;
 `

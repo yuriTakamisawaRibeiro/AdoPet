@@ -28,7 +28,7 @@ export default createGlobalStyle`
         transition: filter 0.2s;
     }
 
-    button:hover, a:hover{
+    button:hover{
        filter: brightness(0.9);
        transition : 708ms;
     padding: 10px 31px;
@@ -36,5 +36,11 @@ export default createGlobalStyle`
     background-color: #fff;
     color: #e4ac46;
     border: solid 1px #e4ac46;
+    }
+
+    a:hover {
+        transition : 600ms;
+        padding: 10px 10px;
+        color: #e4ac46;
     }
 `;
