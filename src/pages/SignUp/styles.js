@@ -21,14 +21,13 @@ export const Content = styled.div`
 export const Logo = styled.img`
   align-self: flex-start;
   margin:0;
+  margin-left:50px;
+  margin-top:50px;
 `;
 
 export const Cat = styled.img`
   width: fit-content;
-  height: 91vh;
-  margin-right: 30px;
-  margin-top: 30px;
-  margin-bottom:20px;
+  height: 100vh;
 `;
 
 export const Title = styled.h1`

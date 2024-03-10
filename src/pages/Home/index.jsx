@@ -1,7 +1,8 @@
 import { Container, Content } from "./styles"
 import { Header } from "../../components/Header"
-import { Title, HomeText, ButtonFinder, ColoredWord, CallMessage, Buttons } from './styles';
+import { Title, HomeText, ButtonFinder, ColoredWord, CallMessage, Buttons, HomeImage } from './styles';
 import { FiPhone } from "react-icons/fi";
+import DogImageRight from '../../assets/images/DogImageRight.png';
 
 
 export function Home() {
@@ -18,6 +19,7 @@ export function Home() {
                     <ButtonFinder>PetFinder ↗</ButtonFinder><CallMessage><a><FiPhone/> Agende uma ligação</a></CallMessage>
                     </Buttons>
                 </HomeText>
+                <HomeImage src={DogImageRight} alt="Descrição da imagem" />
             </Content>
         </Container>
     )

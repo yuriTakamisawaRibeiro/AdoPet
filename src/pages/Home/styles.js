@@ -11,9 +11,9 @@ export const Content = styled.div`
   overflow: hidden;
 `
 export const HomeText = styled.div`
-margin-top: 120px;
+margin-top: 40px;
 text-align: left;
-margin-left: 125px;
+margin-left: 150px;
 width: 50%;
 
 > p {
@@ -26,6 +26,11 @@ export const Title = styled.h1`
 font-family: 'Poppins', SemiBold;
 font-weight: 600;
   font-size: 40px;
+`;
+
+export const HomeImage = styled.img`
+  width: 25vw;
+  margin-top:10px;
 `;
 
 export const ButtonFinder = styled.button`

@@ -1,6 +1,5 @@
-import { Container, Content, Icon, Navigation } from "./styles";
+import { Container, Content, Icon, Navigation,UserIcon } from "./styles";
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
-import { FaUser } from "react-icons/fa6";
 
 export function Header() {
     return (
@@ -18,7 +17,7 @@ export function Header() {
                     </ul>
                 </Navigation>
                 <Icon>
-                    <FaUser />
+                    <UserIcon/>
                 </Icon>
             </Content>
         </Container>

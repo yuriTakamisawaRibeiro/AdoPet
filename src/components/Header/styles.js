@@ -1,17 +1,27 @@
 import styled from "styled-components";
+import { FaUser } from "react-icons/fa";
 
 export const Container = styled.header`
-
     width: 100%;
-    margin: 10px 90px;
-
 `
 
 export const Content = styled.div`
-gap: 200px;
-padding: 20px;
-display: flex;
-align-items: center;
+    gap: 250px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    margin-left:300px;
+
+    position: relative;
+    ::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 1px;
+        width: calc(100% - 335px);
+        background: #4B5563;
+    }
 `
 
 export const Navigation = styled.nav`
@@ -64,3 +74,8 @@ font-size: 20px;
     cursor: pointer;
 }
 `
+
+export const UserIcon = styled(FaUser)`
+margin-top:11px;
+font-size: 25px;
+`;

@@ -21,7 +21,9 @@ export const Content = styled.div`
 
 export const Logo = styled.img`
   align-self: flex-start;
-  margin:0;
+  margin-left:50px;
+  margin-top:50px
+  
 `;
 
 export const Title = styled.h1`
@@ -39,8 +41,29 @@ export const Form = styled.form`
 
 export const Cat = styled.img`
   width: fit-content;
-  height: 91vh;
-  margin-right: 30px;
-  margin-top: 30px;
-  margin-bottom:20px;
+  height: 100vh;
 `;
+
+export const Linha = styled.a`
+    position: relative;
+    display: inline-block;
+    text-align: center;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 180px; // Ajuste este valor para alterar o comprimento da linha
+        height: 1px; // Ajuste este valor para alterar a espessura da linha
+        background: black; // Ajuste este valor para alterar a cor da linha
+    }
+
+    &::before {
+        left: -60px; // Ajuste este valor para alterar a distância da linha ao texto
+    }
+
+    &::after {
+        right: -60px; // Ajuste este valor para alterar a distância da linha ao texto
+    }
+`
