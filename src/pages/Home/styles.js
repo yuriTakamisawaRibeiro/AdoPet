@@ -1,21 +1,22 @@
 import { FiPhone } from "react-icons/fi";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100vw;
 `
 
 export const Content = styled.div`
+  width: 78%;
   display: flex;
-  align-items: center;
-  margin: 0 auto;
+  margin: auto;
   margin-bottom:0;
   overflow: hidden;
+  flex-direction: column;
 `
 export const HomeText = styled.div`
 margin-top: 40px;
 text-align: left;
-margin-left: 300px;
-width: 50%;
 
 > p {
   margin-top: 10px;
@@ -29,10 +30,18 @@ font-weight: 600;
   font-size: 40px;
 `;
 
-export const HomeImage = styled.img`
-  width: 25vw;
-  margin-top:80px;
-  margin-right: 320px;
+export const Title2 = styled.h1`
+font-family: 'Poppins', SemiBold;
+font-weight: 600;
+  font-size: 26px;
+  margin-bottom: 20px;
+`;
+
+export const HomeImage1 = styled.img`
+  margin-top: 80px;
+`;
+
+export const HomeImage2 = styled.img`
 `;
 
 export const ButtonFinder = styled.button`
@@ -75,6 +84,52 @@ export const ColoredWord = styled.span`
 export const PhoneIcon = styled(FiPhone)`
 margin-top: 2px;
 font-size: 20px;
+`
+
+export const ArrowSignIcon = styled(FaArrowUpRightFromSquare)`
+margin-top: 4px;
+font-size: 16px;
+`
+
+export const Section = styled.div`
+align-items: center;
+justify-content: space-between;
+display: flex;
+flex-direction: row;
+  width: 100%;
+`
+
+export const Section2 = styled.div`
+align-items: center;
+justify-content: space-between;
+display: flex;
+flex-direction: row;
+  width: 100%;
+`
+
+export const DivisionLine = styled.div`
+    margin: 80px auto;
+    width: 100%;
+    height: 1px;
+    background-color: #4B5563;
+`
+
+export const PartnerArea = styled.div`
+width: 50%;
+align-items: center;
+justify-content: space-between;
+display: flex;
+flex-direction: column;
+> a {
+    margin-top: 10px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+  }
+
+> p {
+  text-align: justify;
+}
 `
 
 

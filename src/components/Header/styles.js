@@ -8,7 +8,7 @@ export const Container = styled.header`
 export const Content = styled.div`
     width: 100%;
     justify-content: space-between;
-    padding: 20px 17vw;
+    padding: 20px 12vw;
     display: flex;
     align-items: center;
 
@@ -17,9 +17,9 @@ export const Content = styled.div`
 
 export const DivisionLine = styled.div`
     margin: auto;
-    width: 70%;
+    width: 78%;
     height: 1px;
-    background-color: black;
+    background-color: #4B5563;
 `
 
 export const Navigation = styled.nav`
@@ -31,7 +31,7 @@ export const Navigation = styled.nav`
     
 
     font-weight: 600;
-    font-size: 20px;
+    font-size: 22px;
 
 }
 
