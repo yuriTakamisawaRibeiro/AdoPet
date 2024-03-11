@@ -26,7 +26,7 @@ export default createGlobalStyle`
     button, a{
         cursor: pointer;
         transition: filter 0.2s;
-        color: #212427;
+        color: #4B5563;
     }
 
     button:hover{
@@ -41,7 +41,7 @@ export default createGlobalStyle`
 
     a:hover {
         transition : 600ms;
-        padding: 10px 10px;
+        transform: translateX(3px);
         color: #e4ac46;
     }
 `;

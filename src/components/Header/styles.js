@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { FaUser } from "react-icons/fa";
 
 export const Container = styled.header`
-    width: 100%;
+    width: 100vw;
 `
 
 export const Content = styled.div`
+    width: 100%;
     gap: 250px;
     padding: 20px;
     display: flex;
@@ -19,7 +20,7 @@ export const Content = styled.div`
         left: 0;
         bottom: 0;
         height: 1px;
-        width: calc(100% - 335px);
+        width: 100%;
         background: #4B5563;
     }
 `
@@ -64,7 +65,6 @@ ul li:hover::after{
 `
 
 export const Icon = styled.div`
-margin-left: 150px;
 font-size: 20px;
 
 :hover{

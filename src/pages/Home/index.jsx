@@ -1,7 +1,6 @@
 import { Container, Content } from "./styles"
 import { Header } from "../../components/Header"
-import { Title, HomeText, ButtonFinder, ColoredWord, CallMessage, Buttons, HomeImage } from './styles';
-import { FiPhone } from "react-icons/fi";
+import { Title, HomeText, ButtonFinder, ColoredWord, CallMessage, Buttons, HomeImage, PhoneIcon } from './styles';
 import DogImageRight from '../../assets/images/DogImageRight.png';
 
 
@@ -16,7 +15,8 @@ export function Home() {
                         perfeito dentre uma variedade de animais adoráveis em busca de um lar.
                         Explore nossa plataforma dedicada em encher sua vida de alegria e amor incondicional</p>
                     <Buttons>
-                    <ButtonFinder>PetFinder ↗</ButtonFinder><CallMessage><a><FiPhone/> Agende uma ligação</a></CallMessage>
+                    <ButtonFinder>PetFinder ↗</ButtonFinder>
+                    <a href=""><PhoneIcon/><CallMessage> Agende uma ligação</CallMessage></a>
                     </Buttons>
                 </HomeText>
                 <HomeImage src={DogImageRight} alt="Descrição da imagem" />

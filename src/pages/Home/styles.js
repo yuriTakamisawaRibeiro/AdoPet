@@ -1,3 +1,4 @@
+import { FiPhone } from "react-icons/fi";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -13,7 +14,7 @@ export const Content = styled.div`
 export const HomeText = styled.div`
 margin-top: 40px;
 text-align: left;
-margin-left: 150px;
+margin-left: 300px;
 width: 50%;
 
 > p {
@@ -30,11 +31,11 @@ font-weight: 600;
 
 export const HomeImage = styled.img`
   width: 25vw;
-  margin-top:10px;
+  margin-top:80px;
+  margin-right: 320px;
 `;
 
 export const ButtonFinder = styled.button`
-  margin-top: 18px;
   font-weight: 400;
   font-size: 22px;
   color: #fff;
@@ -52,15 +53,28 @@ export const ButtonFinder = styled.button`
 `
 
 export const Buttons = styled.div`
-display: flex;
-align-items: center;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  > a {
+    padding-left: 50px;
+    display: flex;
+  flex-direction: row;
+  }
 `
 
 export const CallMessage = styled.p`
-  margin-top: 15px;
-  margin-left: 70px;
+  margin-left: 6px;
 `
 
 export const ColoredWord = styled.span`
   color: #e4ac46;
 `
+
+export const PhoneIcon = styled(FiPhone)`
+margin-top: 2px;
+font-size: 20px;
+`
+
+
