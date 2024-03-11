@@ -65,7 +65,7 @@ export const Buttons = styled.div`
 `
 
 export const CallMessage = styled.p`
-  margin-left: 6px;
+  margin-left: 7px;
 `
 
 export const ColoredWord = styled.span`

@@ -7,22 +7,19 @@ export const Container = styled.header`
 
 export const Content = styled.div`
     width: 100%;
-    gap: 250px;
-    padding: 20px;
+    justify-content: space-between;
+    padding: 20px 17vw;
     display: flex;
     align-items: center;
-    margin-left:300px;
 
     position: relative;
-    ::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 1px;
-        width: 100%;
-        background: #4B5563;
-    }
+`
+
+export const DivisionLine = styled.div`
+    margin: auto;
+    width: 70%;
+    height: 1px;
+    background-color: black;
 `
 
 export const Navigation = styled.nav`
@@ -34,7 +31,7 @@ export const Navigation = styled.nav`
     
 
     font-weight: 600;
-    font-size: 16px;
+    font-size: 20px;
 
 }
 
@@ -66,7 +63,6 @@ ul li:hover::after{
 
 export const Icon = styled.div`
 font-size: 20px;
-
 :hover{
     color: #E4AC46;
     transition: all ease-in-out 200ms;
@@ -77,5 +73,5 @@ font-size: 20px;
 
 export const UserIcon = styled(FaUser)`
 margin-top:11px;
-font-size: 25px;
+font-size: 35px;
 `;

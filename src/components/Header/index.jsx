@@ -1,12 +1,10 @@
-import { Container, Content, Icon, Navigation,UserIcon } from "./styles";
+import { Container, Content, Icon, Navigation,UserIcon, DivisionLine } from "./styles";
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 
 export function Header() {
     return (
         <Container>
             <Content>
-
-
                 <img src={AdopetImg} alt="Logo do site" />
                 <Navigation>
                     <ul>
@@ -19,7 +17,9 @@ export function Header() {
                 <Icon>
                     <UserIcon/>
                 </Icon>
+                
             </Content>
+            <DivisionLine></DivisionLine>
         </Container>
     )
 }
