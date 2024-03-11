@@ -1,10 +1,16 @@
 import { Container, Content } from "./styles"
 import { Header } from "../../components/Header"
-import { Title, Title2, HomeText, ButtonFinder, ColoredWord, CallMessage, Buttons, HomeImage1, HomeImage2, PhoneIcon, ArrowSignIcon, Section, Section2, PartnerArea } from './styles';
+import { Footer } from "../../components/Footer"
+import {
+    Title, Title2, Title3, Title4, HomeText, ButtonFinder, EducaPetButton, ButtonNewsletter, ColoredWord, CallMessage, Buttons, HomeImage1, HomeImage2, PhoneIcon, ArrowSignIcon,
+    Section, Section2, Section3, Section4, EmailInput, PartnerArea, TextArea, EducaPetArea
+} from './styles';
 import { DivisionLine } from './styles';
 import DogImageRight from '../../assets/images/DogImageRight.png';
 import DogImageLeft from '../../assets/images/DogImageLeft.png';
 import CatImageRight from '../../assets/images/CatImageRight.png';
+import CatImageLeft from '../../assets/images/CatImageLeft.png';
+import { Input } from '../../components/Input';
 
 
 export function Home() {
@@ -35,6 +41,26 @@ export function Home() {
                     </PartnerArea>
                     <HomeImage2 src={CatImageRight} alt="Descrição da imagem" />
                 </Section2>
+                <Section3>
+                    <EducaPetArea>
+                        <HomeImage2 src={CatImageLeft} alt="Descrição da imagem" />
+                        <TextArea>
+                            <Title3>COMO CUIDAR DO SEU PET</Title3>
+                            <p>Descubra dicas úteis, conselhos práticos e histórias inspiradoras sobre o cuidado e bem-estar dos animais de estimação. Esteja você buscando
+                                orientações sobre treinamento, alimentação saudável ou simplesmente inspiração para fortalecer o vínculo com seu companheiro peludo,
+                                nosso blog tem tudo para você e seu pet!</p>
+                            <EducaPetButton>EducaPet ↗</EducaPetButton>
+                        </TextArea>
+                    </EducaPetArea>
+                </Section3>
+                <Section4>
+                    <Title4>Assine nossa Newsletter e receba novidades do Educapet!</Title4>
+                    <EmailInput>
+                        <Input type="text" placeholder="Digite seu endereço de email"></Input>
+                        <ButtonNewsletter>Inscreva-se</ButtonNewsletter>
+                    </EmailInput>
+                </Section4>
+                <Footer />
             </Content>
         </Container>
     )
