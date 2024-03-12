@@ -2,15 +2,15 @@ import { Container, Content } from "./styles"
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
 import {
-    Title, Title2, Title3, Title4, HomeText, ButtonFinder, EducaPetButton, ButtonNewsletter, ColoredWord, CallMessage, Buttons, HomeImage1, HomeImage2, PhoneIcon, ArrowSignIcon,
-    Section, Section2, Section3, Section4, EmailInput, PartnerArea, TextArea, EducaPetArea
+    Title, Title2, Title3, HomeText, ButtonFinder, EducaPetButton, ColoredWord, CallMessage, Buttons, HomeImage1, HomeImage2, PhoneIcon, ArrowSignIcon,
+    Section, Section2, Section3, PartnerArea, TextArea, EducaPetArea
 } from './styles';
 import { DivisionLine } from './styles';
 import DogImageRight from '../../assets/images/DogImageRight.png';
 import DogImageLeft from '../../assets/images/DogImageLeft.png';
 import CatImageRight from '../../assets/images/CatImageRight.png';
 import CatImageLeft from '../../assets/images/CatImageLeft.png';
-import { Input } from '../../components/Input';
+import { Newsletter } from "../../components/Newsletter";
 
 
 export function Home() {
@@ -53,13 +53,7 @@ export function Home() {
                         </TextArea>
                     </EducaPetArea>
                 </Section3>
-                <Section4>
-                    <Title4>Assine nossa Newsletter e receba novidades do Educapet!</Title4>
-                    <EmailInput>
-                        <Input type="text" placeholder="Digite seu endereço de email"></Input>
-                        <ButtonNewsletter>Inscreva-se</ButtonNewsletter>
-                    </EmailInput>
-                </Section4>
+                <Newsletter />
                 <Footer />
             </Content>
         </Container>
