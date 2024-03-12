@@ -6,18 +6,47 @@ import {Input} from '../../components/Input';
 import {FaUser, FaLock  } from "react-icons/fa"
 import {MdEmail} from "react-icons/md"
 
+import {createUserWithEmailAndPassword} from 'firebase/auth'
+import { doc, setDoc } from "firebase/firestore"
+import { useState } from 'react';
+import { auth, firestore } from '../../firebase';
+
 export const SignUp = () => {
+    const [name, setName] = useState('')
+    const [cpf, setCpf] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+
+        try {
+
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            const user = userCredential.user
+
+            await setDoc(doc(firestore, "users", user.uid), {
+                name: name,
+                cpf: cpf,
+                email: email
+            })
+            console.log("User criado com sucesso")
+            
+        } catch (error) {
+            console.log("Erro ao criar usuario:" + error)
+        }
+    }
     return (
         <Container>
             <Logo src={AdopetImg} alt="Logo do site" />
             <Content>
             <Title>Crie sua conta</Title>
             <Form>
-                <Input  type="text" placeholder="Nome" icon={FaUser} />
-                <Input type= "text" placeholder="CPF" icon={FaUser }/>
-                <Input type= "email" placeholder="E-mail" icon={MdEmail}/>
-                <Input type= "password" placeholder="Senha" icon={FaLock }/>
-                <Button title="Cadastrar" type="submit"/>
+                <Input  type="text" placeholder="Nome" icon={FaUser} onChange={e => setName(e.target.value)}/>
+                <Input type= "text" placeholder="CPF" icon={FaUser } onChange={e => setCpf(e.target.value)}/>
+                <Input type= "email" placeholder="E-mail" icon={MdEmail} onChange={e => setEmail(e.target.value)}/>
+                <Input type= "password" placeholder="Senha" icon={FaLock} onChange={e => setPassword(e.target.value)}/>
+                <Button title="Cadastrar" onClick={handleSignUp}/>
                 <a href='/'>Já tem uma conta?</a>
             </Form>
             </Content>
