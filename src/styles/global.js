@@ -1,48 +1,47 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+export default createGlobalStyle`
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-  body {
-    -webkit-font-smoothing: antialiased ;
-  }
-  
-  body, input, button, textarea{
-    color: #4b5563;
-    font-family: 'Poppins', regular;
-    font-size: 16px;
-    outline: none;
-  }
+    body{
+        background-color: #F3F3EB;
+        color: #4B5563;
+        -webkit-font-smoothing: antialiased ;
+    }
 
-  a{
-    text-decoration: none;
-    
-  }
+    body, input, button, textarea{
+        font-family: 'Poppins', serif;
+        font-size: 16px;
+        outline: none;
+    }
 
-  button, a{
-    cursor: pointer;
-    transition: filter 0.2s;
-  }
+    a{
+        text-decoration: none;
+    }
 
-  button:hover, a:hover{
-    filter: brightness(0.9);
-  }
+    button, a{
+        cursor: pointer;
+        transition: filter 0.2s;
+        color: #4B5563;
+    }
 
-  *:focus {
-    outline: none;
-  }
+    button:hover{
+       filter: brightness(0.9);
+       transition : 708ms;
+    padding: 10px 31px;
+    transform : translateY(-0px);
+    background-color: #fff;
+    color: #e4ac46;
+    border: solid 1px #e4ac46;
+    }
 
-  input:focus {
-    outline: auto;
-  }
+    a:hover {
+        transition : 600ms;
+        transform: translateX(3px);
+        color: #e4ac46;
+    }
 `;
-
-
-
-
-
-export default GlobalStyle;
