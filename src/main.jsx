@@ -5,6 +5,7 @@ import GlobalStyle from './styles/global';
 
 
 import { Home } from './pages/Home';
+import {AboutUs} from "./pages/AboutUs"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
