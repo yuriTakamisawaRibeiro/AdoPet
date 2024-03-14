@@ -17,11 +17,14 @@ export const Info = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
+    text-align: start;
+
 `
 
 export const Suport = styled.div`
     display: flex;
     flex-direction: column;
+    text-align: start;
 
 > ul{
     display: flex;
@@ -66,7 +69,7 @@ export const Navigation = styled.nav`
     list-style: none;
     gap: 15px;
     font-size: 16px;
-
+    text-align: start;
 }
 
 ul li{
