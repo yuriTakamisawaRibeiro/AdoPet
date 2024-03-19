@@ -1,4 +1,4 @@
-import { Container } from "./syles";
+import { Container } from "./styles";
 
 export function InputAlternative({label, title, ...rest}){
     return(

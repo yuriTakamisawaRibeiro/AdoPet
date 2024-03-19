@@ -14,13 +14,13 @@ gap: 0.8rem;
 }
 
 > input {
-    height: 4.8rem;
+    height: 3.5rem;
     width: 100%;
     padding: 1.2rem 1.4rem;
     color: #4E5665;
     background: transparent;
     border-radius: 0.5rem;
-    border: 1px solid #4E5665;
+    border: 2px solid #4E5665;
 }
 
 `
