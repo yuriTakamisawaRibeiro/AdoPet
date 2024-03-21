@@ -1,9 +1,10 @@
-import { Container, Content, InfoIcon, Text, Form, Row, RowFile, InputTitle, InputPetRegister, BackButton, NextButton, Buttons } from "./styles"
+import { Container, Content, InfoIcon, Text, Form, Row, RowFile, InputTitle, InputPetRegister } from "./styles"
 import RegisterSteps from "../../assets/images/RegisterSteps.svg"
 import { Select } from "../../components/Select"
 import { FileInput } from "../../components/FileInput"
+import { StepsButtons } from "../../components/StepsButtons"
 
-export function PetRegister() {
+export function InfoPetRegister() {
     return (
         <Container>
             <Content>
@@ -53,10 +54,7 @@ export function PetRegister() {
                     </RowFile>
                 </Form>
             </Content>
-            <Buttons>
-                <BackButton>Voltar</BackButton>
-                <NextButton>Continuar</NextButton>
-            </Buttons>
+            <StepsButtons />
         </Container>
     )
 }

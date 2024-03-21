@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';   
 import GlobalStyle from './styles/global';
 
-import { PetRegister } from './pages/PetRegister';
+import { DescriptionPetRegister } from "./pages/DescriptionPetRegister"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GlobalStyle />
-    <PetRegister/>
+    <DescriptionPetRegister />
   </React.StrictMode>
 )
 
