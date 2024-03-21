@@ -4,7 +4,7 @@ export const Container = styled.div`
     margin-top: 160px;
     margin-bottom: 120px;
   width: 100%;
-  overflow-x:hidden;
+  
   `
 
 export const Content = styled.div`
