@@ -14,6 +14,20 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased ;
     }
 
+    ::-webkit-scrollbar{
+        width: 5px;
+        background-color: #E8E8E0;
+    }
+
+    ::-webkit-scrollbar-track{
+        background-color: #E8E8E0;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: #4B5563;
+        border-radius: 10px;
+    }
+
     body, input, button, textarea{
         font-family: 'Poppins', serif;
         font-size: 16px;
