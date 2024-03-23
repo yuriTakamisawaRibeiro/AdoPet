@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';   
 import GlobalStyle from './styles/global';
-import { Contact } from './pages/Contact'
+import { Home } from './pages/Home'
+import { PetRegisterHeader } from './components/PetRegisterHeader';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GlobalStyle />
-    <Contact/>
+    <PetRegisterHeader />
   </React.StrictMode>
 )
 
