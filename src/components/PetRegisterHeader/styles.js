@@ -17,11 +17,17 @@ export const Container = styled.ol`
     --circle: 4.5rem;
     --b: 1px;
 
+
+
   >li {
     display: grid;
     place-items: center;
     gap: 5px;
     font-weight: 800;
+    >p {
+      margin-top: 5px;
+      font-weight: 400;
+    }
   }
 
   li::before{
@@ -36,14 +42,11 @@ export const Container = styled.ol`
     border: 3px solid #4E5665;
     box-sizing: border-box;
     border-radius: 50%;
-    
   }
-
-  
 
   > li.active ~ li::before{
     background: #F3F3EB;
-    color: var(--default-c);
+    color: #4E5665;
     border: var(--active-border);
 }
 

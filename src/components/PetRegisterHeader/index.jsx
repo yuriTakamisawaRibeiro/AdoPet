@@ -3,13 +3,13 @@ import { Container } from "./styles";
 export function PetRegisterHeader(){
     return(
         <Container>     
-                <li >Informações do Pet</li>
+                <li ><p>Informações do Pet</p></li>
          
-                <li >Descrição do animal</li>
+                <li ><p>Descrição do animal</p></li>
 
-                <li class="active">Contato</li>
+                <li class="active"><p>Contato</p></li>
             
-                <li>Termos e condições</li>
+                <li><p>Termos e condições</p></li>
         </Container>
     )
 }
