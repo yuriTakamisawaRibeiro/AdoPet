@@ -1,46 +1,65 @@
 import styled from "styled-components";
 
 export const Container = styled.ol`
+    width: 100%vw;
     display: flex;
-  list-style: none;
-  justify-content: space-between;
-  margin: 20px;
-  padding: 0;
-  font-size: 22px;
+    list-style: none;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 0;
+    font-size: 22px;
+    background: 
+    linear-gradient(var(--default-b) 0 0) no-repeat
+    50% calc((var(--circle) - var(--b))/2)/100% var(--b);
 
+    counter-reset: step;
+
+    --default-b: #4B5563;
+    --default-c: #4B5563;
+    --active-b: #4B5563;
+    --active-c: #4B5563;
+    --active-border: 1px solid #4E5665;
+    --circle: 4.5rem;
+    --b: 1px;
 
   >li {
     display: grid;
-  place-items: center;
-  gap: 5px;
-  
+    place-items: center;
+    gap: 5px;
+    font-weight: 800;
   }
 
   li::before{
-    content: "";
-  display: grid;
-  place-content: center;
-  height: 10px;
-  aspect-ratio: 1;
-  background: none;
-  color: #4E5665;
-  border: 5px solid #4E5665;
-  box-sizing: border-box;
-  border-radius: 50%;
-
+    content: counter(step) " ";
+    counter-increment: step;
+    display: grid;
+    place-content: center;
+    height: var(--circle);
+    aspect-ratio: 1;
+    background:  #F3F3EB;
+    color: #4E5665;
+    border: 3px solid #4E5665;
+    box-sizing: border-box;
+    border-radius: 50%;
+    
   }
 
   
 
   > li.active ~ li::before{
-  background: purple;
-  color: yellow;
+    background: #F3F3EB;
+    color: var(--default-c);
+    border: var(--active-border);
 }
-`
 
-export const Tab = styled.div`
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+li.active::after {
+  content: "";
+  position: absolute;
+  height: var(--b);
+  right: 100%;
+  top: calc((var(--circle) - var(--b))/2);
+  width: 100vw;
+  background: var(--active-b);
+}
 `
 

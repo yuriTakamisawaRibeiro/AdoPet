@@ -1,20 +1,15 @@
-import { Container, Tab} from "./styles";
+import { Container } from "./styles";
 
 export function PetRegisterHeader(){
     return(
-        <Container>
-           
-           
-            <li> 1 </li>
-          
+        <Container>     
+                <li class="active">Informações do Pet</li>
          
-            <li > 2 </li>
+                <li>Descrição do animal</li>
 
-            <li > 3 </li>
-          
+                <li>Contato</li>
             
-            <li id="fourthStep"> 4 </li>
-           
+                <li>Termos e condições</li>
         </Container>
     )
 }
