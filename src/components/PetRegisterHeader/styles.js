@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.ol`
-    width: 100%vw;
     display: flex;
     list-style: none;
     justify-content: space-between;
@@ -9,15 +8,11 @@ export const Container = styled.ol`
     padding: 0;
     font-size: 22px;
     background: 
-    linear-gradient(var(--default-b) 0 0) no-repeat
+    linear-gradient(#4B5563 0 0) no-repeat
     50% calc((var(--circle) - var(--b))/2)/100% var(--b);
 
     counter-reset: step;
 
-    --default-b: #4B5563;
-    --default-c: #4B5563;
-    --active-b: #4B5563;
-    --active-c: #4B5563;
     --active-border: 1px solid #4E5665;
     --circle: 4.5rem;
     --b: 1px;
@@ -59,7 +54,7 @@ li.active::after {
   right: 100%;
   top: calc((var(--circle) - var(--b))/2);
   width: 100vw;
-  background: var(--active-b);
+  background: #4B5563;
 }
 `
 
