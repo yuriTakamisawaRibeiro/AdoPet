@@ -5,8 +5,8 @@ import Home from "../pages/Home";
 import PetFinder from "../pages/PetFinder";
 import AboutUs from "../pages/AboutUs";
 import Contact from "../pages/Contact";
-import DescPetRegister from "../pages/DescriptionPetRegister";
-import PetRegister from "../pages/InfoPetRegister";
+import { PetRegister } from '../pages/PetRegister';
+
 
 export default function AppRoutes() {
     return (
@@ -18,7 +18,6 @@ export default function AppRoutes() {
                 <Route path="/petfinder" element={<PetFinder />} />
                 <Route path="/aboutus" element={<AboutUs />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/descpet" element={<DescPetRegister />} />
                 <Route path="/petregister" element={<PetRegister />} />
             </Routes>
         </BrowserRouter>
