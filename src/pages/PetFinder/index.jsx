@@ -6,7 +6,7 @@ import { Input } from '../../components/Input';
 import { Title } from "./styles";
 import { Newsletter } from "../../components/Newsletter";
 
-export function PetFinder() {
+export  default function PetFinder() {
     return (
         <Container>
             <Header />

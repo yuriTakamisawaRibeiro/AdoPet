@@ -7,7 +7,7 @@ import {FaUser, FaLock  } from "react-icons/fa";
 
 
 
-export const SignIn = () => {
+const SignIn = () => {
   return (
   <Container>
       <Logo src={AdopetImg} alt="Logo do site" />
@@ -25,6 +25,7 @@ export const SignIn = () => {
       <Cat src={CatImg} alt="Imagem de um gato" />
 </Container>
   );
-};
+}
+export default SignIn;
 
 

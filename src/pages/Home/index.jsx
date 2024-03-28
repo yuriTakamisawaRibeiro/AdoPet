@@ -13,7 +13,7 @@ import CatImageLeft from '../../assets/images/CatImageLeft.png';
 import { Newsletter } from "../../components/Newsletter";
 
 
-export function Home() {
+export  default function Home() {
     return (
         <Container>
             <Header />

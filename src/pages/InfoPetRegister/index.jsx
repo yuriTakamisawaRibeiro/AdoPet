@@ -4,7 +4,7 @@ import { Select } from "../../components/Select"
 import { FileInput } from "../../components/FileInput"
 import { StepsButtons } from "../../components/StepsButtons"
 
-export function InfoPetRegister() {
+export  default function InfoPetRegister() {
     return (
         <Container>
             <Content>

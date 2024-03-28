@@ -5,7 +5,7 @@ import { ContactForm, ContactInfo, Container, Form, Form2,Select, Textarea } fro
 import { ButtonOrange } from "../../components/ButtonOrange";
 
 
-export function Contact() {
+export  default function Contact() {
     return (
         <Container>
             <Header />

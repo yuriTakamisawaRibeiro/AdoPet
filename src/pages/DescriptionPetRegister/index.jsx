@@ -2,7 +2,7 @@ import { Container, Content, InfoIcon, Text, Form, InputTitle, TextAreaPetDescri
 import RegisterSteps2 from "../../assets/images/RegisterSteps2.svg"
 import { StepsButtons } from "../../components/StepsButtons"
 
-export function DescriptionPetRegister() {
+export  default function DescriptionPetRegister() {
     return (
         <Container>
             <Content>
