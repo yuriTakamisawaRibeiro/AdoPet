@@ -5,25 +5,25 @@ export default createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        overflow-x:hidden;
     }
 
     body{
         background-color: #F3F3EB;
         color: #4B5563;
-        -webkit-font-smoothing: antialiased ;
+        -webkit-font-smoothing: antialiased;
+        overflow-x:hidden;
     }
 
-    ::-webkit-scrollbar{
+    body::-webkit-scrollbar{
         width: 5px;
         background-color: #E8E8E0;
     }
 
-    ::-webkit-scrollbar-track{
+    body::-webkit-scrollbar-track{
         background-color: #E8E8E0;
     }
 
-    ::-webkit-scrollbar-thumb{
+    body::-webkit-scrollbar-thumb{
         background-color: #4B5563;
         border-radius: 10px;
     }
