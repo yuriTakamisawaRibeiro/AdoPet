@@ -1,16 +1,18 @@
-import { Container, Content, InfoIcon, Text, Form, Row, RowFile, InputTitle, InputPetRegister } from "./styles"
-import RegisterSteps from "../../assets/images/RegisterSteps.svg"
+import { Container, InfoIcon, Text, Form, Row, RowFile, InputTitle, InputPetRegister, DescriptionPet, InfoPet, LastInput } from "./styles"
 import { Select } from "../../components/Select"
 import { FileInput } from "../../components/FileInput"
 import { StepsButtons } from "../../components/StepsButtons"
 import { PetRegisterHeader } from "../../components/PetRegisterHeader"
 
-export function InfoPetRegister() {
+import { TextAreaPetDescription } from "./styles"
+
+
+export function PetRegister() {
     return (
         <Container>
-            <Content>
-                <PetRegisterHeader />
-                <h1>Registro de informações</h1>
+            <PetRegisterHeader />
+            <InfoPet>
+            <h1>Registro de informações</h1>
                 <Text>
                     <InfoIcon />
                     <p>Apenas os campos com &quot;*&quot; são obrigatórios,
@@ -49,12 +51,30 @@ export function InfoPetRegister() {
                     </Row>
                     <RowFile>
                         <div>
-                        <InputTitle>Fotos (min 2, max 6) *</InputTitle>
-                        <FileInput />
+                            <InputTitle>Fotos (min 2, max 6) *</InputTitle>
+                            <FileInput />
                         </div>
                     </RowFile>
                 </Form>
-            </Content>
+            </InfoPet>
+            <DescriptionPet>
+                <h1>Descrição do animal</h1>
+                <Text>
+                    <InfoIcon />
+                    <p>Apenas os campos com &quot;*&quot; são obrigatórios,
+                        caso você não saiba alguma informação dos demais campos,
+                        é permitido deixar em branco.
+                    </p>
+                </Text>
+                <Form>
+                    <InputTitle>História do Pet *</InputTitle>
+                    <TextAreaPetDescription placeholder="Neste campo, conte a história que o levou até esse momento de colocar o pet para adoção" />
+                    <LastInput>
+                        <InputTitle>Cuidados Especiais *</InputTitle>
+                        <TextAreaPetDescription placeholder="Neste campo, informe qualquer tipo de necessidades especiais do pet" />
+                    </LastInput>
+                </Form>
+            </DescriptionPet>
             <StepsButtons />
         </Container>
     )

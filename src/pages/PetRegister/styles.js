@@ -3,11 +3,11 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 
 export const Container = styled.div`
   width: 100%;
+  padding: 0 18vw;
   `
 
-export const Content = styled.div`
+export const InfoPet = styled.div`
     width: 100%;
-    padding: 0 18vw;
     margin: auto;
     overflow: hidden;
     text-align: center;
@@ -16,24 +16,19 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
 
-    > img {
-        margin-top: 100px;
-        margin-bottom: 60px;
-    }
-
     > h1 {
+        margin-top: 30px;
         margin-bottom: 20px;
         font-size: 24px;
         font-weight: 600;
     }
-
-
 `
 
 export const Text = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 30px;
 
     > p {
         text-align: start;
@@ -50,6 +45,7 @@ export const Form = styled.form`
     width: 100%;
     margin: 40px 0 40px 0;
     margin-bottom: 80px;
+    text-align: start;
 
     > div {
         text-align: start;
@@ -145,3 +141,40 @@ export const Buttons = styled.div`
     margin-bottom: 80px;
 `
 
+export const DescriptionPet = styled.div`
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    flex-direction: column;
+
+    > img {
+        margin-top: 100px;
+        margin-bottom: 60px;
+    }
+
+    > h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 600;
+    }
+`
+
+export const TextAreaPetDescription = styled.textarea`
+    margin-top: 10px;
+    height: 12rem;
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    color: #4E5665;
+    background: transparent;
+    border-radius: 0.5rem;
+    border: 1.5px solid #4E5665;
+    margin-bottom: 0px;
+`
+
+export const LastInput = styled.div`
+    margin-top: 60px;
+`
