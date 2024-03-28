@@ -1,12 +1,13 @@
 import { Container, Content, InfoIcon, Text, Form, InputTitle, TextAreaPetDescription } from "./styles"
 import RegisterSteps2 from "../../assets/images/RegisterSteps2.svg"
 import { StepsButtons } from "../../components/StepsButtons"
+import { PetRegisterHeader } from "../../components/PetRegisterHeader"
 
 export function DescriptionPetRegister() {
     return (
         <Container>
             <Content>
-                <img src={RegisterSteps2} alt="Passo dois" />
+                <PetRegisterHeader />
                 <h1>Descrição do animal</h1>
                 <Text>
                     <InfoIcon />
