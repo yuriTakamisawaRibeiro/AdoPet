@@ -4,7 +4,8 @@ export const Container = styled.ol`
     display: flex;
     list-style: none;
     justify-content: space-between;
-    margin: 20px;
+    width: 100%;
+    margin: 50px auto 50px auto;
     padding: 0;
     font-size: 22px;
     background: 
@@ -16,8 +17,6 @@ export const Container = styled.ol`
     --active-border: 1px solid #4E5665;
     --circle: 4.5rem;
     --b: 1px;
-
-
 
   >li {
     display: grid;
@@ -56,7 +55,6 @@ li.active::after {
   height: var(--b);
   right: 100%;
   top: calc((var(--circle) - var(--b))/2);
-  width: 100vw;
   background: #4B5563;
 }
 `

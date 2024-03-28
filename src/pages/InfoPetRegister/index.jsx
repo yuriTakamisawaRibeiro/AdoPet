@@ -3,12 +3,13 @@ import RegisterSteps from "../../assets/images/RegisterSteps.svg"
 import { Select } from "../../components/Select"
 import { FileInput } from "../../components/FileInput"
 import { StepsButtons } from "../../components/StepsButtons"
+import { PetRegisterHeader } from "../../components/PetRegisterHeader"
 
 export function InfoPetRegister() {
     return (
         <Container>
             <Content>
-                <img src={RegisterSteps} alt="Passo um" />
+                <PetRegisterHeader />
                 <h1>Registro de informações</h1>
                 <Text>
                     <InfoIcon />
