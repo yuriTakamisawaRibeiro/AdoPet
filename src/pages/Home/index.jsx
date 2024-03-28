@@ -11,9 +11,10 @@ import DogImageLeft from '../../assets/images/DogImageLeft.png';
 import CatImageRight from '../../assets/images/CatImageRight.png';
 import CatImageLeft from '../../assets/images/CatImageLeft.png';
 import { Newsletter } from "../../components/Newsletter";
+import {Link} from 'react-router-dom'
 
 
-export function Home() {
+export  default function Home() {
     return (
         <Container>
             <Header />
@@ -25,7 +26,7 @@ export function Home() {
                             perfeito dentre uma variedade de animais adoráveis em busca de um lar.
                             Explore nossa plataforma dedicada em encher sua vida de alegria e amor incondicional.</p>
                         <Buttons>
-                            <ButtonFinder>PetFinder ↗</ButtonFinder>
+                            <ButtonFinder> <Link to="/petfinder">PetFinder ↗</Link></ButtonFinder>
                             <a href=""><PhoneIcon /><CallMessage> Agende uma ligação</CallMessage></a>
                         </Buttons>
                     </HomeText>

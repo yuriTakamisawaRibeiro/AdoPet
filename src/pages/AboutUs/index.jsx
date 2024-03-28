@@ -5,7 +5,7 @@ import {Title, ColoredWord, HomeImage1,Section, AboutText,Caption} from './style
 import CatAbout from '../../assets/images/CatAbout.svg';
 
 
-export function AboutUs(){
+ export  default function AboutUs(){
 return(
     <Container>
         <Header/>

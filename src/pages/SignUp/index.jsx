@@ -2,7 +2,6 @@ import { Container, Logo, Content, Cat, Title, Form} from './styles';
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import CatImg from '../../assets/images/CatImage.png';
 import { Button } from '../../components/Button';
-import Input from '../../components/Input';
 import { Link } from 'react-router-dom';
 import {Input} from '../../components/Input';
 import {FaUser, FaLock  } from "react-icons/fa"
@@ -13,7 +12,7 @@ import { doc, setDoc } from "firebase/firestore"
 import { useState } from 'react';
 import { auth, firestore } from '../../firebase';
 
-export const SignUp = () => {
+const SignUp = () => {
     const [name, setName] = useState('')
     const [cpf, setCpf] = useState('')
     const [email, setEmail] = useState('')
@@ -56,4 +55,5 @@ export const SignUp = () => {
         </Container>
     )
 }
+export default SignUp;
 
