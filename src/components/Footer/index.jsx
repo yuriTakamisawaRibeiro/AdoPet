@@ -1,6 +1,7 @@
 import { Container, Content, Navigation, Info, Suport } from "./styles";
 import { Title2 } from "../../pages/Home/styles"
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
+import {Link} from 'react-router-dom'
 
 
 export function Footer() {
@@ -17,7 +18,7 @@ export function Footer() {
                 <Navigation>
                 <Title2>Navegação</Title2>
                     <ul>
-                        <li>PetFinder</li>
+                        <Link to="/petfinder">PetFinder </Link>
                         <li>EducaPet</li>
                         <li>Editar Perfil</li>
                         <li>Cadastro Parceiros</li>
@@ -26,10 +27,10 @@ export function Footer() {
                 <Suport>
                     <Title2>Suporte</Title2>
                     <ul>
-                        <li>Sobre nós</li>
+                        <Link to="/aboutus">Sobre Nós</Link>
                         <li>FAQ</li>
                         <li>Blog</li>
-                        <li>Fale conosco</li>
+                        <Link to="/contact">Fale Conosco</Link>
                     </ul>
                 </Suport>
             </Content>
