@@ -148,7 +148,7 @@ export const DescriptionPet = styled.div`
     text-align: center;
     align-items: center;
     justify-content: center;
-    display: none;
+    display: flex;
     flex-direction: column;
 
     > img {

@@ -8,19 +8,60 @@ import { useState } from "react"
 
 export function PetRegister() {
     const [currentStep, setCurrentStep] = useState(0);
+    const [infoPetVisible, setInfoPetVisible] = useState(true);
+    const [descriptionPetVisible, setDescriptionPetVisible] = useState(false);
+    const [contactVisible, setContactVisible] = useState(false);
+    const [termsAndConditionsVisible, setTermsAndConditionsVisible] = useState(false);
 
     const handleNext = () => {
-        setCurrentStep(prevStep => prevStep + 1);
+        if (currentStep < 3) {
+            setCurrentStep(prevStep => prevStep + 1);
+            toggleVisibility(currentStep + 1);
+        }
     };
 
     const handleBack = () => {
-        setCurrentStep(prevStep => prevStep - 1);
+        if (currentStep > 0) {
+            setCurrentStep(prevStep => prevStep - 1);
+            toggleVisibility(currentStep - 1);
+        }
+    };
+
+    const toggleVisibility = (step) => {
+        switch (step) {
+            case 0:
+                setInfoPetVisible(true);
+                setDescriptionPetVisible(false);
+                setContactVisible(false);
+                setTermsAndConditionsVisible(false);
+                break;
+            case 1:
+                setInfoPetVisible(false);
+                setDescriptionPetVisible(true);
+                setContactVisible(false);
+                setTermsAndConditionsVisible(false);
+                break;
+            case 2:
+                setInfoPetVisible(false);
+                setDescriptionPetVisible(false);
+                setContactVisible(true);
+                setTermsAndConditionsVisible(false);
+                break;
+            case 3:
+                setInfoPetVisible(false);
+                setDescriptionPetVisible(false);
+                setContactVisible(false);
+                setTermsAndConditionsVisible(true);
+                break;
+            default:
+                break;
+        }
     };
 
     return (
         <Container>
             <PetRegisterHeader currentStep={currentStep} />
-            {currentStep === 0 && (
+            {infoPetVisible && (
                 <InfoPet>
                     <h1>Registro de informações</h1>
                     <Text>
@@ -68,7 +109,7 @@ export function PetRegister() {
                     </Form>
                 </InfoPet>
             )}
-            {currentStep === 1 && (
+            {descriptionPetVisible && (
                 <DescriptionPet>
                     <h1>Descrição do animal</h1>
                     <Text>
@@ -87,6 +128,12 @@ export function PetRegister() {
                         </LastInput>
                     </Form>
                 </DescriptionPet>
+            )}
+            {contactVisible && (
+                <h1>Contato teste</h1>
+            )}
+            {termsAndConditionsVisible && (
+                <h1>Termos e condições teste</h1>
             )}
             <StepsButtons onNext={handleNext} onBack={handleBack} />
         </Container>

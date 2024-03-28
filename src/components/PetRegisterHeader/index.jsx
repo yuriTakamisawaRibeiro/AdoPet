@@ -14,5 +14,5 @@ export function PetRegisterHeader({ currentStep }){
 }
 
 PetRegisterHeader.propTypes = {
-    currentStep: PropTypes.func.isRequired,
+    currentStep: PropTypes.number.isRequired,
 };
