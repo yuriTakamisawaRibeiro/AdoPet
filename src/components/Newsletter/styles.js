@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
     margin-top: 160px;
     margin-bottom: 120px;
-  width: 100%;
+  width: 77vw;
   
   `
 
 export const Content = styled.div`
-  width: 78%;
+  width: 100%;
   display: flex;
   margin: auto;
   overflow: hidden;
@@ -19,15 +19,15 @@ export const Content = styled.div`
 export const Title4 = styled.h1`
 font-family: 'Poppins', SemiBold;
 font-weight: 600;
-  font-size: 40px;
-width: 90%;
+  font-size: 35px;
+width: 100%;
 text-align: center;
 `;
 
 export const ButtonNewsletter = styled.button`
   font-weight: 400;
   font-size: 22px;
-  width: 60%;
+  width: 50%;
   justify-content: center;
   text-align: center;
   color: #fff;
@@ -54,8 +54,8 @@ export const EmailInput = styled.div`
   border-radius: 30px;
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 70%;
   margin-top: 30px;
-  background-color: #EAEAE4;
+  background-color: #E8E8E0;
 
 `
