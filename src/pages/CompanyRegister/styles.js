@@ -7,15 +7,16 @@ export const Container = styled.div`
 `
 
 export const SideInfo = styled.div`
-    padding-top: 40px;
     background-color: #E8E8E0;
     gap: 20px;
-    width: 296px;
+    width: 18vw;
     height: 100vh;
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: center;
     > p {
         font-size: 12px;
         text-align: justify;
@@ -39,13 +40,61 @@ export const Info = styled.div`
 `
 
 export const Form = styled.form`
-    width: 100%;
-
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
 `
 
 export const RegisterContent = styled.div`
+    padding-left: 18vw;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+`
+
+export const InputTitle = styled.h1`
+    font-size: 20px;
+    font-weight: 500;
+    text-align: start;
+`
+
+export const Input = styled.input`
+    margin-top: 10px;
+    height: 3.1rem;
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    color: #4E5665;
+    background: transparent;
+    border-radius: 0.5rem;
+    border: 1.5px solid #4E5665;
+`
+
+export const Row = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+`
+
+export const Row2 = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+`
+
+export const TextArea = styled.textarea`
+    margin-top: 10px;
+    height: 12rem;
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    color: #4E5665;
+    background: transparent;
+    border-radius: 0.5rem;
+    border: 1.5px solid #4E5665;
+    margin-bottom: 0px;
 `
