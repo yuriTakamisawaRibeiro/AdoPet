@@ -45,6 +45,13 @@ export const Form = styled.form`
     flex-direction: column;
     gap: 50px;
     align-items: center;
+    justify-content: center;
+
+    .button {
+        width: 15vw;
+        margin-top: -34px;
+    }
+
 `
 
 export const RegisterContent = styled.div`
@@ -76,8 +83,11 @@ export const Row = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    justify-content: center;
+    gap: 30px;
+    
+    > div {
+        width: 100%;
+    }
 `
 
 export const Row2 = styled.div`

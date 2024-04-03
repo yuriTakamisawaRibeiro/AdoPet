@@ -1,5 +1,6 @@
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import { Select } from '../../components/Select';
+import { Button } from '../../components/Button';
 import { InputTitle } from '../PetRegister/styles';
 import { Container, Info, SideInfo, Title, Form, RegisterContent, Input, Row, TextArea, Row2 } from './styles';
 
@@ -21,37 +22,46 @@ export function CompanyRegister() {
                     <Row>
                         <div>
                             <InputTitle>Nome da empresa</InputTitle>
-                            <Input />
+                            <Input placeholder='Nome Fantasia' />
                         </div>
                         <div>
                             <InputTitle>Contato</InputTitle>
-                            <Input />
+                            <Input placeholder='(xx) xxxxx-xxxx' />
                         </div>
                         <div>
                             <InputTitle>Endereço da empresa</InputTitle>
-                            <Input />
+                            <Input placeholder='Avenida Aguia de Haia ,2250' />
                         </div>
                     </Row>
                     <Row>
                         <div>
                             <InputTitle>E-mail</InputTitle>
-                            <Input />
+                            <Input placeholder='contato@adopet.com' />
                         </div>
                         <div>
                             <InputTitle>CNPJ</InputTitle>
-                            <Input />
+                            <Input placeholder='XX.XXX.XXX/0001-XX' />
                         </div>
                         <div>
                             <InputTitle>Segmento da empresa</InputTitle>
-                            <Select />
+                            <Select placeholder='Selecione alguma opção'>
+                                <option value="none">Escolha um tópico</option>
+                                <option value="adoption">Ajuda com adoção</option>
+                                <option value="petRegister">Cadastro de Pets</option>
+                                <option value="products">Produtos Adopet</option>
+                                <option value="partnership">Parceirias</option>
+                            </Select>
                         </div>
                     </Row>
                     <Row2>
                         <div>
                             <InputTitle>Segmento da empresa</InputTitle>
-                            <TextArea />
+                            <TextArea placeholder='Nesse campo coloque uma breve descrição da empresa, uma breve explicação sobre por que deseja se tornar parceira da Adopet e o tipo de parceria que a empresa está interessada em estabelecer, como patrocínio, doações, voluntariado, entre outros.' />
                         </div>
                     </Row2>
+                    <div class="button">
+                        <Button title="Enviar Registro" type="submit" />
+                    </div>
                 </Form>
             </RegisterContent>
         </Container>
