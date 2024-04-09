@@ -59,7 +59,7 @@ export function CompanyRegister() {
                             <TextArea placeholder='Nesse campo coloque uma breve descrição da empresa, uma breve explicação sobre por que deseja se tornar parceira da Adopet e o tipo de parceria que a empresa está interessada em estabelecer, como patrocínio, doações, voluntariado, entre outros.' />
                         </div>
                     </Row2>
-                    <div class="button">
+                    <div className="button">
                         <Button title="Enviar Registro" type="submit" />
                     </div>
                 </Form>

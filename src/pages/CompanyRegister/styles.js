@@ -56,6 +56,7 @@ export const Form = styled.form`
 
 export const RegisterContent = styled.div`
     padding-left: 18vw;
+    margin-bottom: 30px;
     width: 100%;
     display: flex;
     flex-direction: column;
