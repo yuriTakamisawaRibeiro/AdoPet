@@ -57,6 +57,7 @@ export const FilterButton = styled.button`
   flex-direction: row;
   align-items: center;
   cursor: pointer;
+  height: 80px;
 
     &:disabled{
         opacity: 0.5;

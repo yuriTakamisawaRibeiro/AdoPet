@@ -1,11 +1,10 @@
 import { Container, Content } from "./styles"
 import { Header } from "../../components/Header"
-import { Footer } from "../../components/Footer"
 import {Title, ColoredWord, HomeImage1,Section, AboutText,Caption} from './styles';
 import CatAbout from '../../assets/images/CatAbout.svg';
 
 
- export  default function AboutUs(){
+ export default function AboutUs(){
 return(
     <Container>
         <Header/>

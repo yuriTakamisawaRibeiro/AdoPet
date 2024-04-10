@@ -63,15 +63,19 @@ ul li:hover::after{
 
 export const Icon = styled.div`
 font-size: 20px;
+font-size: 35px;
+
 :hover{
     color: #E4AC46;
     transition: all ease-in-out 200ms;
 
     cursor: pointer;
+    
 }
 `
 
 export const UserIcon = styled(FaUser)`
 margin-top:11px;
+margin-right: 20px;
 font-size: 35px;
 `;

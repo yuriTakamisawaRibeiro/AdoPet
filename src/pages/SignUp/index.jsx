@@ -2,7 +2,6 @@ import { Container, Logo, Content, Cat, Title, Form} from './styles';
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import CatImg from '../../assets/images/CatImage.png';
 import { Button } from '../../components/Button';
-import { Link } from 'react-router-dom';
 import {Input} from '../../components/Input';
 import {FaUser, FaLock  } from "react-icons/fa"
 import {MdEmail} from "react-icons/md"
