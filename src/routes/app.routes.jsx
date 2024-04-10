@@ -4,6 +4,7 @@ import PetFinder from "../pages/PetFinder";
 import AboutUs from "../pages/AboutUs";
 import Contact from "../pages/Contact";
 import { PetRegister } from '../pages/PetRegister';
+import { CompanyRegister } from '../pages/CompanyRegister';
 
 
 export function AppRoutes() {
@@ -14,6 +15,7 @@ export function AppRoutes() {
                 <Route path="/aboutus" element={<AboutUs />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/petregister" element={<PetRegister />} />
+                <Route path="/companyregister" element={<CompanyRegister />} />
             </Routes>
     );
 }
