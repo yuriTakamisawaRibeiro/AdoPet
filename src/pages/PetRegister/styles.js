@@ -42,10 +42,12 @@ export const InfoIcon = styled(IoIosInformationCircleOutline)`
 `
 
 export const Form = styled.form`
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin: 40px 0 40px 0;
-    margin-bottom: 80px;
     text-align: start;
+    justify-content: center;
 
     > div {
         text-align: start;
@@ -56,7 +58,7 @@ export const Row = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 5vw;
+    gap: 3vw;
     margin-bottom: 60px;
 
     > div {
@@ -64,7 +66,18 @@ export const Row = styled.div`
     }
 
     > div:nth-of-type(2) {
-        width: 13%;
+        width: 20%;
+    }
+`
+
+export const Row2 = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    > div {
+        width: 22vw;
     }
 `
 
@@ -163,6 +176,63 @@ export const DescriptionPet = styled.div`
     }
 `
 
+export const ContactStep = styled.div`
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    > img {
+        margin-top: 100px;
+        margin-bottom: 60px;
+    }
+
+    > h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 600;
+    }
+`
+
+export const TermsStep = styled.div`
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    > img {
+        margin-top: 100px;
+        margin-bottom: 60px;
+    }
+
+    > h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 600;
+    }
+`
+
+export const TermsArea = styled.div`
+    width: 100%;
+    margin-top: 15px;
+    height: 70vh;
+    background-color: #FFFFF3;
+    text-align: start;
+    padding-top: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+    overflow: auto;
+    padding-bottom: 40px;
+`
+
 export const TextAreaPetDescription = styled.textarea`
     margin-top: 10px;
     height: 12rem;
@@ -177,4 +247,5 @@ export const TextAreaPetDescription = styled.textarea`
 
 export const LastInput = styled.div`
     margin-top: 60px;
+    width: 100%;
 `

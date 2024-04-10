@@ -1,4 +1,4 @@
-import { Container, InfoIcon, Text, Form, Row, RowFile, InputTitle, InputPetRegister, DescriptionPet, InfoPet, LastInput, TextAreaPetDescription } from "./styles"
+import { Container, InfoIcon, Text, Form, Row, RowFile, InputTitle, InputPetRegister, DescriptionPet, InfoPet, LastInput, TextAreaPetDescription, ContactStep, Row2, TermsStep, TermsArea } from "./styles"
 import { Select } from "../../components/Select"
 import { FileInput } from "../../components/FileInput"
 import { StepsButtons } from "../../components/StepsButtons"
@@ -130,10 +130,59 @@ export function PetRegister() {
                 </DescriptionPet>
             )}
             {contactVisible && (
-                <h1>Contato teste</h1>
+                <ContactStep>
+                    <h1>Contato</h1>
+                    <Text>
+                        <InfoIcon />
+                        <p>Apenas os campos com &quot;*&quot; são obrigatórios,
+                            caso você não saiba alguma informação dos demais campos,
+                            é permitido deixar em branco.
+                        </p>
+                    </Text>
+                    <Form>
+                        <Row>
+                            <div>
+                                <InputTitle>Nome completo *</InputTitle>
+                                <InputPetRegister />
+                            </div>
+                            <div>
+                                <InputTitle>CEP *</InputTitle>
+                                <InputPetRegister />
+                            </div>
+                            <div>
+                                <InputTitle>Telefone *</InputTitle>
+                                <InputPetRegister />
+                            </div>
+                        </Row>
+                        <Row2>
+                            <div>
+                                <InputTitle>E-mail *</InputTitle>
+                                <InputPetRegister />
+                            </div>
+                            <div>
+                                <InputTitle>Redes sociais</InputTitle>
+                                <InputPetRegister />
+                            </div>
+                        </Row2>
+                    </Form>
+                </ContactStep>
             )}
             {termsAndConditionsVisible && (
-                <h1>Termos e condições teste</h1>
+                <TermsStep>
+                    <h1>Termos e condições</h1>
+                    <TermsArea>
+                        <p>
+                            Termos e Condições para Cadastro de Pets:</p>
+                        Ao cadastrar um pet na plataforma Adopet, você concorda com os seguintes termos e condições:<br /><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>1. Veracidade das Informações: Você declara que todas as informações fornecidas sobre o pet são precisas e atualizadas. Qualquer informação falsa ou enganosa pode resultar na remoção do cadastro.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>2. Responsabilidade do Tutor: Como tutor do pet cadastrado, você é responsável por fornecer cuidados adequados ao animal e garantir seu bem-estar físico e emocional.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>3. Autorização para Adoção: Você autoriza a Adopet a compartilhar as informações do pet com potenciais adotantes interessados em sua adoção.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>4. Processo de Adoção: Você reconhece que a Adopet não realiza processos de adoção diretamente e que qualquer adoção é realizada diretamente entre você (tutor) e o adotante.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>5. Remoção do Cadastro: A Adopet se reserva o direito de remover o cadastro do pet a qualquer momento, se considerar necessário, sem aviso prévio.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>6. Atualização de Informações: Você concorda em manter suas informações de contato e sobre o pet atualizadas na plataforma.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>7. Uso de Imagens: Você autoriza o uso das imagens do pet cadastradas na plataforma para fins de divulgação e promoção da adoção responsável.</p><br />
+                    </TermsArea>
+                </TermsStep>
             )}
             <StepsButtons onNext={handleNext} onBack={handleBack} />
         </Container>
