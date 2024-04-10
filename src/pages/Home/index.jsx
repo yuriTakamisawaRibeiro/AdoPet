@@ -38,7 +38,7 @@ export  default function Home() {
                     <PartnerArea>
                         <Title2>Torne-se um <ColoredWord>Parceiro</ColoredWord> da Adopet!</Title2>
                         <p>Você representa uma organização dedicada ao bem-estar animal? Junte-se a nós na missão de encontrar lares amorosos para animais necessitados.</p>
-                        <a href=""><ArrowSignIcon /><CallMessage>Cadastre-se</CallMessage></a>
+                        <a href="/companyregister"><ArrowSignIcon /><CallMessage>Cadastre-se</CallMessage></a>
                     </PartnerArea>
                     <HomeImage2 src={CatImageRight} alt="Descrição da imagem" />
                 </Section2>
