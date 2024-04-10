@@ -31,6 +31,7 @@ const SignUp = () => {
                 email: email
             })
             console.log("User criado com sucesso")
+            window.location.href = '/home';
             
         } catch (error) {
             console.log("Erro ao criar usuario:" + error)
