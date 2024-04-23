@@ -41,8 +41,9 @@ const SignUp = () => {
         <Container>
             <Logo src={AdopetImg} alt="Logo do site" />
             <Content>
-            <Title>Crie sua conta</Title>
+            
             <Form>
+            <Title>Crie sua conta</Title>
                 <Input  type="text" placeholder="Nome" icon={FaUser} onChange={e => setName(e.target.value)}/>
                 <Input type= "text" placeholder="CPF" icon={FaUser } onChange={e => setCpf(e.target.value)}/>
                 <Input type= "email" placeholder="E-mail" icon={MdEmail} onChange={e => setEmail(e.target.value)}/>
