@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaUser } from "react-icons/fa";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 export const Container = styled.header`
     width: 100vw;
@@ -11,8 +12,15 @@ export const Content = styled.div`
     padding: 20px 12vw;
     display: flex;
     align-items: center;
-
     position: relative;
+
+    @media (max-width: 1157px) {
+    justify-content: space-evenly;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const DivisionLine = styled.div`
@@ -29,10 +37,12 @@ export const Navigation = styled.nav`
     list-style: none;
     gap: 60px;
     
-
     font-weight: 600;
     font-size: 22px;
 
+    @media (max-width: 1157px) {
+    gap: 30px;
+  }
 }
 
 ul li{
@@ -79,3 +89,33 @@ margin-top:11px;
 margin-right: 20px;
 font-size: 35px;
 `;
+
+export const HeaderMobile = styled.div`
+    padding: 20px 12vw;
+    display: none;
+    justify-content: space-between;
+    width: 100%;
+    @media (max-width: 768px) { 
+        display: flex;
+}
+
+
+`
+
+export const MenuIcon = styled(RxHamburgerMenu)`
+    margin-top: 20px;
+
+
+`
+
+export const MenuMobile = styled.div`
+    height: 60%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+`

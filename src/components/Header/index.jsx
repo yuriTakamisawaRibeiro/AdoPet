@@ -1,4 +1,4 @@
-import { Container, Content, Icon, Navigation, UserIcon, DivisionLine } from "./styles";
+import { Container, Content, Icon, Navigation, UserIcon, DivisionLine, HeaderMobile, MenuIcon, MenuMobile } from "./styles";
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
@@ -36,7 +36,21 @@ export function Header() {
                     <FaSignOutAlt onClick={handleSignOut} style={{ cursor: 'pointer' }} />
                 </Icon>
             </Content>
+
+            <HeaderMobile>
+                <img src={AdopetImg} alt="Logo do site" />
+                <MenuIcon size={36} />
+            </HeaderMobile>
+            <MenuMobile>
+                <ul>
+                    <li><Link to="/home">Home</Link></li>
+                    <li><Link to="/petfinder">PetFinder</Link></li>
+                    <li><Link to="/contact">Contato</Link></li>
+                    <li><Link to="/aboutus">Sobre Nós</Link></li>
+                </ul>
+            </MenuMobile>
             <DivisionLine></DivisionLine>
+
         </Container>
     );
 }
