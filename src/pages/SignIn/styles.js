@@ -20,9 +20,9 @@ export const Content = styled.div`
 
 
 export const Logo = styled.img`
-  align-self: flex-start;
-  margin-left:50px;
-  margin-top:50px
+position: absolute;
+top: 20px; /* Ajuste a distância superior conforme necessário */
+left: 20px; /* Ajuste a distância esquerda conforme necessário */
   
 `;
 
@@ -33,15 +33,30 @@ margin-bottom: 20px;
 `;
 
 export const Form = styled.form`
+  margin-top:50px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   text-align:center;
+
+  @media (min-width: 768px) and (max-width: 930px) {
+   margin-top: 150px;
+  }
+
+  @media (max-width: 768px) {
+   margin-top: 150px;
+  }
 `;
 
 export const Cat = styled.img`
   width: fit-content;
   height: 100vh;
+
+  @media (max-width: 930px) {
+    display: none;
+  }
+
+
 `;
 
 export const Linha = styled.a`
@@ -67,3 +82,4 @@ export const Linha = styled.a`
         right: -60px; // Ajuste este valor para alterar a distância da linha ao texto
     }
 `
+

@@ -19,10 +19,9 @@ export const Content = styled.div`
 `;
 
 export const Logo = styled.img`
-  align-self: flex-start;
-  margin:0;
-  margin-left:50px;
-  margin-top:50px;
+position: absolute;
+top: 20px; /* Ajuste a distância superior conforme necessário */
+left: 20px; /* Ajuste a distância esquerda conforme necessário */
 `;
 
 
@@ -37,14 +36,19 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 1.5rem;
   text-align:center;
+  margin-top: 50px;
+
+  @media (max-width: 1099px) {
+    margin-top: 200px;
+  }
 `;
 
 export const Cat = styled.img`
   width: fit-content;
-  height: 91vh;
-  margin-right: 30px;
-  margin-top: 30px;
-  margin-bottom:20px;
+  height: 100vh;
+  @media (max-width: 1099px) {
+    display: none;
+  }
 `;
 
 

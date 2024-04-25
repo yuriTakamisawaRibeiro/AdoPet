@@ -31,10 +31,12 @@ const SignIn = () => {
 
   return (
     <Container>
-      <Logo src={AdopetImg} alt="Logo do site" />
+     
       <Content>
+        <Logo src={AdopetImg} alt="Logo do site" />
+        <Form onSubmit={handleSignIn}> 
+        
         <Title>Acesse sua conta</Title>
-        <Form onSubmit={handleSignIn}>
           <Input
             type="email"
             placeholder="E-mail"
