@@ -4,6 +4,8 @@ import { FileInput } from "../../components/FileInput"
 import { StepsButtons } from "../../components/StepsButtons"
 import { PetRegisterHeader } from "../../components/PetRegisterHeader"
 import { useState } from "react"
+import { firestore } from "../../firebase/index";
+import { addDoc, collection } from "firebase/firestore"
 
 
 export function PetRegister() {
@@ -12,11 +14,60 @@ export function PetRegister() {
     const [descriptionPetVisible, setDescriptionPetVisible] = useState(false);
     const [contactVisible, setContactVisible] = useState(false);
     const [termsAndConditionsVisible, setTermsAndConditionsVisible] = useState(false);
+    const [formData, setFormData] = useState({
+        species: "",
+        gender: "",
+        breed: "",
+        temperament: "",
+        size: "",
+        color: "",
+        history: "",
+        specialCare: "",
+        tutorName: "",
+        tutorCep: "",
+        tutorPhone: "",
+        tutorEmail: "",
+        tutorSocialMedia: ""
+    });
+
+
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
+
+
+
+    const handleFileChange = (files) => {
+        // Assuming this will be used for handling file input changes
+        setFormData((prevData) => ({
+            ...prevData,
+            setPhotos: files
+        }));
+    };
+
+    const handleSubmit = async () => {
+        try {
+            // Adiciona os dados do formData ao Firestore
+            const FormsPetsCollectionRef = collection(firestore, 'formsPets');
+            const docRef = await addDoc(FormsPetsCollectionRef, formData);
+            console.log('Documento adicionado com ID:', docRef.id);
+        } catch (error) {
+            console.error('Erro ao adicionar documento:', error);
+        }
+    };
 
     const handleNext = () => {
         if (currentStep < 3) {
             setCurrentStep(prevStep => prevStep + 1);
             toggleVisibility(currentStep + 1);
+        }
+        else {
+            handleSubmit()
         }
     };
 
@@ -58,6 +109,19 @@ export function PetRegister() {
         }
     };
 
+    const optionsSexo = [
+        { label: 'Selecione uma opção', value: '' },
+        { label: 'Macho', value: 'macho' },
+        { label: 'Fêmea', value: 'femea' },
+    ];
+
+    const optionsSize = [
+        { label: 'Selecione uma opção', value: '' },
+        { label: 'Porte Pequeno', value: 'pequeno' },
+        { label: 'Porte Médio', value: 'medio' },
+        { label: 'Porte Grande', value: 'grande' },
+    ]
+
     return (
         <Container>
             <PetRegisterHeader currentStep={currentStep} />
@@ -75,35 +139,49 @@ export function PetRegister() {
                         <Row>
                             <div>
                                 <InputTitle>Espécie *</InputTitle>
-                                <InputPetRegister />
+                                <InputPetRegister name="species"
+                                    value={formData.species}
+                                    onChange={handleInputChange} />
                             </div>
                             <div>
-                                <InputTitle>Sexo *</InputTitle>
-                                <Select />
+                                <InputTitle >Sexo *</InputTitle>
+                                <Select options={optionsSexo}
+                                name="gender"
+                                value={formData.gender}
+                                onChange={handleInputChange}/>
                             </div>
                             <div>
                                 <InputTitle>Raça *</InputTitle>
-                                <InputPetRegister />
+                                <InputPetRegister name="breed"
+                                value={formData.breed}
+                                onChange={handleInputChange}/>
                             </div>
                         </Row>
                         <Row>
                             <div>
                                 <InputTitle>Temperamento</InputTitle>
-                                <InputPetRegister />
+                                <InputPetRegister name="temperament"
+                                value={formData.temperament}
+                                onChange={handleInputChange}/>
                             </div>
                             <div>
                                 <InputTitle>Porte *</InputTitle>
-                                <Select />
+                                <Select options={optionsSize}
+                                name= "size"
+                                value={formData.size} 
+                                onChange={handleInputChange}/>
                             </div>
                             <div>
                                 <InputTitle>Cor *</InputTitle>
-                                <Select />
+                                <InputPetRegister name="color"
+                                value={formData.color}
+                                onChange={handleInputChange}/>
                             </div>
                         </Row>
                         <RowFile>
                             <div>
                                 <InputTitle>Fotos (min 2, max 6) *</InputTitle>
-                                <FileInput />
+                                <FileInput onChange={handleFileChange}/>
                             </div>
                         </RowFile>
                     </Form>
@@ -121,10 +199,14 @@ export function PetRegister() {
                     </Text>
                     <Form>
                         <InputTitle>História do Pet *</InputTitle>
-                        <TextAreaPetDescription placeholder="Neste campo, conte a história que o levou até esse momento de colocar o pet para adoção" />
+                        <TextAreaPetDescription name= "history"
+                                value={formData.history} 
+                                onChange={handleInputChange} placeholder="Neste campo, conte a história que o levou até esse momento de colocar o pet para adoção" />
                         <LastInput>
                             <InputTitle>Cuidados Especiais *</InputTitle>
-                            <TextAreaPetDescription placeholder="Neste campo, informe qualquer tipo de necessidades especiais do pet" />
+                            <TextAreaPetDescription  name= "specialCare"
+                                value={formData.specialCare} 
+                                onChange={handleInputChange} placeholder="Neste campo, informe qualquer tipo de necessidades especiais do pet" />
                         </LastInput>
                     </Form>
                 </DescriptionPet>
@@ -143,25 +225,35 @@ export function PetRegister() {
                         <Row>
                             <div>
                                 <InputTitle>Nome completo *</InputTitle>
-                                <InputPetRegister />
+                                <InputPetRegister name= "tutorName"
+                                value={formData.tutorName} 
+                                onChange={handleInputChange}/>
                             </div>
                             <div>
                                 <InputTitle>CEP *</InputTitle>
-                                <InputPetRegister />
+                                <InputPetRegister name= "tutorCep"
+                                value={formData.tutorCep} 
+                                onChange={handleInputChange}/>
                             </div>
                             <div>
                                 <InputTitle>Telefone *</InputTitle>
-                                <InputPetRegister />
+                                <InputPetRegister name= "tutorPhone"
+                                value={formData.tutorPhone} 
+                                onChange={handleInputChange}/>
                             </div>
                         </Row>
                         <Row2>
                             <div>
                                 <InputTitle>E-mail *</InputTitle>
-                                <InputPetRegister />
+                                <InputPetRegister name= "tutorEmail"
+                                value={formData.tutorEmail} 
+                                onChange={handleInputChange}/>
                             </div>
                             <div>
                                 <InputTitle>Redes sociais</InputTitle>
-                                <InputPetRegister />
+                                <InputPetRegister name= "tutorSocialMedia"
+                                value={formData.tutorSocialMedia} 
+                                onChange={handleInputChange}/>
                             </div>
                         </Row2>
                     </Form>

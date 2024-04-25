@@ -7,7 +7,7 @@ import {FaUser, FaLock  } from "react-icons/fa"
 import {MdEmail} from "react-icons/md"
 
 import {createUserWithEmailAndPassword} from 'firebase/auth'
-import { doc, setDoc } from "firebase/firestore"
+import { doc, serverTimestamp, setDoc } from "firebase/firestore"
 import { useState } from 'react';
 import { auth, firestore } from '../../firebase';
 
@@ -28,7 +28,8 @@ const SignUp = () => {
             await setDoc(doc(firestore, "users", user.uid), {
                 name: name,
                 cpf: cpf,
-                email: email
+                email: email,
+                created_at:  serverTimestamp()
             })
             console.log("User criado com sucesso")
             window.location.href = '/home';

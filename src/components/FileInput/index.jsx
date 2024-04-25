@@ -3,7 +3,7 @@ import { Container, ButtonFile } from "./styles";
 export function FileInput() {
     return(
         <Container>
-            <input />
+            <input type="file"/>
             <ButtonFile type="file">Escolher arquivo</ButtonFile>
         </Container>
     )

@@ -6,8 +6,16 @@ import { Input } from '../../components/Input';
 import { Title } from "./styles";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { Newsletter } from "../../components/Newsletter";
+import { useNavigate } from "react-router-dom";
 
 export default function PetFinder() {
+
+    const navigate = useNavigate()
+
+    function handlePetRegister(){
+        navigate("/petregister")
+    }
+    
     return (
         <Container>
             <Header />
@@ -18,7 +26,7 @@ export default function PetFinder() {
                     <FilterButton>
                         <FilterIcon />Filtros
                     </FilterButton>
-                    <FilterButton>
+                    <FilterButton onClick={handlePetRegister}>
                     <AiFillPlusCircle />Cadastrar Pet
                     </FilterButton>
                 </Search>

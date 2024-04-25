@@ -1,34 +1,37 @@
-import { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useEffect, useState } from "react";
 import { BrowserRouter} from 'react-router-dom';
-import { AuthRoutes } from './auth.routes';
-import { AppRoutes } from './app.routes';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { NotFoundPage } from "../pages/404";
+import { AppRoutes } from "./app.routes";
+import { AuthRoutes } from "./auth.routes";
 
 export function RoutesIndex() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // Usuário está autenticado
-        console.log("autenticado")
         setIsAuthenticated(true);
+
+        const sessionTimeout = setTimeout(() => {
+          signOut(auth);
+          setIsAuthenticated(false);
+        }, 120 * 60 * 1000);
+
+        return () => clearTimeout(sessionTimeout);
       } else {
-        // Usuário não está autenticado
-        console.log("nao autenticado")
         setIsAuthenticated(false);
       }
     });
 
-    return () => {
-      unsubscribe(); // Cancela o listener de autenticação ao desmontar o componente
-    };
-  }, []); // O array vazio assegura que este efeito só será executado uma vez
+    return () => unsubscribe();
+  }, []);
 
   return (
     <BrowserRouter>
-       {isAuthenticated ? <AppRoutes /> : <AuthRoutes />}
+        {isAuthenticated ? <AppRoutes /> : <AuthRoutes />}
     </BrowserRouter>
   );
 }

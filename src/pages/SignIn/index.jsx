@@ -53,7 +53,7 @@ const SignIn = () => {
           {error && <p>{error}</p>}
           <Link to="/forgot-password">Esqueceu sua senha?</Link>
           <Linha>OU</Linha>
-          <Link to="/signup">Crie sua Conta</Link>
+          <Link to="/register">Crie sua Conta</Link>
         </Form>
       </Content>
       <Cat src={CatImg} alt="Imagem de um gato" />

@@ -32,3 +32,9 @@ export const ButtonFile = styled.button`
         opacity: 0.5;
     }
 `
+
+export const SelectedFiles = styled.span`
+ margin-top: 10px;
+    font-size: 14px;
+    margin-right: 5px;
+`

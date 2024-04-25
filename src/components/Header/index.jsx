@@ -1,7 +1,7 @@
 import { Container, Content, Icon, Navigation, UserIcon, DivisionLine } from "./styles";
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import { FaSignOutAlt } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { getAuth, signOut } from "firebase/auth"; // Importa métodos corretos do Firebase Authentication
 import { auth } from "../../firebase"; // Supondo que "auth" seja o objeto de autenticação do Firebase
@@ -19,6 +19,11 @@ export function Header() {
         }
     };
 
+    function handleProfile(){
+        window.location.href = '/profile';
+
+    }
+
     return (
         <Container>
             <Content>
@@ -32,7 +37,7 @@ export function Header() {
                     </ul>
                 </Navigation>
                 <Icon>
-                    <UserIcon />
+                    <UserIcon onClick={handleProfile}/>
                     <FaSignOutAlt onClick={handleSignOut} style={{ cursor: 'pointer' }} />
                 </Icon>
             </Content>
