@@ -115,7 +115,13 @@ export const MenuMobile = styled.div`
     align-items: center;
     position: fixed;
     top: 0;
-    background-color: black;
+    z-index: 10;
+    background-color: #F3F3EB;
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
+    > ul > li {
+        margin: 20px;
+        list-style-type: none;
+    }
 `
