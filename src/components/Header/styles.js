@@ -116,6 +116,6 @@ export const MenuMobile = styled.div`
     position: fixed;
     top: 0;
     background-color: black;
-    display: flex;
+    display: none;
     flex-direction: column;
 `
