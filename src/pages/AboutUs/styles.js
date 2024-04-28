@@ -135,9 +135,6 @@ border-radius: 50px;
 export const CarouselContent = styled.div`
 display: flex;
 justify-content: center;
-
-
-
 `
 
 
@@ -153,8 +150,6 @@ justify-content: space-evenly;
   align-items: center;
   display: flex;
   flex-direction: column;
-padding: 30px ;
-
 
   width: 40%;
 
