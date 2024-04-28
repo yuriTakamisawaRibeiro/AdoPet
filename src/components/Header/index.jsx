@@ -1,12 +1,18 @@
-import { Container, Content, Icon, Navigation, UserIcon, DivisionLine, HeaderMobile, MenuIcon, MenuMobile } from "./styles";
+import { Container, Content, Icon, Navigation, UserIcon, DivisionLine, HeaderMobile, MenuIcon, MenuMobile, MenuHeader } from "./styles";
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import { FaSignOutAlt } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { getAuth, signOut } from "firebase/auth"; // Importa métodos corretos do Firebase Authentication
 import { auth } from "../../firebase"; // Supondo que "auth" seja o objeto de autenticação do Firebase
+import { useState } from "react";
 
 export function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
     const handleSignOut = async () => {
         try {
             await signOut(auth); // Faz o logout usando o objeto "auth" do Firebase
@@ -44,16 +50,22 @@ export function Header() {
 
             <HeaderMobile>
                 <img src={AdopetImg} alt="Logo do site" />
-                <MenuIcon size={36} />
+                <MenuIcon size={36} onClick={toggleMenu}/>
             </HeaderMobile>
-            <MenuMobile>
-                <ul>
-                    <li><Link to="/home">Home</Link></li>
-                    <li><Link to="/petfinder">PetFinder</Link></li>
-                    <li><Link to="/contact">Contato</Link></li>
-                    <li><Link to="/aboutus">Sobre Nós</Link></li>
-                </ul>
-            </MenuMobile>
+            {isMenuOpen && (
+                <MenuMobile>
+                <MenuHeader>
+                <img src={AdopetImg} alt="Logo do site" />
+                <MenuIcon size={36} onClick={toggleMenu}/>
+                </MenuHeader>
+                    <ul>
+                        <li><Link to="/home">Home</Link></li>
+                        <li><Link to="/petfinder">PetFinder</Link></li>
+                        <li><Link to="/contact">Contato</Link></li>
+                        <li><Link to="/aboutus">Sobre Nós</Link></li>
+                    </ul>
+                </MenuMobile>
+            )}
             <DivisionLine></DivisionLine>
 
         </Container>

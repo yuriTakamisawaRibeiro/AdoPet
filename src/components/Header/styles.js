@@ -108,14 +108,30 @@ export const MenuIcon = styled(RxHamburgerMenu)`
 
 `
 
+export const MenuHeader = styled.div`
+     padding: 20px 12vw;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+`
+
 export const MenuMobile = styled.div`
+    background-color: #F3F3EB;
+    border-bottom: solid 1px #4E5665;
     height: 60%;
     width: 100%;
-    justify-content: center;
+    gap: 100px;
     align-items: center;
     position: fixed;
     top: 0;
-    background-color: black;
-    display: none;
+    display: flex;
     flex-direction: column;
+    
+    > ul{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        gap: 10px;
+    }
 `

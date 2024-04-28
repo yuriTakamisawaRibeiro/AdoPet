@@ -16,6 +16,15 @@ export const Container = styled.div`
     >h1{
         font-size: 15px;
     }
+
+    @media (max-width: 768px) { 
+  width: 150px;
+  height: 220px;
+
+  >h1{
+        font-size: 12px;
+    }
+}
 `
 
 export const IconBg = styled.div`

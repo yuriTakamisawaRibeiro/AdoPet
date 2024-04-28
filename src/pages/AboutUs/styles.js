@@ -33,17 +33,32 @@ font-family: 'Poppins', SemiBold;
 font-weight: 600;
 font-size: 40px;
 align-self:flex-start;
+
+@media (max-width: 768px) { 
+  text-align: center;
+  font-size: 30px;
+}
 `;
 
 export const Caption = styled.h2`
 font-family: 'Poppins', Medium;
 font-size:15px;
 align-self:flex-start;
+
+@media (max-width: 768px) { 
+  text-align: center;
+  font-size: 15px;
+}
 `
 
 
 export const HomeImage1 = styled.img`
 align-self:flex-start;
+
+@media (max-width: 768px) { 
+  align-self:center;
+  width: 80%;
+}
 `;
 
 
@@ -61,6 +76,10 @@ justify-content: space-between;
 display: flex;
 flex-direction: row;
   width: 100%;
+
+  @media (max-width: 768px) { 
+    flex-direction: column;
+}
 `
 
 
@@ -75,6 +94,10 @@ flex-direction: column;
 padding:0px;
 font-family: 'Poppins', Regular;
 font-size:13px;
+
+@media (max-width: 768px) { 
+  font-size:12px;
+}
 `
 
 export const Cards = styled.div`
@@ -83,6 +106,10 @@ export const Cards = styled.div`
 
   gap: 60px;
   justify-content: center;
+
+  @media (max-width: 768px) { 
+  flex-direction: column;
+}
 `
 
 export const Carousel = styled.div`
@@ -97,11 +124,19 @@ margin-top: 120px;
 margin-bottom: 120px;
 
 border-radius: 50px;
+
+@media (max-width: 768px) { 
+  height: 850px;
+  
+}
+
 `
 
 export const CarouselContent = styled.div`
 display: flex;
 justify-content: center;
+
+
 
 `
 
@@ -118,6 +153,8 @@ justify-content: space-evenly;
   align-items: center;
   display: flex;
   flex-direction: column;
+padding: 30px ;
+
 
   width: 40%;
 
@@ -137,6 +174,37 @@ justify-content: space-evenly;
 
   border-radius: 50px;
  }
+
+ @media (max-width: 768px) { 
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+> div{
+  gap: 30px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  width: 40%;
+
+  > h1{
+    font-size: 18px;
+  }
+
+  > p {
+    font-size: 14px;
+    text-align: center   ;
+  }
+}
+
+  > img{
+  width: 250px;
+  height: 300px;
+
+  border-radius: 50px;
+ }
+}
 `
 
 
@@ -150,7 +218,9 @@ gap: 10px;
 
 align-items: center;
 
-  
+@media (max-width: 768px) { 
+  margin-left: 160px;
+}
 `
 
 export const Set = styled.div`
@@ -159,6 +229,10 @@ width: 10px;
 
   background-color: #ECD2A2;
   border-radius: 50px;
+
+  @media (max-width: 768px) { 
+  display: none;
+}
 `
 
 export const Arrows = styled.div`
@@ -177,6 +251,8 @@ export const Arrows = styled.div`
   > .Arrow:hover{
     font-size: 27px;
   }
+
+
 `
 
 
