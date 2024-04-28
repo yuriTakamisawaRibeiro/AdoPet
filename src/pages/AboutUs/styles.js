@@ -14,6 +14,7 @@ export const Content = styled.div`
   margin: auto;
   overflow: hidden;
   flex-direction: column;
+  align-items: center;
 `
 export const HomeText = styled.div`
 margin-top: px;
@@ -88,8 +89,12 @@ export const Carousel = styled.div`
 background-color: #E8E8E0;
 height: 550px;
 width: 1000px;
+display: flex;
+flex-direction: column;
+justify-content: center;
 
 margin-top: 120px;
+margin-bottom: 120px;
 
 border-radius: 50px;
 `
@@ -97,6 +102,7 @@ border-radius: 50px;
 export const CarouselContent = styled.div`
 display: flex;
 justify-content: center;
+
 `
 
 
@@ -162,6 +168,15 @@ export const Arrows = styled.div`
   margin-left: 300px;
 
   gap: 10px;
+  
+  > .Arrow{
+    cursor: pointer;
+
+    transition: 0.5s;
+  }
+  > .Arrow:hover{
+    font-size: 27px;
+  }
 `
 
 
