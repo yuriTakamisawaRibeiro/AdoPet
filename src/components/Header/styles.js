@@ -43,6 +43,11 @@ export const Navigation = styled.nav`
     @media (max-width: 1157px) {
     gap: 30px;
   }
+
+  
+  @media (max-width: 1004px) {
+    font-size: 18px;
+  }
 }
 
 ul li{
@@ -82,12 +87,20 @@ font-size: 35px;
     cursor: pointer;
     
 }
+
+@media (max-width: 1004px) {
+    font-size: 28px;
+  }
 `
 
 export const UserIcon = styled(FaUser)`
 margin-top:11px;
 margin-right: 20px;
 font-size: 35px;
+
+@media (max-width: 1004px) {
+    font-size: 28px;
+  }
 `;
 
 export const HeaderMobile = styled.div`
@@ -104,8 +117,6 @@ export const HeaderMobile = styled.div`
 
 export const MenuIcon = styled(RxHamburgerMenu)`
     margin-top: 20px;
-
-
 `
 
 export const MenuHeader = styled.div`
@@ -126,12 +137,14 @@ export const MenuMobile = styled.div`
     top: 0;
     display: flex;
     flex-direction: column;
+    z-index: 15;
     
     > ul{
         display: flex;
         flex-direction: column;
         align-items: center;
         list-style: none;
-        gap: 10px;
+        gap: 20px;
+        font-size: 22px;
     }
 `
