@@ -3,8 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
     margin-top: 160px;
     margin-bottom: 120px;
-  width: 77vw;
-  
   `
 
 export const Content = styled.div`
@@ -22,6 +20,12 @@ font-weight: 600;
   font-size: 35px;
 width: 100%;
 text-align: center;
+
+@media (max-width: 768px) {
+  width: 100%;
+  font-size: 22px;
+  text-align: center;
+  }
 `;
 
 export const ButtonNewsletter = styled.button`
@@ -43,6 +47,11 @@ export const ButtonNewsletter = styled.button`
   flex-direction: row;
   align-items: center;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+  padding: 10px;
+  width: 80%;
+  }
 `
 
 export const EmailInput = styled.div`
@@ -58,4 +67,11 @@ export const EmailInput = styled.div`
   margin-top: 30px;
   background-color: #E8E8E0;
 
+  @media (max-width: 768px) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
 `

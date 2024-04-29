@@ -1,4 +1,4 @@
-import { Container, Content } from "./styles"
+import { Container, Content, HomeImage3, HomeImage4 } from "./styles"
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
 import {
@@ -11,17 +11,17 @@ import DogImageLeft from '../../assets/images/DogImageLeft.png';
 import CatImageRight from '../../assets/images/CatImageRight.png';
 import CatImageLeft from '../../assets/images/CatImageLeft.png';
 import { Newsletter } from "../../components/Newsletter";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
-export  default function Home() {
+export default function Home() {
     return (
         <Container>
             <Header />
             <Content>
                 <Section>
                     <HomeText>
-                        <Title>Histórias de <ColoredWord>amor</ColoredWord> começam<br />aqui.</Title>
+                        <Title>Histórias de <ColoredWord>amor</ColoredWord> começam aqui.</Title>
                         <p>Na Adopet, você pode encontrar seu companheiro
                             perfeito dentre uma variedade de animais adoráveis em busca de um lar.
                             Explore nossa plataforma dedicada em encher sua vida de alegria e amor incondicional.</p>
@@ -40,11 +40,11 @@ export  default function Home() {
                         <p>Você representa uma organização dedicada ao bem-estar animal? Junte-se a nós na missão de encontrar lares amorosos para animais necessitados.</p>
                         <a href="/companyregister"><ArrowSignIcon /><CallMessage>Cadastre-se</CallMessage></a>
                     </PartnerArea>
-                    <HomeImage2 src={CatImageRight} alt="Descrição da imagem" />
+                    <HomeImage3 src={CatImageRight} alt="Descrição da imagem" />
                 </Section2>
                 <Section3>
                     <EducaPetArea>
-                        <HomeImage2 src={CatImageLeft} alt="Descrição da imagem" />
+                        <HomeImage4 src={CatImageLeft} alt="Descrição da imagem" />
                         <TextArea>
                             <Title3>COMO CUIDAR DO SEU PET</Title3>
                             <p>Descubra dicas úteis, conselhos práticos e histórias inspiradoras sobre o cuidado e bem-estar dos animais de estimação. Esteja você buscando

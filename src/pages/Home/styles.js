@@ -16,17 +16,33 @@ export const Content = styled.div`
 export const HomeText = styled.div`
 margin-top: 40px;
 text-align: left;
+width: 50%;
 
 > p {
   margin-top: 10px;
-  width: 516px;
+  text-align: justify;
 }
+
+@media (max-width: 1156px) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+    > p {
+      font-size: 16px;
+      text-align: justify;
+    }
+  }
 `
 
 export const Title = styled.h1`
-font-family: 'Poppins', SemiBold;
-font-weight: 600;
+  font-family: 'Poppins', SemiBold;
+  font-weight: 600;
   font-size: 40px;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 export const Title2 = styled.h1`
@@ -43,6 +59,11 @@ font-weight: 600;
   text-align: end;
   margin-bottom: -15px;
   color: #e4ac46;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    text-align: start;
+  }
 `;
 
 export const Title4 = styled.h1`
@@ -50,13 +71,57 @@ font-family: 'Poppins', SemiBold;
 font-weight: 600;
   font-size: 40px;
 width: 90%;
+
+@media (max-width: 1209px) {
+    font-size: 28px;
+    text-align: start;
+  }
+
 `;
 
 export const HomeImage1 = styled.img`
   margin-top: 80px;
+
+  @media (max-width: 768px) {
+  display: none;
+  }
+
+  @media (max-width: 1156px) {
+  display: none;
+  }
 `;
 
 export const HomeImage2 = styled.img`
+
+@media (max-width: 768px) {
+  display: none;
+  }
+
+  @media (max-width: 1224px) {
+  }
+
+`;
+
+export const HomeImage3 = styled.img`
+@media (max-width: 768px) {
+  display: flex;
+  margin-top: 30px;
+  width: 70%;
+  }
+
+  @media (min-width: 1224px) {
+  }
+`;
+
+export const HomeImage4 = styled.img`
+@media (max-width: 768px) {
+  display: none;
+  }
+
+  @media (max-width: 1209px) {
+  width: 50%;
+  }
+
 `;
 
 export const ButtonFinder = styled.button`
@@ -96,6 +161,10 @@ export const EducaPetButton = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+  margin: 0;
+  }
 `
 export const ButtonNewsletter = styled.button`
   font-weight: 400;
@@ -128,6 +197,18 @@ export const Buttons = styled.div`
     display: flex;
     flex-direction: row;
   }
+
+  @media (max-width: 768px) {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 25px;
+
+  > a {
+    padding-left: 0px;
+    font-size: 18px;
+  }
+  }
 `
 
 export const CallMessage = styled.p`
@@ -146,6 +227,10 @@ font-size: 20px;
 export const ArrowSignIcon = styled(FaArrowUpRightFromSquare)`
 margin-top: 4px;
 font-size: 16px;
+
+@media (max-width: 768px) {
+  margin-top: 8px;
+  }
 `
 
 export const Section = styled.div`
@@ -154,6 +239,12 @@ justify-content: space-between;
 display: flex;
 flex-direction: row;
   width: 100%;
+
+  @media (max-width: 768px) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  }
 `
 
 export const Section2 = styled.div`
@@ -162,6 +253,11 @@ justify-content: space-between;
 display: flex;
 flex-direction: row;
 width: 100%;
+
+@media (max-width: 768px) {
+  display: flex;
+  flex-direction: column;
+  }
 `
 
 export const Section3 = styled.div`
@@ -170,6 +266,11 @@ export const Section3 = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+
+  @media (max-width: 768px) {
+  display: flex;
+  flex-direction: column;
+  }
 `
 
 export const Section4 = styled.div`
@@ -207,6 +308,15 @@ flex-direction: column;
   font-size: 16px;
   text-align: justify;
 }
+
+@media (max-width: 768px) {
+  width: 100%;
+
+  > a {
+  font-size: 22px;
+  padding-bottom: 25px;
+}
+  }
 `
 
 export const TextArea = styled.div`
@@ -216,6 +326,14 @@ justify-content: space-between;
 gap: 30px;
 display: flex;
 flex-direction: column;
+
+
+@media (max-width: 768px) {
+  width: 100%;
+  > p {
+    text-align: justify;
+  }
+  }
 `
 
 export const EducaPetArea = styled.div`
@@ -230,6 +348,16 @@ export const EducaPetArea = styled.div`
   background-color: #EAEAE4;
   width: 87%;
   align-items: center;
+
+  @media (max-width: 768px) {
+  padding: 0;
+  }
+
+  @media (max-width: 1209px) {
+    width: 100%;
+  }
+
+
 `
 
 export const EmailInput = styled.div`

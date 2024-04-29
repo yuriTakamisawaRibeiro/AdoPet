@@ -11,6 +11,10 @@ export const Content = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    
+    @media (max-width: 768px) {
+        flex-direction: column;
+  }
 `
 
 export const Info = styled.div`
@@ -38,6 +42,10 @@ export const Suport = styled.div`
 ul li{
     cursor: pointer;
     position: relative;
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+  }
 }
 
 ul li:hover{
