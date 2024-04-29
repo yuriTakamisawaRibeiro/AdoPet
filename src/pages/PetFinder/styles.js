@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { LuListFilter } from "react-icons/lu";
 import { SlMagnifier } from "react-icons/sl";
+import ExpandRight from "../../assets/images/Expand_right.svg"
+import ExpandLeft from "../../assets/images/Expand_left.svg"
+
 
 export const Container = styled.div`
   width: 100%;
@@ -40,6 +43,7 @@ export const Search = styled.div`
     display: flex;
     flex-direction: row;
     width: 60%;
+   
 `
 
 export const FilterButton = styled.button`
@@ -79,11 +83,47 @@ export const PetFinderSection = styled.div`
     text-align: left;
     gap: 50px;
     display: flex;
-    flex-direction: row;
-    padding-bottom: 500px;
+    flex-direction: column;
+    
+    
+`
+
+export const Pets = styled.div`
+  display: flex;
+  overflow-x: auto; /* Habilita a rolagem horizontal */
+  gap: 20px;
+
+  &::-webkit-scrollbar {
+    display: none; /* Esconde a barra de rolagem padrão */
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+
+  &::before {
+    left: 0;
+    background-image: url(${ExpandRight}); /* Correção aqui */
+    background-size: cover;
+  }
+
+  &::after {
+    right: 0;
+    background-image: url(${ExpandLeft}); /* Correção aqui */
+    background-size: cover;
+  }
 `
 
 export const Title = styled.h1`
+margin-top: 80px;
 font-family: 'Poppins', SemiBold;
 font-weight: 500;
 text-align: center;
