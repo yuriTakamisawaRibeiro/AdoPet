@@ -26,7 +26,7 @@ export default function Home() {
                             perfeito dentre uma variedade de animais adoráveis em busca de um lar.
                             Explore nossa plataforma dedicada em encher sua vida de alegria e amor incondicional.</p>
                         <Buttons>
-                            <ButtonFinder> <Link to="/petfinder">PetFinder ↗</Link></ButtonFinder>
+                            <ButtonFinder> <Link to="/petfinder">BuscaPata ↗</Link></ButtonFinder>
                             <a href=""><PhoneIcon /><CallMessage> Agende uma ligação</CallMessage></a>
                         </Buttons>
                     </HomeText>

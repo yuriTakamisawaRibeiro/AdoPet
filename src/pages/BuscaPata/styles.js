@@ -20,7 +20,7 @@ export const Content = styled.div`
     flex-direction: column;
 `
 
-export const PetFinderFrame1 = styled.img`
+export const BuscaPataFrame1 = styled.img`
     margin-top: 80px;
     width: 95%;
     
@@ -42,7 +42,7 @@ export const Search = styled.div`
     justify-content: space-around;
     display: flex;
     flex-direction: row;
-    width: 60%;
+    width: 80%;
    
 `
 
@@ -77,49 +77,27 @@ export const FilterIcon = styled(LuListFilter)`
     margin-right: 7px;
 `
 
-export const PetFinderSection = styled.div`
+export const BuscaPataSection = styled.div`
     margin-top: 30px;
     align-items: center;
     text-align: left;
     gap: 50px;
     display: flex;
     flex-direction: column;
+
+    
+    
     
     
 `
 
 export const Pets = styled.div`
   display: flex;
-  overflow-x: auto; /* Habilita a rolagem horizontal */
+  overflow-x: scroll; /* Habilita a rolagem horizontal */
   gap: 20px;
+  
 
-  &::-webkit-scrollbar {
-    display: none; /* Esconde a barra de rolagem padrão */
-  }
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 30px;
-    height: 30px;
-    background-color: rgba(0, 0, 0, 0.5);
-    transform: translateY(-50%);
-    z-index: 1;
-  }
-
-  &::before {
-    left: 0;
-    background-image: url(${ExpandRight}); /* Correção aqui */
-    background-size: cover;
-  }
-
-  &::after {
-    right: 0;
-    background-image: url(${ExpandLeft}); /* Correção aqui */
-    background-size: cover;
-  }
+  
 `
 
 export const Title = styled.h1`

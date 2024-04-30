@@ -12,24 +12,24 @@ export function Footer() {
                 <Info>
                     <Title2>Informações</Title2>
                     <p>Avenida Aguia de Haia</p>
-                    <p>Alguma info</p>
+                    <p>contato@adopet.com</p>
                     <p>+55 (11) 95158-0560</p>
                 </Info>
                 <Navigation>
                 <Title2>Navegação</Title2>
-                    <ul>
-                        <Link to="/petfinder">PetFinder </Link>
-                        <li>EducaPet</li>
-                        <li>Editar Perfil</li>
-                        <li>Cadastro Parceiros</li>
-                    </ul>
+                <ul>
+                        <Link to="/petfinder">BuscaPata </Link>
+                        <Link>EducaPet</Link>
+                        <Link>Editar Perfil</Link>
+                        <Link to="/companyregister">Cadastro Parceiros</Link>
+                        </ul>
                 </Navigation>
                 <Suport>
                     <Title2>Suporte</Title2>
                     <ul>
                         <Link to="/aboutus">Sobre Nós</Link>
-                        <li>FAQ</li>
-                        <li>Blog</li>
+                        <Link>FAQ</Link>
+                        <Link>Blog</Link>
                         <Link to="/contact">Fale Conosco</Link>
                     </ul>
                 </Suport>

@@ -37,7 +37,7 @@ export function Header() {
                 <Navigation>
                     <ul>
                         <li><Link to="/home">Home</Link></li>
-                        <li><Link to="/petfinder">PetFinder</Link></li>
+                        <li><Link to="/petfinder">BuscaPata</Link></li>
                         <li><Link to="/contact">Contato</Link></li>
                         <li><Link to="/aboutus">Sobre Nós</Link></li>
                     </ul>
@@ -60,7 +60,7 @@ export function Header() {
                 </MenuHeader>
                     <ul>
                         <li><Link to="/home">Home</Link></li>
-                        <li><Link to="/petfinder">PetFinder</Link></li>
+                        <li><Link to="/petfinder">BuscaPata</Link></li>
                         <li><Link to="/contact">Contato</Link></li>
                         <li><Link to="/aboutus">Sobre Nós</Link></li>
                     </ul>

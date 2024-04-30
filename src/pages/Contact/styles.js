@@ -1,8 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-margin-right:50px;
-margin-left:50px;
+width: 100%;
+
+height: 100vh;
+` 
+
+export const Content = styled.div`
+ width: 78%;
+  display: flex;
+  margin: auto;
+  overflow: hidden;
+  flex-direction: row;
+  gap: 150px;
 `
 
 export const Select = styled.div`
@@ -10,10 +20,11 @@ export const Select = styled.div`
 padding-bottom:50px;
 > select{
   display: flex;
+  height: 56px;
+  padding: 30px;
   appearance: none;
   width: 100%;
-  height: 4.8rem;
-  padding: 1.3rem;
+  padding: 10px;
   background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
       no-repeat right 0.8em center / 1.4em,
     linear-gradient(
@@ -23,8 +34,6 @@ padding-bottom:50px;
     );
   color:#4E5665;
   margin-top: 0.8rem;
-
-  font-size: 1.6rem;
   border-radius: 0.5rem;
   border: 1px solid #4E5665;
   cursor: pointer;
@@ -49,12 +58,14 @@ padding-bottom:50px;
 
 export const Textarea = styled.div`
 display: flex;
+margin-bottom: 30px;
 
 flex-direction: column;
 > label {
   padding-bottom:10px;
 }
 > textarea{
+  padding: 10px;
     background: none;
     border: solid 1px #4E5665;
     border-radius:5px;
@@ -64,6 +75,13 @@ flex-direction: column;
 }
 `
 
+export const Line = styled.div`
+  width: 450px;
+  border: solid 0.5px #4E5665;
+  margin-top: 30px;
+  margin-bottom: 30px;
+`
+
 export const ContactForm = styled.div`
 > h1 {
   padding-top:100px;
@@ -71,7 +89,7 @@ export const ContactForm = styled.div`
 
 > p {
   padding-top:30px;
-  padding-bottom:100px;
+  padding-bottom:50px;
 }
 `
 
@@ -82,10 +100,44 @@ export const Form = styled.form`
 export const Form2 = styled.div`
 display:flex;
 gap: 20px;
-padding-bottom:50px;
+padding-bottom:20px;
 
 `
 
 export const ContactInfo = styled.div`
+ width: 50%;
+ padding-top:100px;
+
+> div{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  
+  > p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    >  svg{
+      font-size: 30px;
+      color: #E4AC46;
+    }
+  }
+
+  > ul{
+    display: flex;
+    gap: 20px;
+    >  svg{
+      font-size: 30px;
+      color: #E4AC46;
+    }
+  }
+
+  > ul:hover{
+    cursor: pointer;
+    color: #B28127
+  }
+}
+
 
 `
