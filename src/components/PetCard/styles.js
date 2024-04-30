@@ -17,10 +17,21 @@ export const Container = styled.div`
 
     position: relative;
 
+    @media (max-width: 768px) {
+
+        width: 200px;
+        height: 350px;
+  }
+
 
     
     img {
         width: 175px;
+
+        @media (max-width: 768px) {
+
+        width: 120px;
+  }
     }
 
     h2 {
@@ -53,6 +64,11 @@ export const ButtonFavorite = styled.div`
         width: 30px;
         height: 3.2rem;
         }
+
+        @media (max-width: 768px) {
+             right: 38px;
+             top: 6px;
+}
 
 
 `

@@ -13,6 +13,13 @@ export const Content = styled.div`
   overflow: hidden;
   flex-direction: row;
   gap: 150px;
+
+  @media (max-width: 768px) {
+  align-items: center;
+  justify-content: center;
+  
+  }
+
 `
 
 export const Select = styled.div`
@@ -76,13 +83,14 @@ flex-direction: column;
 `
 
 export const Line = styled.div`
-  width: 450px;
+  width: 80%;
   border: solid 0.5px #4E5665;
   margin-top: 30px;
   margin-bottom: 30px;
 `
 
 export const ContactForm = styled.div`
+width: 50%;
 > h1 {
   padding-top:100px;
 }
@@ -91,6 +99,12 @@ export const ContactForm = styled.div`
   padding-top:30px;
   padding-bottom:50px;
 }
+
+@media (max-width: 768px) {
+  width: 100%;
+  text-align: center;
+  
+  }
 `
 
 export const Form = styled.form`
@@ -102,11 +116,18 @@ display:flex;
 gap: 20px;
 padding-bottom:20px;
 
+
+
 `
 
 export const ContactInfo = styled.div`
  width: 50%;
  padding-top:100px;
+  
+ @media (max-width: 768px) {
+  display: none;
+ 
+  }
 
 > div{
   display: flex;

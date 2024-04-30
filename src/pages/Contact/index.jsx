@@ -1,6 +1,5 @@
 import { Header } from "../../components/Header";
 import { InputAlternative } from "../../components/InputAlternative";
-import { Button } from "../../components/Button";
 import { ContactForm, ContactInfo, Container, Content, Form, Form2, Line, Select, Textarea } from "./styles";
 import { ButtonOrange } from "../../components/ButtonOrange";
 import { Footer } from "../../components/Footer";
@@ -26,7 +25,7 @@ export default function Contact() {
                         </Form2>
                         <Select >
                             <label htmlFor="">Assunto do seu contato</label>
-                            <select onChange={e => setCategory(e.target.value)}>
+                            <select>
                                 <option value="none">Escolha um tópico</option>
                                 <option value="adoption">Ajuda com adoção</option>
                                 <option value="petRegister">Cadastro de Pets</option>
@@ -37,7 +36,7 @@ export default function Contact() {
 
                         <Textarea >
                             <label htmlFor="">Mensagem</label>
-                            <textarea onChange={e => setCategory(e.target.value)} placeholder="Escreva sua mensagem" />
+                            <textarea placeholder="Escreva sua mensagem" />
                         </Textarea>
                         <ButtonOrange title="Enviar" />
                     </Form>

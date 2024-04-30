@@ -1,7 +1,6 @@
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { BrowserRouter} from 'react-router-dom';
-import { NotFoundPage } from "../pages/404";
 import { AppRoutes } from "./app.routes";
 import { AuthRoutes } from "./auth.routes";
 

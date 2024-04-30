@@ -1,4 +1,4 @@
-import { Container, Content, Navigation, Info, Suport } from "./styles";
+import { Container, Content, Navigation, Info, Suport, ContentMobile } from "./styles";
 import { Title2 } from "../../pages/Home/styles"
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import {Link} from 'react-router-dom'
@@ -34,6 +34,9 @@ export function Footer() {
                     </ul>
                 </Suport>
             </Content>
+            <ContentMobile>
+                <p>Copyright © 2024. Feito com 🧡 por <span>Adopet</span> Todos os direitos reservados.</p>
+            </ContentMobile>
         </Container>
     )
 }

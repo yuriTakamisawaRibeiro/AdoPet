@@ -108,6 +108,8 @@ export const HeaderMobile = styled.div`
     display: none;
     justify-content: space-between;
     width: 100%;
+    position: sticky;
+    top: 0;
     @media (max-width: 768px) { 
         display: flex;
 }

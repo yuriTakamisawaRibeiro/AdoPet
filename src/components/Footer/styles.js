@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.header`
+export const Container = styled.footer`
     width: 100%;
     margin-bottom: 80px;
 `
@@ -9,11 +9,12 @@ export const Content = styled.div`
     width: 100%;
     justify-content: space-between;
     display: flex;
+    padding: 20px 12vw;
     flex-direction: row;
     align-items: center;
     
     @media (max-width: 768px) {
-        flex-direction: column;
+        display: none;
   }
 `
 
@@ -43,9 +44,6 @@ ul li{
     cursor: pointer;
     position: relative;
 
-    @media (max-width: 768px) {
-        font-size: 16px;
-  }
 }
 
 ul li:hover{
@@ -104,4 +102,31 @@ ul li::after{
 ul li:hover::after{
    width: 60%;
 }
+`
+
+export const ContentMobile = styled.footer`
+display: none;
+justify-content: center;
+
+       
+
+> p {
+    font-size: 14px;
+    align-items: center;
+width: 78%;
+
+> span{ 
+    color: #E4AC46;
+}
+}
+
+
+
+@media (max-width: 768px) {
+    padding-top: 50px;
+        display: flex;
+        justify-content: center;
+
+        align-items: center;
+  }
 `

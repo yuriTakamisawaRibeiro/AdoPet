@@ -55,8 +55,9 @@ export default function Home() {
                     </EducaPetArea>
                 </Section3>
                 <Newsletter />
-                <Footer />
             </Content>
+            <Footer />
+
         </Container>
     )
 }

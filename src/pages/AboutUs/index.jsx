@@ -115,9 +115,10 @@ export default function AboutUs() {
 
                                 </Carousel>
 
-                                <Footer />
                         </Content>
-                        
+
+                        <Footer />
+
                 </Container>
         )
 }
