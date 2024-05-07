@@ -1,5 +1,6 @@
-import { Container, Content, Icon, Navigation, UserIcon, DivisionLine, HeaderMobile, MenuIcon, MenuMobile, MenuHeader } from "./styles";
+import { Container, Content, Icon, Navigation, UserIcon, DivisionLine, HeaderMobile, MenuIcon, MenuMobile, MenuHeader , Accessibility} from "./styles";
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
+import constrast from '../../assets/images/contrast.svg';
 import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
@@ -32,6 +33,12 @@ export function Header() {
 
     return (
         <Container>
+        <Accessibility>
+            <p>-</p>
+            |
+            <p>+</p>
+            <img src={constrast} alt="Icone de contraste" />
+        </Accessibility>
             <Content>
                 <img src={AdopetImg} alt="Logo do site" />
                 <Navigation>
