@@ -30,6 +30,12 @@ export const DivisionLine = styled.div`
     background-color: #4B5563;
 `
 
+export const Contrast = styled.a`
+    border: none;
+    transform: none;
+    transition: none;
+`
+
 export const Navigation = styled.nav`
 
 > ul{
