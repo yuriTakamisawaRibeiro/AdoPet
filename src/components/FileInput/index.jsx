@@ -1,10 +1,9 @@
-import { Container, ButtonFile } from "./styles";
+import { Container } from "./styles";
 
-export function FileInput() {
-    return(
+export function FileInput({ onChange }) {
+    return (
         <Container>
-            <input type="file"/>
-            <ButtonFile type="file">Escolher arquivo</ButtonFile>
+            <input type="file" onChange={(e) => onChange(e.target.files)} multiple />
         </Container>
-    )
+    );
 }
