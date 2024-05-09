@@ -59,6 +59,14 @@ export function CompanyRegister() {
         }
     };
 
+    const optionsSegment = [
+        { label: 'Selecione uma opção', value: '' },
+        { label: 'Canis e casas de adoção', value: 'adoption' },
+        { label: 'Loja para pets, banho e tosa', value: 'petshop' },
+        { label: 'Clínicas veterinárias', value: 'vet' },
+        { label: 'ONGs e instituições de caridade', value: 'ongs' },
+    ];
+
     
     return (
         <Container>
@@ -128,15 +136,10 @@ export function CompanyRegister() {
                         <InputTitle>Segmento da empresa</InputTitle>
                         <Select
                             name="businessSegment"
+                            options={optionsSegment}
                             value={formData.businessSegment}
                             onChange={handleInputChange}
-                            placeholder='Selecione alguma opção'
                         >
-                            <option value="none">Escolha um tópico</option>
-                            <option value="adoption">Ajuda com adoção</option>
-                            <option value="petRegister">Cadastro de Pets</option>
-                            <option value="products">Produtos Adopet</option>
-                            <option value="partnership">Parcerias</option>
                         </Select>
                     </div>
                 </Row>
