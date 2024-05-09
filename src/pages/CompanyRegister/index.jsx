@@ -2,7 +2,8 @@ import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import { Select } from '../../components/Select';
 import { Button } from '../../components/Button';
 import { InputTitle } from '../PetRegister/styles';
-import { Container, Info, SideInfo, Title, Form, RegisterContent, Input, Row, TextArea, Row2 } from './styles';
+import { Container, Info, SideInfo, Title, Form, RegisterContent, Input, Row, TextArea, Row2, LogoTitle, ButtonDiv } from './styles';
+
 import { firestore } from '../../firebase';
 import { useState } from 'react';
 
@@ -62,8 +63,10 @@ export function CompanyRegister() {
     return (
         <Container>
         <SideInfo>
+            <LogoTitle>
             <img src={AdopetImg} alt="Logo do site" />
             <Title>Juntos, Podemos Fazer a Diferença!</Title>
+            </LogoTitle>
             <p>Na Adopet, acreditamos que o verdadeiro impacto é feito através da colaboração e do trabalho em equipe. É por isso que estamos sempre em busca de parcerias com empresas que compartilham nossa paixão por ajudar animais em busca de um lar amoroso.
                 Ao se tornar um parceiro da Adopet, sua empresa terá a oportunidade única de fazer uma diferença significativa na vida de animais em situação de vulnerabilidade. Sua contribuição não apenas ajuda a salvar vidas, mas também demonstra o compromisso da sua empresa com a responsabilidade social e o bem-estar animal.</p>
         </SideInfo>
@@ -148,9 +151,9 @@ export function CompanyRegister() {
                         />
                     </div>
                 </Row2>
-                <div className="button">
+                <ButtonDiv>
                     <Button title="Enviar Registro" onClick={handleSubmit} />
-                </div>
+                </ButtonDiv>
             </Form>
         </RegisterContent>
     </Container>
