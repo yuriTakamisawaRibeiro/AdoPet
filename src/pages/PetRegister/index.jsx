@@ -4,7 +4,7 @@ import { FileInput } from "../../components/FileInput"
 import { StepsButtons } from "../../components/StepsButtons"
 import { PetRegisterHeader } from "../../components/PetRegisterHeader"
 import { useState } from "react"
-import { firestore, storage } from "../../firebase/index";
+import { firestore, storage } from "../../services/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore"
 import { ref, uploadBytes, uploadBytesResumable } from "firebase/storage"
 

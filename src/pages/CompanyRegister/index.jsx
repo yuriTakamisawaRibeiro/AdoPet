@@ -4,7 +4,7 @@ import { Button } from '../../components/Button';
 import { InputTitle } from '../PetRegister/styles';
 import { Container, Info, SideInfo, Title, Form, RegisterContent, Input, Row, TextArea, Row2, LogoTitle, ButtonDiv } from './styles';
 
-import { firestore } from '../../firebase';
+import { firestore } from '../../services/firebaseConfig';
 import { useState } from 'react';
 
 export function CompanyRegister() {

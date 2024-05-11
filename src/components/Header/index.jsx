@@ -5,7 +5,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { getAuth, signOut } from "firebase/auth"; // Importa métodos corretos do Firebase Authentication
-import { auth } from "../../firebase"; // Supondo que "auth" seja o objeto de autenticação do Firebase
+import { auth } from "../../services/firebaseConfig"; // Supondo que "auth" seja o objeto de autenticação do Firebase
 import { useState } from "react";
 
 export function Header() {

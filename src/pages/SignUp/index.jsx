@@ -9,7 +9,7 @@ import {MdEmail} from "react-icons/md"
 import {createUserWithEmailAndPassword} from 'firebase/auth'
 import { doc, serverTimestamp, setDoc } from "firebase/firestore"
 import { useState } from 'react';
-import { auth, firestore } from '../../firebase';
+import { auth, firestore } from '../../services/firebaseConfig';
 
 const SignUp = () => {
     const [name, setName] = useState('')
