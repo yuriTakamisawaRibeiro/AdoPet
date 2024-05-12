@@ -7,6 +7,8 @@ import { PetRegister } from '../pages/PetRegister';
 import { CompanyRegister } from '../pages/CompanyRegister';
 import { Profile } from '../pages/Profile';
 import { Dashboard } from '../pagesAdm/dashboard';
+import { AboutPet } from '../pages/AboutPet';
+import { EducaPet } from '../pages/EducaPet';
 
 
 export function AppRoutes() {
@@ -20,6 +22,8 @@ export function AppRoutes() {
                 <Route path="/companyregister" element={<CompanyRegister />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/dashboardAdmin" element={<Dashboard/>} />
+                <Route path="/aboutpet" element={<AboutPet/>}/>
+                <Route path="/educapet" element={<EducaPet/>}/>
             </Routes>
     );
 }

@@ -1,10 +1,10 @@
-import { Container, ButtonFile } from "./styles";
+import { Container } from "./styles";
 
-export function FileInput() {
-    return(
+// eslint-disable-next-line react/prop-types
+export function FileInput({ onChange }) {
+    return (
         <Container>
-            <input type="file"/>
-            <ButtonFile type="file">Escolher arquivo</ButtonFile>
+            <input type="file" onChange={(e) => onChange(e.target.files)} multiple />
         </Container>
-    )
+    );
 }

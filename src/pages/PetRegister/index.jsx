@@ -4,8 +4,9 @@ import { FileInput } from "../../components/FileInput"
 import { StepsButtons } from "../../components/StepsButtons"
 import { PetRegisterHeader } from "../../components/PetRegisterHeader"
 import { useState } from "react"
-import { firestore } from "../../firebase/index";
+import { firestore, storage } from "../../firebase/index";
 import { addDoc, collection } from "firebase/firestore"
+import { ref, uploadBytes } from "firebase/storage"
 
 
 export function PetRegister() {
@@ -43,19 +44,29 @@ export function PetRegister() {
 
 
     const handleFileChange = (files) => {
-        // Assuming this will be used for handling file input changes
         setFormData((prevData) => ({
             ...prevData,
-            setPhotos: files
+            selectedFiles: Array.isArray(files) ? files : [files] // Garante que selectedFiles seja sempre um array
         }));
     };
-
+    
     const handleSubmit = async () => {
         try {
             // Adiciona os dados do formData ao Firestore
-            const FormsPetsCollectionRef = collection(firestore, 'formsPets');
-            const docRef = await addDoc(FormsPetsCollectionRef, formData);
+            const formsPetsCollectionRef = collection(firestore, 'formsPets');
+            const docRef = await addDoc(formsPetsCollectionRef, formData);
             console.log('Documento adicionado com ID:', docRef.id);
+    
+            // Envia os arquivos para o Storage
+            const files = formData.selectedFiles; // Obtém a lista de arquivos selecionados
+            const petFilesRef = ref(storage, `petsForms/${docRef.id}`);
+    
+            // Itera sobre cada arquivo e envia para o Storage
+            files.forEach(async (file) => {
+                const fileRef = ref(petFilesRef, file.name);
+                await uploadBytes(fileRef, file);
+                console.log(`Arquivo ${file.name} enviado com sucesso.`);
+            });
         } catch (error) {
             console.error('Erro ao adicionar documento:', error);
         }
