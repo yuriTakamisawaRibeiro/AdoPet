@@ -69,5 +69,9 @@ export const Content = styled.div`
   padding: 0 64px;
   overflow-y: auto;
 
+  > h1 span{
+    color: #E4AC46;
+  }
+
   
 `;

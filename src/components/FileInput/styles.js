@@ -22,7 +22,7 @@ export const Container = styled.div`
 
     /* Estilização do botão */
     > input[type="file"]::file-selector-button {
-        width: 20%; /* Largura do botão */
+        width: 30%; /* Largura do botão */
         background-color: #4B5563;
         color: #F3F3EB;
         height: 3.1rem;
@@ -44,4 +44,5 @@ export const Container = styled.div`
     &:disabled {
         opacity: 0.5;
     }
-`
+`;
+

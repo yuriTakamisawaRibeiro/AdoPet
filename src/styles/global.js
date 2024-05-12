@@ -14,6 +14,17 @@ export default createGlobalStyle`
         overflow-x:hidden;
     }
 
+    .body-high-contrast {
+        background-color: #4B5563;
+        color: #F3F3EB;
+        -webkit-font-smoothing: antialiased;
+        overflow-x:hidden;
+
+        > ul li a {
+            color: #F3F3EB;
+        }
+    }
+
     body::-webkit-scrollbar{
         width: 5px;
         background-color: #E8E8E0;
@@ -47,11 +58,11 @@ export default createGlobalStyle`
     button:hover{
        filter: brightness(0.9);
        transition : 708ms;
-    padding: 10px 31px;
-    transform : translateY(-0px);
-    background-color: #fff;
-    color: #e4ac46;
-    border: solid 1px #e4ac46;
+        padding: 10px 31px;
+        transform : translateY(-0px);
+        background-color: #fff;
+        color: #e4ac46;
+        border: solid 1px #e4ac46;
     }
 
     a:hover {

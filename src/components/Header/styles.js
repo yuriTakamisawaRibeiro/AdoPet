@@ -30,6 +30,12 @@ export const DivisionLine = styled.div`
     background-color: #4B5563;
 `
 
+export const Contrast = styled.a`
+    border: none;
+    transform: none;
+    transition: none;
+`
+
 export const Navigation = styled.nav`
 
 > ul{
@@ -148,5 +154,24 @@ export const MenuMobile = styled.div`
         list-style: none;
         gap: 20px;
         font-size: 22px;
+    }
+`
+
+export const Accessibility = styled.div`
+    width: 100%;
+    display:flex;
+    justify-content:flex-end;
+    padding: 20px 12vw;
+    gap:10px;
+    align-items:center;
+    
+    > p {
+        cursor: pointer;
+        font-size:18px;
+    }
+    > img {
+        padding-left:10px;
+        height:20px;
+        cursor:pointer;
     }
 `

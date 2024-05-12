@@ -6,8 +6,9 @@ import { FaHeadphones, FaPaw } from 'react-icons/fa';
 import { HiUsers } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import { firestore } from '../../firebase';
+import { firestore } from '../../services/firebaseConfig';
 import { Bar } from 'react-chartjs-2';
+import { getCurrentUser } from '../../services/utils';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -30,10 +31,19 @@ ChartJS.register(
 
 export function Dashboard(){
   const [userData, setUserData] = useState([]);
+  const [userName, setUserName] = useState('');
+
+  
+
+  
 
   useEffect(() => {
+
+
     const fetchData = async () => {
-    
+      const user = await getCurrentUser();
+      setUserName(user?.name.split(' ')[0]); 
+
       const usersRef = collection(firestore, 'users');
 
       try {
@@ -82,10 +92,10 @@ export function Dashboard(){
     labels: Object.keys(userCountsByMonth),
     datasets: [
       {
-        label: 'Users Registered per Month',
-        backgroundColor: 'rgba(75,192,192,1)',
-        borderColor: 'rgba(0,0,0,1)',
-        borderWidth: 2,
+        label: 'Usuários Cadastrados por mês',
+        backgroundColor: '#E4AC46',
+        borderColor: '#4B5563',
+        borderWidth: 1,
         data: Object.values(userCountsByMonth)
       }
     ]
@@ -109,8 +119,11 @@ export function Dashboard(){
       </Menu>
 
       <Content>
+
+      <h1>Olá <span>{userName}
+        </span></h1>
       
-      <h2>Users Registered per Month</h2>
+      <h3>Usuários Cadastrados por mês</h3>
       <Bar
         data={chartData}
         options={{
@@ -120,14 +133,14 @@ export function Dashboard(){
               labels: Object.keys(userCountsByMonth),
               title: {
                 display: true,
-                text: 'Month'
+                text: 'Mês'
               }
             },
             y: {
               beginAtZero: true,
               title: {
                 display: true,
-                text: 'Number of Users'
+                text: 'Número de usuários'
               }
             }
           }

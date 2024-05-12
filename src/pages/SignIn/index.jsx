@@ -7,7 +7,7 @@ import CatImg from '../../assets/images/CatImage.png';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { FaUser, FaLock } from 'react-icons/fa';
-import { auth } from '../../firebase/index';
+import { auth } from '../../services/firebaseConfig';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');

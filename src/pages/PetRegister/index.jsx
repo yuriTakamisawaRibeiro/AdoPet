@@ -4,9 +4,9 @@ import { FileInput } from "../../components/FileInput"
 import { StepsButtons } from "../../components/StepsButtons"
 import { PetRegisterHeader } from "../../components/PetRegisterHeader"
 import { useState } from "react"
-import { firestore, storage } from "../../firebase/index";
+import { firestore, storage } from "../../services/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore"
-import { ref, uploadBytes } from "firebase/storage"
+import { ref, uploadBytes, uploadBytesResumable } from "firebase/storage"
 
 
 export function PetRegister() {
@@ -30,6 +30,7 @@ export function PetRegister() {
         tutorEmail: "",
         tutorSocialMedia: ""
     });
+    const [files, setFiles] = useState([]);
 
 
 
@@ -43,11 +44,13 @@ export function PetRegister() {
 
 
 
-    const handleFileChange = (files) => {
-        setFormData((prevData) => ({
-            ...prevData,
-            selectedFiles: Array.isArray(files) ? files : [files] // Garante que selectedFiles seja sempre um array
-        }));
+
+
+    const handleFileChange = (selectedFiles) => {
+        // Convert FileList to an array
+        const filesArray = Array.from(selectedFiles);
+        // Update the state with the selected files
+        setFiles(filesArray);
     };
     
     const handleSubmit = async () => {
@@ -67,6 +70,13 @@ export function PetRegister() {
                 await uploadBytes(fileRef, file);
                 console.log(`Arquivo ${file.name} enviado com sucesso.`);
             });
+
+            Object.keys(files).forEach(fileKey => {
+                const file = files[fileKey];
+                const storageRef = ref(storage, `formsPets/${docRef.id}/${file.name}`);
+                const uploadTask = uploadBytes(storageRef, file);
+            });
+
         } catch (error) {
             console.error('Erro ao adicionar documento:', error);
         }
@@ -157,42 +167,42 @@ export function PetRegister() {
                             <div>
                                 <InputTitle >Sexo *</InputTitle>
                                 <Select options={optionsSexo}
-                                name="gender"
-                                value={formData.gender}
-                                onChange={handleInputChange}/>
+                                    name="gender"
+                                    value={formData.gender}
+                                    onChange={handleInputChange} />
                             </div>
                             <div>
                                 <InputTitle>Raça *</InputTitle>
                                 <InputPetRegister name="breed"
-                                value={formData.breed}
-                                onChange={handleInputChange}/>
+                                    value={formData.breed}
+                                    onChange={handleInputChange} />
                             </div>
                         </Row>
                         <Row>
                             <div>
                                 <InputTitle>Temperamento</InputTitle>
                                 <InputPetRegister name="temperament"
-                                value={formData.temperament}
-                                onChange={handleInputChange}/>
+                                    value={formData.temperament}
+                                    onChange={handleInputChange} />
                             </div>
                             <div>
                                 <InputTitle>Porte *</InputTitle>
                                 <Select options={optionsSize}
-                                name= "size"
-                                value={formData.size} 
-                                onChange={handleInputChange}/>
+                                    name="size"
+                                    value={formData.size}
+                                    onChange={handleInputChange} />
                             </div>
                             <div>
                                 <InputTitle>Cor *</InputTitle>
                                 <InputPetRegister name="color"
-                                value={formData.color}
-                                onChange={handleInputChange}/>
+                                    value={formData.color}
+                                    onChange={handleInputChange} />
                             </div>
                         </Row>
                         <RowFile>
                             <div>
                                 <InputTitle>Fotos (min 2, max 6) *</InputTitle>
-                                <FileInput onChange={handleFileChange}/>
+                                <FileInput onChange={handleFileChange} />
                             </div>
                         </RowFile>
                     </Form>
@@ -210,13 +220,13 @@ export function PetRegister() {
                     </Text>
                     <Form>
                         <InputTitle>História do Pet *</InputTitle>
-                        <TextAreaPetDescription name= "history"
-                                value={formData.history} 
-                                onChange={handleInputChange} placeholder="Neste campo, conte a história que o levou até esse momento de colocar o pet para adoção" />
+                        <TextAreaPetDescription name="history"
+                            value={formData.history}
+                            onChange={handleInputChange} placeholder="Neste campo, conte a história que o levou até esse momento de colocar o pet para adoção" />
                         <LastInput>
                             <InputTitle>Cuidados Especiais *</InputTitle>
-                            <TextAreaPetDescription  name= "specialCare"
-                                value={formData.specialCare} 
+                            <TextAreaPetDescription name="specialCare"
+                                value={formData.specialCare}
                                 onChange={handleInputChange} placeholder="Neste campo, informe qualquer tipo de necessidades especiais do pet" />
                         </LastInput>
                     </Form>
@@ -236,35 +246,35 @@ export function PetRegister() {
                         <Row>
                             <div>
                                 <InputTitle>Nome completo *</InputTitle>
-                                <InputPetRegister name= "tutorName"
-                                value={formData.tutorName} 
-                                onChange={handleInputChange}/>
+                                <InputPetRegister name="tutorName"
+                                    value={formData.tutorName}
+                                    onChange={handleInputChange} />
                             </div>
                             <div>
                                 <InputTitle>CEP *</InputTitle>
-                                <InputPetRegister name= "tutorCep"
-                                value={formData.tutorCep} 
-                                onChange={handleInputChange}/>
+                                <InputPetRegister name="tutorCep"
+                                    value={formData.tutorCep}
+                                    onChange={handleInputChange} />
                             </div>
                             <div>
                                 <InputTitle>Telefone *</InputTitle>
-                                <InputPetRegister name= "tutorPhone"
-                                value={formData.tutorPhone} 
-                                onChange={handleInputChange}/>
+                                <InputPetRegister name="tutorPhone"
+                                    value={formData.tutorPhone}
+                                    onChange={handleInputChange} />
                             </div>
                         </Row>
                         <Row2>
                             <div>
                                 <InputTitle>E-mail *</InputTitle>
-                                <InputPetRegister name= "tutorEmail"
-                                value={formData.tutorEmail} 
-                                onChange={handleInputChange}/>
+                                <InputPetRegister name="tutorEmail"
+                                    value={formData.tutorEmail}
+                                    onChange={handleInputChange} />
                             </div>
                             <div>
                                 <InputTitle>Redes sociais</InputTitle>
-                                <InputPetRegister name= "tutorSocialMedia"
-                                value={formData.tutorSocialMedia} 
-                                onChange={handleInputChange}/>
+                                <InputPetRegister name="tutorSocialMedia"
+                                    value={formData.tutorSocialMedia}
+                                    onChange={handleInputChange} />
                             </div>
                         </Row2>
                     </Form>
@@ -275,15 +285,23 @@ export function PetRegister() {
                     <h1>Termos e condições</h1>
                     <TermsArea>
                         <p>
-                            Termos e Condições para Cadastro de Pets:</p>
-                        Ao cadastrar um pet na plataforma Adopet, você concorda com os seguintes termos e condições:<br /><br />
-                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>1. Veracidade das Informações: Você declara que todas as informações fornecidas sobre o pet são precisas e atualizadas. Qualquer informação falsa ou enganosa pode resultar na remoção do cadastro.</p><br />
-                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>2. Responsabilidade do Tutor: Como tutor do pet cadastrado, você é responsável por fornecer cuidados adequados ao animal e garantir seu bem-estar físico e emocional.</p><br />
-                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>3. Autorização para Adoção: Você autoriza a Adopet a compartilhar as informações do pet com potenciais adotantes interessados em sua adoção.</p><br />
-                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>4. Processo de Adoção: Você reconhece que a Adopet não realiza processos de adoção diretamente e que qualquer adoção é realizada diretamente entre você (tutor) e o adotante.</p><br />
-                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>5. Remoção do Cadastro: A Adopet se reserva o direito de remover o cadastro do pet a qualquer momento, se considerar necessário, sem aviso prévio.</p><br />
-                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>6. Atualização de Informações: Você concorda em manter suas informações de contato e sobre o pet atualizadas na plataforma.</p><br />
-                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>7. Uso de Imagens: Você autoriza o uso das imagens do pet cadastradas na plataforma para fins de divulgação e promoção da adoção responsável.</p><br />
+
+                            Termos e Condições para Cadastro de Pets na Plataforma AdoPet</p>
+                        Antes de prosseguir com o cadastro do seu pet, por favor, leia atentamente os seguintes termos e condições:<br /><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>1. Ao cadastrar o seu pet na plataforma AdoPet, você confirma que possui autoridade legal para realizar tal ação e que todas as informações fornecidas são precisas e verdadeiras.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>2. Você concorda em fornecer fotos, descrições e informações precisas sobre o seu pet para facilitar o processo de adoção.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>3. Você é responsável por garantir que seu pet esteja em boa saúde e tenha as vacinas necessárias de acordo com a legislação local.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>4. Você concorda em fornecer toda a assistência necessária para garantir o bem-estar do seu pet durante o processo de adoção.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>5. A plataforma AdoPet atua apenas como intermediária no processo de adoção de pets, conectando donos de pets cadastrados com potenciais adotantes..</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>6. A plataforma não assume responsabilidade por qualquer problema que possa surgir durante ou após o processo de adoção, incluindo, mas não se limitando a, questões de saúde, comportamento ou legalidade.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>7. A plataforma não se responsabiliza por qualquer acordo feito entre o dono do pet e o adotante, incluindo, mas não se limitando a, termos de adoção, custos associados ou questões de transporte.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>8. Recomendamos que os usuários da plataforma formalizem seus acordos por escrito e, quando aplicável, busquem a orientação de profissionais qualificados, como veterinários e advogados.</p><br />
+                        <p style={{ marginLeft: '3vw', marginRight: '4vw', textAlign: 'justify' }}>8. A plataforma AdoPet reserva-se o direito de fazer alterações nestes termos e condições a qualquer momento, sem aviso prévio. Recomendamos que os usuários revisem periodicamente os termos e condições para estar ciente de quaisquer atualizações.</p><br />
+
+
+                        <p>
+                            Ao prosseguir com o cadastro do seu pet na plataforma AdoPet, você concorda com todos os termos e condições acima mencionados. Se você não concordar com estes termos, por favor, não prossiga com o cadastro do seu pet.
+                        </p>
                     </TermsArea>
                 </TermsStep>
             )}
