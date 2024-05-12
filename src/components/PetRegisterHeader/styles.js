@@ -57,5 +57,9 @@ li.active::after {
   top: calc((var(--circle) - var(--b))/2);
   background: #4B5563;
 }
+
+@media (max-width: 1360px) {
+    display: none;
+  }
 `
 

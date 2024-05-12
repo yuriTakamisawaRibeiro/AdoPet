@@ -4,6 +4,10 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 export const Container = styled.div`
   width: 100%;
   padding: 0 18vw;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
   `
 
 export const InfoPet = styled.div`
@@ -15,6 +19,10 @@ export const InfoPet = styled.div`
     justify-content: center;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 768px) {
+    width: 80%;
+  }
 
     > h1 {
         margin-top: 30px;
@@ -63,11 +71,22 @@ export const Row = styled.div`
 
     > div {
         width: 22vw;
+
+        @media (max-width: 768px) {
+    width: 100%;
+  }
     }
 
     > div:nth-of-type(2) {
         width: 20%;
+        @media (max-width: 768px) {
+    width: 100%;
+  }
     }
+
+    @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 export const Row2 = styled.div`
@@ -78,6 +97,10 @@ export const Row2 = styled.div`
 
     > div {
         width: 22vw;
+
+        @media (max-width: 768px) {
+    width: 100%;
+  }
     }
 `
 

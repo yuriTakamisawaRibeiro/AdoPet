@@ -9,6 +9,10 @@ gap: 60%;
 justify-content: space-between;
 margin-bottom: 80px;
 margin-top: 80px;
+
+@media (max-width: 768px) {
+    gap: 0px;
+  }
 `
 
 export const BackButton = styled.button`
@@ -31,6 +35,11 @@ export const BackButton = styled.button`
     &:hover {
         transform: translate(0px);
     }
+
+    @media (max-width: 768px) {
+    width: 40%;
+    font-size: 16px;
+  }
 `
 
 export const NextButton = styled.button`
@@ -54,4 +63,9 @@ export const NextButton = styled.button`
     &:hover {
         transform: translate(0px);
     }
+
+    @media (max-width: 768px) {
+    width: 40%;
+    font-size: 16px;
+  }
 `
