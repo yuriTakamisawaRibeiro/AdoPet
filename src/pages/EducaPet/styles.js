@@ -35,7 +35,6 @@ export const SearchDiv = styled.div`
     }
 
     }
-
    
 `
 
@@ -46,6 +45,13 @@ export const Content = styled.div`
   margin: auto;
   overflow: hidden;
   padding: 100px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+  }
 `
 
 export const FilterDiv = styled.div`
@@ -53,6 +59,10 @@ display: flex;
 justify-content: space-between;
 
 width: 100%;
+
+@media (max-width: 768px) {
+    flex-direction: column;
+}
 
 `
 
@@ -83,6 +93,48 @@ export const MotherNew = styled.div`
             font-size: 12px;
         }
     }
+    
+  @media (max-width: 768px) {
+    display: none;
+    margin-top: 30px;
+    height: fit-content;
+    width: 350px;
+
+    > img{
+        width: 300px;
+    }
+
+    > h1{
+            font-size: 14px;
+        }
+
+    > p{
+        font-size: 12px;
+        text-align: justify;
+    }
+
+    > div{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        > svg{
+            color: #E4AC46;
+        }
+
+       
+
+        > h5{
+            font-size: 12px;
+            font-weight: 600;
+            color: #E4AC46;
+        }
+
+        > p {
+            font-size: 10px;
+        }
+    }
+  }
 `
 
 export const Filters = styled.div`
@@ -90,6 +142,10 @@ export const Filters = styled.div`
     flex-direction: column;
 
     gap: 80px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `
 
 export const Topics = styled.div`
@@ -107,6 +163,11 @@ export const Topics = styled.div`
         cursor: pointer;
         text-align: center;
         list-style: none;
+    }
+
+    @media (max-width: 768px) {
+        padding: 0;
+        margin-top: 30px;
     }
 `
 
@@ -179,6 +240,11 @@ height: 500px;
             font-size: 10px;
         }
     }
+
+    @media (max-width: 768px) {
+        height: fit-content;
+        margin-top: 15px;
+  }
 `
 
 export const Commands = styled.div`
