@@ -17,6 +17,7 @@ export default function BuscaPata() {
     function handlePetRegister(){
         navigate("/petregister")
     }
+
     
     return (
         <Container>

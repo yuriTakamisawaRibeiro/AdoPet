@@ -12,9 +12,16 @@ import CatImageRight from '../../assets/images/CatImageRight.png';
 import CatImageLeft from '../../assets/images/CatImageLeft.png';
 import { Newsletter } from "../../components/Newsletter";
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Home() {
+
+    const navigate = useNavigate();
+
+    const navigateToEducaPetPage = () => {
+        navigate('/educapet');
+    };
     
     return (
         <Container>
@@ -51,7 +58,7 @@ export default function Home() {
                             <p>Descubra dicas úteis, conselhos práticos e histórias inspiradoras sobre o cuidado e bem-estar dos animais de estimação. Esteja você buscando
                                 orientações sobre treinamento, alimentação saudável ou simplesmente inspiração para fortalecer o vínculo com seu companheiro peludo,
                                 nosso blog tem tudo para você e seu pet!</p>
-                            <EducaPetButton>EducaPet ↗</EducaPetButton>
+                            <EducaPetButton onClick={navigateToEducaPetPage}>EducaPet ↗</EducaPetButton>
                         </TextArea>
                     </EducaPetArea>
                 </Section3>

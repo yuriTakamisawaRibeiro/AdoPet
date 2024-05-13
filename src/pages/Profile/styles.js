@@ -12,8 +12,11 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     padding: 0 124px;
+    justify-content: space-between;
+    
 
     svg {
+      left: 0;
       color: gray;
       font-size: 24px;
     }
@@ -24,7 +27,7 @@ export const Container = styled.div`
       text-align: center;
       justify-content: center;
       align-items: center;
-      margin: 500px;
+     
       
     }
   }
@@ -32,11 +35,10 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
+display: flex;
+flex-direction: column;
   max-width: 340px;
   margin: 30px auto 0;
   gap: 10px;
-
-  >div:nth-child(4){
-    margin-top: 24px;
-  }
+  margin-bottom: 100px;
 `;
