@@ -5,12 +5,19 @@ export const Container = styled.div`
 `
 
 export const Content = styled.div`
-   width: 78%;
+   width: 80%;
   display: flex;
   margin: auto;
   overflow: hidden;
   padding: 100px;
   gap: 200px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+  }
 `
 
 export const InfosPet = styled.div`
@@ -44,6 +51,34 @@ export const Line1 = styled.div`
         padding: 5px;
     }
     }
+
+    @media (max-width: 768px) {
+        align-items: center;
+
+        > img{
+            margin-top: 30px;
+            width: 97%;
+            border-radius: 15px;
+        }
+
+        > div{
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            width: 97%;
+
+            > svg{
+                color: #E4AC46;
+                font-size: 20px;
+            }
+
+            > p {
+                color: #E4AC46;
+                background-color: #F1E0C1;
+                padding: 5px;
+            }
+        }
+  }
 `
 
 export const Line2 = styled.div`
@@ -52,6 +87,14 @@ export const Line2 = styled.div`
     > h2{
         text-align: center;
     }
+
+    @media (max-width: 768px) {
+        margin-top: 30px;
+
+        > h2{
+        text-align: start;
+    }
+  }
 `
 
 export const GridInfos = styled.div`
@@ -72,6 +115,22 @@ export const GridInfos = styled.div`
     > p {
         margin-top: 15px;
     }
+
+    
+  @media (max-width: 768px) {
+    width: 100%;
+    border-radius: 10px;
+    > div {
+        display: flex;
+        font-size: 14px;
+        justify-content: space-between;
+    }
+
+    > p {
+        margin-top: 15px;
+        text-align: justify;
+    }
+  }
 `
 
 export const InfosAdopet = styled.div`
@@ -90,6 +149,19 @@ export const SendForm = styled.div`
    
 
     box-shadow: 1px #4B5563;
+
+    @media (max-width: 768px) {
+        padding: 15px;
+        margin-top: 30px;
+        gap: 0;
+    > div {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
+  }
 `
 
 export const AdoptionTerms = styled.div`
@@ -101,4 +173,26 @@ text-align: justify;
 > div{
     width: 400px;
 }
+
+@media (max-width: 768px) {
+    gap: 0;
+    margin-top: 30px;
+    text-align: justify;
+    flex-direction: column;
+
+    > div{
+        width: 97%;
+    }
+
+    > div > h2 {
+        margin-top: 30px;
+        text-align: left;
+    }
+
+    > div > p {
+        margin-top: 15px;
+        text-align: justify;
+        font-size: 14px;
+    }
+  }
 `
