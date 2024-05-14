@@ -132,6 +132,7 @@ export const MenuHeader = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
+    
 `
 
 export const MenuMobile = styled.div`
@@ -139,7 +140,7 @@ export const MenuMobile = styled.div`
     border-bottom: solid 1px #4E5665;
     height: 60%;
     width: 100%;
-    gap: 100px;
+
     align-items: center;
     position: fixed;
     top: 0;
@@ -161,7 +162,7 @@ export const Accessibility = styled.div`
     width: 100%;
     display:flex;
     justify-content:flex-end;
-    padding: 20px 12vw;
+    padding: 10px 12vw;
     gap:10px;
     align-items:center;
     
@@ -174,4 +175,8 @@ export const Accessibility = styled.div`
         height:20px;
         cursor:pointer;
     }
+
+    @media (max-width: 768px) {
+        display: none;
+  }
 `
