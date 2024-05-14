@@ -18,6 +18,10 @@ export const Content = styled.div`
     padding: 0;
     gap: 0;
   }
+
+  @media(max-width: 1500px){
+    gap: 100px
+  }
 `
 
 export const InfosPet = styled.div`
@@ -131,6 +135,8 @@ export const GridInfos = styled.div`
         text-align: justify;
     }
   }
+
+
 `
 
 export const InfosAdopet = styled.div`
@@ -162,6 +168,15 @@ export const SendForm = styled.div`
         gap: 15px;
     }
   }
+
+  @media (max-width: 1500px) {
+    padding: 10px 40px;
+    width: 450px;
+
+    > button{
+        width: 200px
+    }
+}
 `
 
 export const AdoptionTerms = styled.div`
@@ -195,4 +210,22 @@ text-align: justify;
         font-size: 14px;
     }
   }
+
+  @media (max-width: 1500px) {
+    gap: 20px;
+    flex-direction: column;
+
+    > div > h2 {
+        margin-top: 30px;
+        text-align: left;
+        text-align: center;
+    }
+
+    > div > p {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+}
 `

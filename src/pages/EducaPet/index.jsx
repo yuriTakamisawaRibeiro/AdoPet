@@ -7,6 +7,7 @@ import imageExample from "../../assets/images/educapetExample.png"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export function EducaPet() {
+    
     return (
         <Container>
             <Header />

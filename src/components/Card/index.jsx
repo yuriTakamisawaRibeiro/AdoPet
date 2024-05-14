@@ -1,6 +1,7 @@
 import { Container, IconBg } from "./styles";
 
 export function Card({ icon: Icon, title}){
+    
     return(
         <Container>
             <IconBg>

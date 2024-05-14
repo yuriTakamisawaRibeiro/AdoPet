@@ -135,6 +135,15 @@ export const MotherNew = styled.div`
         }
     }
   }
+
+  @media (max-width: 1500px) {
+    width: 400px;
+
+    > img{
+        width: 500px
+    }
+
+}
 `
 
 export const Filters = styled.div`
@@ -245,6 +254,8 @@ height: 500px;
         height: fit-content;
         margin-top: 15px;
   }
+
+  
 `
 
 export const Commands = styled.div`
