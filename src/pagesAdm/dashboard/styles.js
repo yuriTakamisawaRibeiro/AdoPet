@@ -6,7 +6,7 @@ export const Container = styled.div`
   height: 100vh;
 
   display: grid;
-  grid-template-columns: 250px auto;
+  grid-template-columns: 200px auto;
   grid-template-rows: 105px 128px auto 64px;
   grid-template-areas:
     "brand content"
@@ -36,6 +36,14 @@ export const Brand = styled.div`
   }
 `;
 
+
+export const Charts = styled.div`
+  display: flex;
+
+  margin-top: 30px;
+  width: 700px;
+ gap: 100px;
+`
 export const Menu = styled.ul`
   grid-area: menu;
   background-color: #E8E8E0;
@@ -47,7 +55,7 @@ export const Menu = styled.ul`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 40px ;
+    font-size: 30px ;
     gap: 64px;
     list-style: none;
 
@@ -66,8 +74,9 @@ export const Menu = styled.ul`
 
 export const Content = styled.div`
   grid-area: content;
-  padding: 0 64px;
+  padding: 50px 64px;
   overflow-y: auto;
+  gap: 20px;
 
   > h1 span{
     color: #E4AC46;

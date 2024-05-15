@@ -28,7 +28,8 @@ export function PetRegister() {
         tutorCep: "",
         tutorPhone: "",
         tutorEmail: "",
-        tutorSocialMedia: ""
+        tutorSocialMedia: "",
+        created_at:  serverTimestamp()
     });
     const [files, setFiles] = useState([]);
 
