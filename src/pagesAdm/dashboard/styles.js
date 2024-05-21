@@ -43,6 +43,11 @@ export const Charts = styled.div`
   margin-top: 30px;
   width: 700px;
  gap: 100px;
+
+ 
+ @media (max-width: 1500px) {
+    width: 400px;
+}
 `
 export const Menu = styled.ul`
   grid-area: menu;
@@ -82,5 +87,24 @@ export const Content = styled.div`
     color: #E4AC46;
   }
 
+  .p-datatable-custom {
+  /* Adicione seus estilos personalizados aqui */
+}
+
+/* Estilo personalizado para as células da tabela */
+.p-datatable-custom .p-datatable-tbody td {
+  /* Adicione seus estilos personalizados aqui */
+}
+
+/* Estilo personalizado para o cabeçalho da tabela */
+.p-datatable-custom .p-datatable-thead th {
+  /* Adicione seus estilos personalizados aqui */
+}
+
+/* Estilo personalizado para o rodapé da tabela */
+.p-datatable-custom .p-datatable-tfoot td {
+  /* Adicione seus estilos personalizados aqui */
+}
   
 `;
+

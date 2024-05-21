@@ -10,6 +10,13 @@ import { firestore } from '../../services/firebaseConfig';
 import { Bar } from 'react-chartjs-2';
 import { Line } from 'react-chartjs-2';
 import { getCurrentUser } from '../../services/utils';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { Paginator } from 'primereact/paginator';
+import { StyleClass } from 'primereact/styleclass';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -38,6 +45,7 @@ export function Dashboard() {
   const [userData, setUserData] = useState([]);
   const [petsData, setPetsData] = useState([]);
   const [userName, setUserName] = useState('');
+  const [partners, setPartners] = useState([])
 
 
 
@@ -50,7 +58,7 @@ export function Dashboard() {
       const user = await getCurrentUser();
       setUserName(user?.name.split(' ')[0]);
 
-      const petsRef =  collection(firestore, "formsPets")
+      const petsRef = collection(firestore, "formsPets")
 
       try {
         const snapshot = await getDocs(petsRef);
@@ -75,13 +83,27 @@ export function Dashboard() {
       } catch (error) {
         console.error('Error fetching users:', error);
       }
+
+
+      const partnersRef = collection(firestore, "partner")
+
+      try {
+        const snpPtr = await getDocs(partnersRef)
+        const PtrData = snpPtr.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }))
+        setPartners(PtrData)
+      } catch (error) {
+        console.error('Error fetching users:', error)
+      }
     };
 
     fetchData();
   }, []);
 
   const chartStyle = {
-    width: '300px', 
+    width: '300px',
     height: '300px'
   };
 
@@ -93,7 +115,7 @@ export function Dashboard() {
       if (pet.created_at && pet.created_at.toDate instanceof Function) {
         const createdAt = pet.created_at.toDate();
         const monthYear = `${createdAt.getMonth() + 1}/${createdAt.getFullYear()}`;
-  
+
         if (petsCountsByMonth[monthYear]) {
           petsCountsByMonth[monthYear]++;
         } else {
@@ -103,7 +125,7 @@ export function Dashboard() {
         console.warn(`Invalid 'created_at' timestamp for pet: ${pet.id}`);
       }
     });
-  
+
     return petsCountsByMonth;
   };
 
@@ -119,10 +141,10 @@ export function Dashboard() {
   const previousMonth = currentMonth === 1 ? 12 : currentMonth - 1;
   const previousYear = currentMonth === 1 ? currentYear - 1 : currentYear;
 
-const currentMonthKey = `${currentMonth}/${currentYear}`;
+  const currentMonthKey = `${currentMonth}/${currentYear}`;
   const previousMonthKey = `${previousMonth}/${previousYear}`;
 
-    const chartDataPets = {
+  const chartDataPets = {
     labels: [previousMonthKey, currentMonthKey],
     datasets: [
       {
@@ -200,54 +222,61 @@ const currentMonthKey = `${currentMonth}/${currentYear}`;
 
         <h3>Usuários Cadastrados por mês</h3>
         <Charts>
-        <Bar
-        style={chartStyle}
-          data={chartData}
-          options={{
-            scales: {
-              x: {
-                type: 'category',
-                labels: Object.keys(userCountsByMonth),
-                title: {
-                  display: true,
-                  text: 'Mês'
-                }
-              },
-              y: {
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Número de usuários'
+          <Bar
+            style={chartStyle}
+            data={chartData}
+            options={{
+              scales: {
+                x: {
+                  type: 'category',
+                  labels: Object.keys(userCountsByMonth),
+                  title: {
+                    display: true,
+                    text: 'Mês'
+                  }
+                },
+                y: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: 'Número de usuários'
+                  }
                 }
               }
-            }
-          }}
-        />
+            }}
+          />
 
-        <Line
-        style={chartStyle}
-        data={chartDataPets}
-        options={{
-          scales: {
-            x: {
-              type: 'category',
-              title: {
-                display: true,
-                text: 'Mês'
+          <Line
+            style={chartStyle}
+            data={chartDataPets}
+            options={{
+              scales: {
+                x: {
+                  type: 'category',
+                  title: {
+                    display: true,
+                    text: 'Mês'
+                  }
+                },
+                y: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: 'Número de pets em relação ao mês anterior'
+                  }
+                }
               }
-            },
-            y: {
-              beginAtZero: true,
-              title: {
-                display: true,
-                text: 'Número de pets em relação ao mês anterior'
-              }
-            }
-          }
-        }}
-        />
+            }}
+          />
         </Charts>
-      
+        <div className="datatable-responsive">
+          <DataTable value={partners} className="p-datatable p-datatable-basic" paginator rows={5} rowsPerPageOptions={[5, 10, 20]}>
+            <Column field="id" header="Id" />
+            <Column field="companyName" header="Nome da Empresa"  sortable/>
+            <Column field="businessSegment" header="Segmento" />
+            <Column field="contact" header="Contato" />
+          </DataTable>
+        </div>
 
       </Content>
     </Container>
