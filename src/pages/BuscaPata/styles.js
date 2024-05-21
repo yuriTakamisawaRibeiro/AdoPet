@@ -107,16 +107,13 @@ export const FilterIcon = styled(LuListFilter)`
 
 export const BuscaPataSection = styled.div`
     margin-top: 30px;
+    height: 120vh;
     align-items: center;
     text-align: left;
     gap: 50px;
     display: flex;
     flex-direction: column;
-
-    
-    
-    
-    
+    width: 100%;    
 `
 
 export const Pets = styled.div`
