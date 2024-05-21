@@ -9,6 +9,7 @@ import { Profile } from '../pages/Profile';
 import { Dashboard } from '../pagesAdm/dashboard';
 import { AboutPet } from '../pages/AboutPet';
 import { EducaPet } from '../pages/EducaPet';
+import { FormAdotante } from '../pages/FormAdotante';
 
 
 export function AppRoutes() {
@@ -24,6 +25,7 @@ export function AppRoutes() {
                 <Route path="/dashboardAdmin" element={<Dashboard/>} />
                 <Route path="/aboutpet" element={<AboutPet/>}/>
                 <Route path="/educapet" element={<EducaPet/>}/>
+                <Route path='/formadotante' element={<FormAdotante/>}/>
             </Routes>
     );
 }

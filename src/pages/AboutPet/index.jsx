@@ -3,8 +3,15 @@ import { Header } from "../../components/Header";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { Footer } from "../../components/Footer";
 import { ButtonOrange } from "../../components/ButtonOrange";
+import { useNavigate } from 'react-router-dom';
 
 export function AboutPet() {
+    const navigate = useNavigate();
+
+    const navigateToFormAdotante = () => {
+        navigate('/formadotante');
+    };
+
     return (
         <Container>
             <Header />
@@ -47,7 +54,7 @@ export function AboutPet() {
                     <SendForm>
                         <h2>Interessado em me Adotar?</h2>
                         <h5>Envie um formulário para meu responsável</h5>
-                        <ButtonOrange title="Enviar Formulário"/>
+                        <ButtonOrange title="Enviar Formulário" onClick={navigateToFormAdotante}/>
                     </SendForm>
 
                     <AdoptionTerms>
