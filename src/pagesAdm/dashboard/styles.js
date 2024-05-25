@@ -6,7 +6,7 @@ export const Container = styled.div`
   height: 100vh;
 
   display: grid;
-  grid-template-columns: 200px auto;
+  grid-template-columns: 170px auto;
   grid-template-rows: 105px 128px auto 64px;
   grid-template-areas:
     "brand content"
@@ -49,32 +49,6 @@ export const Charts = styled.div`
     width: 400px;
 }
 `
-export const Menu = styled.ul`
-  grid-area: menu;
-  background-color: #E8E8E0;
-
-  padding-top: 64px;
-  text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px ;
-    gap: 64px;
-    list-style: none;
-
-    transition: all ease-in 0.5s;
-
-
-    
-  > li:hover{
-    font-size: 42px;
-  }
-
-  
-  
-`;
 
 
 export const Content = styled.div`
@@ -82,6 +56,9 @@ export const Content = styled.div`
   padding: 50px 64px;
   overflow-y: auto;
   gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
   > h1 span{
     color: #E4AC46;
@@ -107,4 +84,43 @@ export const Content = styled.div`
 }
   
 `;
+
+export const TablePartners = styled.div`
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(75, 85, 99, 0.7);
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    margin: 50px;
+    
+
+> h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+> table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+> thead {
+    background-color: #F0F0F0;
+    border-bottom: 1px solid rgba(75, 85, 99, 0.7); 
+}
+
+> th, td {
+    padding: 12px 15px;
+}
+
+> th {
+    font-weight: bold;
+}
+
+>  tbody tr:nth-child(even) {
+    background-color: #F9F9F9;
+}
+`
 

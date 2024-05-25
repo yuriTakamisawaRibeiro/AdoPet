@@ -1,9 +1,6 @@
 import { IoIosPaper } from 'react-icons/io';
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
-import { Brand, Charts, Container, Content, Menu } from './styles';
-import { RiDashboardFill } from "react-icons/ri";
-import { FaHeadphones, FaPaw } from 'react-icons/fa';
-import { HiUsers } from 'react-icons/hi';
+import { Brand, Charts, Container, Content, TablePartners} from './styles';
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../../services/firebaseConfig';
@@ -28,6 +25,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { SideBarAdmin } from '../../components/SideBarAdmin';
 
 
 ChartJS.register(
@@ -205,22 +203,14 @@ export function Dashboard() {
 
 
 
-      <Menu>
-        <li><RiDashboardFill /></li>
-
-        <li><IoIosPaper /></li>
-        <li><FaPaw /></li>
-        <li> <HiUsers /></li>
-        <li><FaHeadphones /></li>
-
-      </Menu>
+    <SideBarAdmin/>
 
       <Content>
 
         <h1>Olá <span>{userName}
         </span></h1>
 
-        <h3>Usuários Cadastrados por mês</h3>
+        <h4>Bem vindo ao painel de administrador</h4>
         <Charts>
           <Bar
             style={chartStyle}
@@ -269,14 +259,44 @@ export function Dashboard() {
             }}
           />
         </Charts>
-        <div className="datatable-responsive">
-          <DataTable value={partners} className="p-datatable p-datatable-basic" paginator rows={5} rowsPerPageOptions={[5, 10, 20]}>
-            <Column field="id" header="Id" />
-            <Column field="companyName" header="Nome da Empresa"  sortable/>
-            <Column field="businessSegment" header="Segmento" />
-            <Column field="contact" header="Contato" />
-          </DataTable>
-        </div>
+
+        <TablePartners>
+        <h4>Lista de Parceiros</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Empresa</th>
+                    <th>ID Code</th>
+                    <th>Segmento</th>
+                    <th>Contato</th>
+                    <th>Responsável</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Inataa</td>
+                    <td>#10624316000108</td>
+                    <td>TAA</td>
+                    <td>11 95158-0560</td>
+                    <td>Gabriel Maia</td>
+                </tr>
+                <tr>
+                    <td> Inataa</td>
+                    <td>#10624316000108</td>
+                    <td>TAA</td>
+                    <td>11 95158-0560</td>
+                    <td>Gabriel Maia</td>
+                </tr>
+                <tr>
+                    <td> Inataa</td>
+                    <td>#10624316000108</td>
+                    <td>TAA</td>
+                    <td>11 95158-0560</td>
+                    <td>Gabriel Maia</td>
+                </tr>
+            </tbody>
+        </table>
+        </TablePartners>
 
       </Content>
     </Container>

@@ -10,6 +10,7 @@ import { Dashboard } from '../pagesAdm/dashboard';
 import { AboutPet } from '../pages/AboutPet';
 import { EducaPet } from '../pages/EducaPet';
 import { FormAdotante } from '../pages/FormAdotante';
+import { FormsReview } from "../pagesAdm/FormsReview"
 
 
 export function AppRoutes() {
@@ -22,10 +23,13 @@ export function AppRoutes() {
                 <Route path="/petregister" element={<PetRegister />} />
                 <Route path="/companyregister" element={<CompanyRegister />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/dashboardAdmin" element={<Dashboard/>} />
                 <Route path="/aboutpet" element={<AboutPet/>}/>
                 <Route path="/educapet" element={<EducaPet/>}/>
                 <Route path='/formadotante' element={<FormAdotante/>}/>
+
+                <Route path="/dashboardAdmin" element={<Dashboard/>} />
+                <Route path="/formsReview" element={<FormsReview/>} />
+                    
             </Routes>
     );
 }
