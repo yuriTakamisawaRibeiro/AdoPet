@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
- margin-top: 10px;
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -11,7 +11,7 @@ export const Container = styled.div`
     position: relative; /* Adicionado para posicionamento do botão */
 
     > input[type="file"] {
-        width: calc(100% - 40px); /* Ajustado o tamanho do input */
+        width: calc(100%); /* Ajustado o tamanho do input */
         padding: 1.2rem 1.4rem;
         color: #4E5665;
         border: none;
