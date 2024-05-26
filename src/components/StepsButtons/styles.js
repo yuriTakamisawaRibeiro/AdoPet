@@ -13,6 +13,10 @@ margin-top: 80px;
 @media (max-width: 768px) {
     gap: 0px;
   }
+
+  @media (max-width: 425px) {
+    padding: 0 4vw;
+  }
 `
 
 export const BackButton = styled.button`

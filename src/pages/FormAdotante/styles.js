@@ -5,6 +5,12 @@ export const Content = styled.div`
 @media (min-width: 1024px) {
   
   }
+
+  @media(max-width:  425px) {
+    padding:0;
+    margin:0;
+
+  }
 `
 export const Container = styled.div`
   width: 100%;
@@ -13,6 +19,8 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     padding: 0;
   }
+  @media (max-width: 768px)
+  
 `
 
 export const Info = styled.div`
@@ -35,6 +43,10 @@ padding: 0 12vw;
         font-size: 24px;
         font-weight: 600;
     }
+
+  @media(max-width:425px) {
+    width: 100%;
+  }
 `
 
 export const Text = styled.div`
@@ -47,6 +59,11 @@ export const Text = styled.div`
 
     > p {
         text-align: start;
+    }
+
+    @media(max-width: 425px){
+      display: flex;
+      flex-direction: column;
     }
 `
 
@@ -84,7 +101,11 @@ export const Row = styled.div`
         @media (max-width: 768px) {
     width: 100%;
   }
-}
+  }
+  @media (max-width:  425px) {
+    margin-bottom: 20px;
+  }
+
 
 > div:nth-of-type(2) {
         width: 20%;
@@ -93,7 +114,7 @@ export const Row = styled.div`
   }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width:  425px) {
     flex-direction: column;
   }
 `
@@ -101,8 +122,13 @@ export const Row = styled.div`
 export const Row2 = styled.div`
 display: flex;
 flex-direction:row;
-gap: 50px;
+gap: 20px;
 margin-bottom: 30px;
+@media (max-width: 425px) {
+  display: flex;
+flex-direction:column;
+}
+
 `
 
 export const InputTitle = styled.h1`
@@ -119,6 +145,9 @@ export const InputFormAdotante = styled.input`
     background: transparent;
     border-radius: 0.5rem;
     border: 1.5px solid #4E5665;
+
+    
+
 `
 
 export const TermsStep = styled.div`
