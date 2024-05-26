@@ -11,6 +11,7 @@ import { AboutPet } from '../pages/AboutPet';
 import { EducaPet } from '../pages/EducaPet';
 import { FormAdotante } from '../pages/FormAdotante';
 import { FormsReview } from "../pagesAdm/FormsReview"
+import { PostRegister } from '../pages/PostRegister';
 
 
 export function AppRoutes() {
@@ -26,6 +27,7 @@ export function AppRoutes() {
                 <Route path="/aboutpet" element={<AboutPet/>}/>
                 <Route path="/educapet" element={<EducaPet/>}/>
                 <Route path='/formadotante' element={<FormAdotante/>}/>
+                <Route path='/postregister' element={<PostRegister/>}/>
 
                 <Route path="/dashboardAdmin" element={<Dashboard/>} />
                 <Route path="/formsReview" element={<FormsReview/>} />
