@@ -300,9 +300,7 @@ export function FormAdotante() {
                   textAlign: "justify",
                 }}
               >
-                1. Ao cadastrar o seu pet na plataforma AdoPet, você confirma
-                que possui autoridade legal para realizar tal ação e que todas
-                as informações fornecidas são precisas e verdadeiras.
+                1. Ao adotar um pet através da plataforma AdoPet, você concorda em assumir total responsabilidade pelo bem-estar e cuidado do animal.
               </p>
               <br />
               <p
@@ -312,8 +310,7 @@ export function FormAdotante() {
                   textAlign: "justify",
                 }}
               >
-                2. Você concorda em fornecer fotos, descrições e informações
-                precisas sobre o seu pet para facilitar o processo de adoção.
+                2.Você concorda em fornecer informações precisas sobre sua residência, estilo de vida e experiência anterior com animais para garantir uma adoção adequada.
               </p>
               <br />
               <p
@@ -323,9 +320,7 @@ export function FormAdotante() {
                   textAlign: "justify",
                 }}
               >
-                3. Você é responsável por garantir que seu pet esteja em boa
-                saúde e tenha as vacinas necessárias de acordo com a legislação
-                local.
+                3. Você concorda em fornecer cuidados veterinários adequados, incluindo vacinações regulares, tratamento de parasitas e cuidados médicos emergenciais, conforme necessário.
               </p>
               <br />
               <p
@@ -335,8 +330,7 @@ export function FormAdotante() {
                   textAlign: "justify",
                 }}
               >
-                4. Você concorda em fornecer toda a assistência necessária para
-                garantir o bem-estar do seu pet durante o processo de adoção.
+                4. Você concorda em oferecer um lar permanente e amoroso para o pet adotado e a se comprometer a cuidar dele por toda a vida do animal.
               </p>
               <br />
               <p
@@ -346,9 +340,7 @@ export function FormAdotante() {
                   textAlign: "justify",
                 }}
               >
-                5. A plataforma AdoPet atua apenas como intermediária no
-                processo de adoção de pets, conectando donos de pets cadastrados
-                com potenciais adotantes..
+                5. Você reconhece que a equipe da AdoPet reserva-se o direito de recusar a adoção com base em critérios específicos, incluindo a inadequação do ambiente doméstico ou histórico de maus-tratos a animais.
               </p>
               <br />
               <p
@@ -371,10 +363,7 @@ export function FormAdotante() {
                   textAlign: "justify",
                 }}
               >
-                7. A plataforma não se responsabiliza por qualquer acordo feito
-                entre o dono do pet e o adotante, incluindo, mas não se
-                limitando a, termos de adoção, custos associados ou questões de
-                transporte.
+                7. Você reconhece que a AdoPet reserva-se o direito de fazer alterações nestes termos e condições a qualquer momento, sem aviso prévio. Recomendamos que você revise periodicamente os termos e condições para estar ciente de quaisquer atualizações.
               </p>
               <br />
               <p
@@ -384,9 +373,6 @@ export function FormAdotante() {
                   textAlign: "justify",
                 }}
               >
-                8. Recomendamos que os usuários da plataforma formalizem seus
-                acordos por escrito e, quando aplicável, busquem a orientação de
-                profissionais qualificados, como veterinários e advogados.
               </p>
               <br />
               <p
@@ -396,18 +382,8 @@ export function FormAdotante() {
                   textAlign: "justify",
                 }}
               >
-                8. A plataforma AdoPet reserva-se o direito de fazer alterações
-                nestes termos e condições a qualquer momento, sem aviso prévio.
-                Recomendamos que os usuários revisem periodicamente os termos e
-                condições para estar ciente de quaisquer atualizações.
               </p>
               <br />
-              <p>
-                Ao prosseguir com o cadastro do seu pet na plataforma AdoPet,
-                você concorda com todos os termos e condições acima mencionados.
-                Se você não concordar com estes termos, por favor, não prossiga
-                com o cadastro do seu pet.
-              </p>
             </TermsArea>
           </TermsStep>
         )}
