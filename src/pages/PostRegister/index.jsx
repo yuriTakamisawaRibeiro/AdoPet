@@ -22,7 +22,6 @@ export function PostRegister() {
         content: "",
         author: "",
         created_at: serverTimestamp(),
-        files: [],
     });
 
     const [files, setFiles] = useState([]);
@@ -38,7 +37,10 @@ export function PostRegister() {
     const [selectedOption, setSelectedOption] = useState('');
 
     const handleCategoryChange = (newValue) => {
-      setSelectedOption(newValue);
+        setFormData((prevData) => ({
+            ...prevData,
+            category: newValue,
+        }));
     };
 
     const handleFileChange = (selectedFiles) => {
@@ -56,7 +58,7 @@ export function PostRegister() {
             console.log("Documento adicionado com ID:", docRef.id);
 
             // Envia os arquivos para o Storage
-            const files = formData.selectedFiles; // Obtém a lista de arquivos selecionados
+            const files = files;
             const postFileRef = ref(storage, `posts/${docRef.id}`);
 
             // Itera sobre cada arquivo e envia para o Storage
@@ -64,12 +66,6 @@ export function PostRegister() {
                 const fileRef = ref(postFileRef, file.name);
                 await uploadBytes(fileRef, file);
                 console.log(`Arquivo ${file.name} enviado com sucesso.`);
-            });
-
-            Object.keys(files).forEach((fileKey) => {
-                const file = files[fileKey];
-                const storageRef = ref(storage, `posts/${docRef.id}/${file.name}`);
-                const uploadTask = uploadBytes(storageRef, file);
             });
         } catch (error) {
             console.error("Erro ao adicionar documento:", error);
@@ -95,10 +91,10 @@ export function PostRegister() {
                     <div className="post-category">
                         <InputTitle>Categoria da postagem</InputTitle>
                         <Select
-                            options={optionsCategories}
                             name="category"
+                            options={optionsCategories}
                             value={formData.category}
-                            onChange={handleCategoryChange}
+                            onChange={(newValue) => handleCategoryChange(newValue)}
                         />
                     </div>
                 </Row>
