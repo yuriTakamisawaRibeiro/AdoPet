@@ -40,11 +40,13 @@ export const Brand = styled.div`
 
 export const Content = styled.div`
 grid-area: content;
+display: flex;
+flex-direction: column;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 90%;
-    max-width: 1000px;
+    padding: 30px;
+    gap: 10px;
+    width: 100%;
 `
 
 export const SearchDiv = styled.div`
@@ -54,10 +56,10 @@ export const SearchDiv = styled.div`
     margin-bottom: 20px;
 
     > select{
-        padding: 10px;
+        padding: 20px;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #FFFFFF;
+    border: none;
+    background-color: #E8E8E0;
     font-size: 16px;
     cursor: pointer;
     }
@@ -81,15 +83,15 @@ tbody tr:nth-child(even) {
 
 export const Pagination = styled.div`
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
     align-items: center;    
 
     .page-button {
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    background-color: #E6AA41;
-    color: #FFFFFF;
+    background-color: #E8E8E0;
+    color: #4B5563;
     cursor: pointer;
     font-size: 16px;
     margin-right: 5px;

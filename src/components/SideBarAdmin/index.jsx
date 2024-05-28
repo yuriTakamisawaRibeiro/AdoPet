@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IoIosPaper } from 'react-icons/io';
-import { FaPaw, FaHeadphones } from 'react-icons/fa';
+import { FaPaw, FaHeadphones, FaBook } from 'react-icons/fa';
 import { RiDashboardFill } from 'react-icons/ri';
 import { HiUsers } from 'react-icons/hi';
 import { Menu } from './styles';
@@ -27,9 +27,9 @@ export function SideBarAdmin() {
           <FaPaw />
         </Link>
       </li>
-      <li className={active === '/users' ? 'active' : ''}>
-        <Link to="/users" onClick={() => setActive('/users')}>
-          <HiUsers />
+      <li className={active === '/educapetReview' ? 'active' : ''}>
+        <Link to="/educapetReview" onClick={() => setActive('/educapetReview')}>
+          <FaBook />
         </Link>
       </li>
       <li className={active === '/support' ? 'active' : ''}>
