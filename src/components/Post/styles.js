@@ -7,6 +7,7 @@ height: 500px;
     > img{
         max-width: 300px;
         max-height: 168px;
+        border-radius: 10px;
     }
 
     > h1{
