@@ -5,6 +5,7 @@ import { firestore, storage } from "../../services/firebaseConfig";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { useState } from "react";
+import { getDownloadURL } from "firebase/storage";
 
 export function PostRegister() {
     const optionsCategories = [
@@ -22,6 +23,7 @@ export function PostRegister() {
         content: "",
         author: "",
         created_at: serverTimestamp(),
+        image_url: "",
     });
 
     const [files, setFiles] = useState([]);
@@ -33,8 +35,6 @@ export function PostRegister() {
             [name]: value,
         }));
     };
-
-    const [selectedOption, setSelectedOption] = useState('');
 
     const handleCategoryChange = (newValue) => {
         setFormData((prevData) => ({
@@ -48,6 +48,14 @@ export function PostRegister() {
         const filesArray = Array.from(selectedFiles);
         // Update the state with the selected files
         setFiles(filesArray);
+    
+        // Assuming you want to update formData with the first file selected
+        if (filesArray.length > 0) {
+            setFormData((prevData) => ({
+               ...prevData,
+                image_file: filesArray[0], // Atualiza o arquivo da imagem no formData
+            }));
+        }
     };
 
     const handleSubmit = async () => {
@@ -56,17 +64,24 @@ export function PostRegister() {
             const posts = collection(firestore, "posts");
             const docRef = await addDoc(posts, formData);
             console.log("Documento adicionado com ID:", docRef.id);
-
-            // Envia os arquivos para o Storage
-            const files = files;
-            const postFileRef = ref(storage, `posts/${docRef.id}`);
-
-            // Itera sobre cada arquivo e envia para o Storage
-            files.forEach(async (file) => {
-                const fileRef = ref(postFileRef, file.name);
-                await uploadBytes(fileRef, file);
-                console.log(`Arquivo ${file.name} enviado com sucesso.`);
-            });
+    
+            // Envia a imagem selecionada para o Storage
+            const file = files[0]; // Assume que 'files' contém pelo menos um arquivo
+            if (!file) {
+                console.error("Nenhum arquivo foi selecionado.");
+                return;
+            }
+    
+            const postImageRef = ref(storage, `posts/${docRef.id}/image`);
+            await uploadBytes(postImageRef, file);
+            console.log(`Imagem enviada com sucesso.`);
+    
+            // Atualiza o estado formData para incluir a URL da imagem enviada
+            const imageUrl = await getDownloadURL(postImageRef);
+            setFormData((prevData) => ({
+               ...prevData,
+                image_url: imageUrl, // Adicione 'image_url' ao seu estado formData se ainda não estiver presente
+            }));
         } catch (error) {
             console.error("Erro ao adicionar documento:", error);
         }
