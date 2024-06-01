@@ -51,14 +51,14 @@ export function PostRegister() {
             // Add document to Firestore without the file
             const posts = collection(firestore, "posts");
             const docRef = await addDoc(posts, formData);
-            console.log("Document added with ID:", docRef.id);
+            console.log("Documento adicionado com o ID:", docRef.id);
 
             // Upload the file to Firebase Storage
             const file = files[0];
             if (file) {
                 const postImageRef = ref(storage, `posts/${docRef.id}/image`);
                 await uploadBytes(postImageRef, file);
-                console.log("Image uploaded successfully.");
+                console.log("Upload da imagem completo.");
 
                 // Get the download URL of the uploaded file
                 const imageUrl = await getDownloadURL(postImageRef);
@@ -68,8 +68,10 @@ export function PostRegister() {
                     image_url: imageUrl
                 });
 
-                console.log("Document updated with image URL.");
+                console.log("Documento atualizado com a URL da imagem.");
             }
+            alert("Post adicionado com sucesso.")
+            window.location.reload();
         } catch (error) {
             console.error("Error adding document:", error);
         }
