@@ -4,7 +4,7 @@ import { Commands, Container, Content, FilterDate, FilterDiv, Filters, ListDiv, 
 import { BiSearchAlt } from "react-icons/bi";
 import { GrCluster } from "react-icons/gr";
 import imageExample from "../../assets/images/educapetExample.png";
-import { collection, getDocs } from "firebase/firestore"; // Updated import
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useEffect, useState } from "react";
 import Post from "../../components/Post";
@@ -13,11 +13,12 @@ import { db } from "../../services/firebaseConfig";
 export function EducaPet() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [motherNew, setMotherNew] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const querySnapshot = await getDocs(collection(db, 'posts')); // Use db and specify the collection path
+                const querySnapshot = await getDocs(collection(db, 'posts'));
                 const fetchedPosts = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 setPosts(fetchedPosts);
             } catch (error) {
@@ -27,8 +28,29 @@ export function EducaPet() {
             }
         };
 
+        const fetchMotherNew = async () => {
+            try {
+                const docRef = doc(db, 'posts', 'OU1hauBUWLcS1eafqYdC');
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setMotherNew({ id: docSnap.id, ...docSnap.data() });
+                } else {
+                    console.log('No such document!');
+                }
+            } catch (error) {
+                console.error('Error fetching document:', error);
+            }
+        };
+
         fetchData();
+        fetchMotherNew();
     }, []);
+
+    const categoryTranslations = {
+        'trainment': 'Treinamento',
+    };
+
+    const filteredPosts = posts.filter(post => post.id !== (motherNew ? motherNew.id : null));
 
     return (
         <Container>
@@ -44,23 +66,23 @@ export function EducaPet() {
 
             <Content>
                 <FilterDiv>
-                    <MotherNew>
-                        <img src={imageExample} alt="" />
-                        <div>
-                            <GrCluster />
-                            <h5>Treinamento</h5>
-                            <p> 28 Mar, 2024</p>
-                        </div>
-                        <h1>Guiando o Caminho: Como Educar um Filhote de Cachorro - 6 Pontos Fundamentais</h1>
-                        <p>Educar um filhote de cachorro pode ser uma jornada recompensadora, mas requer paciência, consistência e conhecimento.
-                            Neste artigo, exploramos os seis pontos essenciais para criar um filhote feliz, saudável e bem-comportado.
-                            Desde estabelecer uma rotina sólida até socialização adequada e treinamento básico, cada ponto é crucial
-                            para o desenvolvimento positivo do seu novo companheiro canino.</p>
-
-                        <div>
-                            <p>Autor | Gabriel Maia</p>
-                        </div>
-                    </MotherNew>
+                    {motherNew ? (
+                        <MotherNew>
+                            <img src={motherNew.image_url || imageExample} alt="" />
+                            <div>
+                                <GrCluster />
+                                <h5>{categoryTranslations[motherNew.category] || motherNew.category}</h5>
+                                <p>{motherNew.date}</p>
+                            </div>
+                            <h1>{motherNew.title}</h1>
+                            <p>{motherNew.description}</p>
+                            <div>
+                                <p>Autor | {motherNew.author}</p>
+                            </div>
+                        </MotherNew>
+                    ) : (
+                        <p>Loading...</p>
+                    )}
                     <Filters>
                         <Topics>
                             <ul>
@@ -68,12 +90,11 @@ export function EducaPet() {
                                 <li> Treinamento </li>
                                 <li>Cuidados</li>
                                 <li>Saúde</li>
-                                <li>Nóticias</li>
+                                <li>Notícias</li>
                             </ul>
                         </Topics>
 
                         <FilterDate>
-
                             <label htmlFor="selectDate">Filtrar por</label>
                             <select id="selectDate">
                                 <option value="latest">Mais Recente</option>
@@ -81,13 +102,12 @@ export function EducaPet() {
                             </select>
                         </FilterDate>
                     </Filters>
-
                 </FilterDiv>
                 <ListDiv>
                     {loading ? (
                         <p>Loading...</p>
                     ) : (
-                        posts.map(post => (
+                        filteredPosts.map(post => (
                             <Post
                                 key={post.id}
                                 title={post.title}
@@ -106,9 +126,8 @@ export function EducaPet() {
                     <button> 1 </button>
                     <button> 2 </button>
                     <button><IoIosArrowForward /></button>
-
                 </Commands>
             </Content>
         </Container>
-    )
+    );
 }

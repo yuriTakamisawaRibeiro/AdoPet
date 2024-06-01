@@ -24,7 +24,7 @@ const Post = ({ title, date, description, author, category, image_url }) => {
             <h1>{title}</h1>
             <p>{description}</p>
             <div>
-                <p>{author}</p>
+                <p>Autor | {author}</p>
             </div>
         </Container>
     );
