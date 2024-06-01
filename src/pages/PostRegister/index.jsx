@@ -2,10 +2,9 @@ import { FileInput } from "../../components/FileInput";
 import { Select } from "../../components/Select";
 import { Container, Form, InfoSection, InputPostAuthor, InputPostContent, InputPostDescription, InputPostTitle, InputTitle, PostButton, Row } from "./styles";
 import { firestore, storage } from "../../services/firebaseConfig";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
+import { addDoc, collection, serverTimestamp, updateDoc, doc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useState } from "react";
-import { getDownloadURL } from "firebase/storage";
 
 export function PostRegister() {
     const optionsCategories = [
@@ -23,7 +22,6 @@ export function PostRegister() {
         content: "",
         author: "",
         created_at: serverTimestamp(),
-        image_url: "",
     });
 
     const [files, setFiles] = useState([]);
@@ -44,46 +42,36 @@ export function PostRegister() {
     };
 
     const handleFileChange = (selectedFiles) => {
-        // Convert FileList to an array
         const filesArray = Array.from(selectedFiles);
-        // Update the state with the selected files
         setFiles(filesArray);
-    
-        // Assuming you want to update formData with the first file selected
-        if (filesArray.length > 0) {
-            setFormData((prevData) => ({
-               ...prevData,
-                image_file: filesArray[0], // Atualiza o arquivo da imagem no formData
-            }));
-        }
     };
 
     const handleSubmit = async () => {
         try {
-            // Adiciona os dados do formData ao Firestore
+            // Add document to Firestore without the file
             const posts = collection(firestore, "posts");
             const docRef = await addDoc(posts, formData);
-            console.log("Documento adicionado com ID:", docRef.id);
-    
-            // Envia a imagem selecionada para o Storage
-            const file = files[0]; // Assume que 'files' contém pelo menos um arquivo
-            if (!file) {
-                console.error("Nenhum arquivo foi selecionado.");
-                return;
+            console.log("Document added with ID:", docRef.id);
+
+            // Upload the file to Firebase Storage
+            const file = files[0];
+            if (file) {
+                const postImageRef = ref(storage, `posts/${docRef.id}/image`);
+                await uploadBytes(postImageRef, file);
+                console.log("Image uploaded successfully.");
+
+                // Get the download URL of the uploaded file
+                const imageUrl = await getDownloadURL(postImageRef);
+
+                // Update the Firestore document with the file URL
+                await updateDoc(doc(posts, docRef.id), {
+                    image_url: imageUrl
+                });
+
+                console.log("Document updated with image URL.");
             }
-    
-            const postImageRef = ref(storage, `posts/${docRef.id}/image`);
-            await uploadBytes(postImageRef, file);
-            console.log(`Imagem enviada com sucesso.`);
-    
-            // Atualiza o estado formData para incluir a URL da imagem enviada
-            const imageUrl = await getDownloadURL(postImageRef);
-            setFormData((prevData) => ({
-               ...prevData,
-                image_url: imageUrl, // Adicione 'image_url' ao seu estado formData se ainda não estiver presente
-            }));
         } catch (error) {
-            console.error("Erro ao adicionar documento:", error);
+            console.error("Error adding document:", error);
         }
     };
 
