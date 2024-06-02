@@ -1,10 +1,10 @@
 import { SideBarAdmin } from "../../components/SideBarAdmin";
-import { Brand, Container, Content, Pagination, SearchDiv, TableForms } from "./styles";
+import { Brand, Buttons, Container, Content, CustomModal, Pagination, SearchDiv, TableForms } from "./styles";
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import { Input } from "../../components/Input";
 import { BiSearchAlt } from "react-icons/bi";
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore"; // Certifique-se de que o caminho esteja correto para sua configuração
+import { addDoc, collection, deleteDoc, doc, getDocs, setDoc } from "firebase/firestore"; // Certifique-se de que o caminho esteja correto para sua configuração
 import { firestore } from "../../services/firebaseConfig";
 import Modal from 'react-modal';
 
@@ -91,16 +91,40 @@ export function FormsReview() {
         setSelectedForm(null);
     };
 
-    const handleApprove = () => {
-        // Lógica para aprovar o formulário
-        console.log('Aprovado:', selectedForm);
-        closeModal();
+    const handleApprove = async () => {
+        try {
+            // Determinar a coleção de destino com base no tipo de formulário
+            const targetCollection = formType === "pets" ? "pets" : "partners";
+    
+            // Adicionar os dados ao documento de pet ou parceiro na coleção de destino
+            const targetCollectionRef = collection(firestore, targetCollection);
+            const formData = { ...selectedForm }; // Copia os dados do formulário
+            delete formData.type; // Remove a propriedade "type" dos dados
+    
+            const docRef = doc(targetCollectionRef, selectedForm.id);
+            await setDoc(docRef, formData);
+    
+            // Remover o formulário aprovado da coleção de formulários
+            const formTypeCollection = formType === "pets" ? "formsPets" : "formsPartner";
+            const formDocRef = doc(firestore, formTypeCollection, selectedForm.id);
+            await deleteDoc(formDocRef);
+    
+            alert('Aprovado com sucesso!');
+            closeModal();
+            window.location.reload()
+        } catch (error) {
+            console.error('Erro ao aprovar o formulário:', error);
+        }
     };
 
-    const handleReject = () => {
-        // Lógica para reprovar o formulário
-        console.log('Reprovado:', selectedForm);
+    const handleReject = async () => {
+        const formTypeCollection = formType === "pets" ? "formsPets" : "formsPartner";
+        const formDocRef = doc(firestore, formTypeCollection, selectedForm.id);
+        await deleteDoc(formDocRef);
+        
+        alert('Reprovado com sucesso!');
         closeModal();
+        window.location.reload()
     };
 
     return (
@@ -119,7 +143,7 @@ export function FormsReview() {
                         onChange={handleSearchChange}
                     />
                     <select className="dropdown" value={formType} onChange={handleFormTypeChange}>
-                        <option value="pets">Pet's</option>
+                        <option value="pets">Pets</option>
                         <option value="parceiros">Parceiros</option>
                     </select>
                 </SearchDiv>
@@ -186,48 +210,50 @@ export function FormsReview() {
                 </Pagination>
             </Content>
             {selectedForm && (
-                <Modal
-                    isOpen={isModalOpen}
-                    onRequestClose={closeModal}
-                    contentLabel="Form Details"
-                >
-                    <h2>{formType === "pets" ? 'Detalhes do Pet' : 'Detalhes do Parceiro'}</h2>
-                    <div>
-                        {formType === "pets" ? (
-                            <>
-                                <p><strong>ID Pet:</strong> {selectedForm.id}</p>
-                                <p><strong>Nome do Tutor:</strong> {selectedForm.tutorName}</p>
-                                <p><strong>Espécie:</strong> {selectedForm.species}</p>
-                                <p><strong>Raça:</strong> {selectedForm.breed}</p>
-                                <p><strong>Cor:</strong> {selectedForm.color}</p>
-                                <p><strong>Gênero:</strong> {selectedForm.gender}</p>
-                                <p><strong>História:</strong> {selectedForm.history}</p>
-                                <p><strong>Tamanho:</strong> {selectedForm.size}</p>
-                                <p><strong>Cuidados Especiais:</strong> {selectedForm.specialCare}</p>
-                                <p><strong>Temperamento:</strong> {selectedForm.temperament}</p>
-                                <p><strong>CEP do Tutor:</strong> {selectedForm.tutorCep}</p>
-                                <p><strong>Email do Tutor:</strong> {selectedForm.tutorEmail}</p>
-                                <p><strong>Telefone do Tutor:</strong> {selectedForm.tutorPhone}</p>
-                                <p><strong>Redes Sociais do Tutor:</strong> {selectedForm.tutorSocialMedia}</p>
-                            </>
-                        ) : (
-                            <>
-                                <p><strong>ID Parceiro:</strong> {selectedForm.id}</p>
-                                <p><strong>Nome da Empresa:</strong> {selectedForm.companyName}</p>
-                                <p><strong>Segmento de Negócio:</strong> {selectedForm.businessSegment}</p>
-                                <p><strong>CNPJ:</strong> {selectedForm.cnpj}</p>
-                                <p><strong>Descrição da Empresa:</strong> {selectedForm.companyDescription}</p>
-                                <p><strong>Contato:</strong> {selectedForm.contact}</p>
-                                <p><strong>Email:</strong> {selectedForm.email}</p>
-                                <p><strong>Endereço:</strong> {selectedForm.address}</p>
-                                <p><strong>Data/Hora:</strong> {new Date(selectedForm.timestamp).toLocaleString()}</p>
-                            </>
-                        )}
-                    </div>
-                    <button onClick={handleApprove}>Aprovar</button>
-                    <button onClick={handleReject}>Reprovar</button>
-                    <button onClick={closeModal}>Fechar</button>
-                </Modal>
+                <CustomModal
+                isOpen={isModalOpen}
+                onRequestClose={closeModal}
+                contentLabel="Form Details"
+            >
+                <h2>{formType === "pets" ? 'Detalhes do Pet' : 'Detalhes do Parceiro'}</h2>
+                <div>
+                    {formType === "pets" ? (
+                        <>
+                            <p><strong>ID Pet:</strong> {selectedForm.id}</p>
+                            <p><strong>Nome do Tutor:</strong> {selectedForm.tutorName}</p>
+                            <p><strong>Espécie:</strong> {selectedForm.species}</p>
+                            <p><strong>Raça:</strong> {selectedForm.breed}</p>
+                            <p><strong>Cor:</strong> {selectedForm.color}</p>
+                            <p><strong>Gênero:</strong> {selectedForm.gender}</p>
+                            <p><strong>História:</strong> {selectedForm.history}</p>
+                            <p><strong>Tamanho:</strong> {selectedForm.size}</p>
+                            <p><strong>Cuidados Especiais:</strong> {selectedForm.specialCare}</p>
+                            <p><strong>Temperamento:</strong> {selectedForm.temperament}</p>
+                            <p><strong>CEP do Tutor:</strong> {selectedForm.tutorCep}</p>
+                            <p><strong>Email do Tutor:</strong> {selectedForm.tutorEmail}</p>
+                            <p><strong>Telefone do Tutor:</strong> {selectedForm.tutorPhone}</p>
+                            <p><strong>Redes Sociais do Tutor:</strong> {selectedForm.tutorSocialMedia}</p>
+                        </>
+                    ) : (
+                        <>
+                            <p><strong>ID Parceiro:</strong> {selectedForm.id}</p>
+                            <p><strong>Nome da Empresa:</strong> {selectedForm.companyName}</p>
+                            <p><strong>Segmento de Negócio:</strong> {selectedForm.businessSegment}</p>
+                            <p><strong>CNPJ:</strong> {selectedForm.cnpj}</p>
+                            <p><strong>Descrição da Empresa:</strong> {selectedForm.companyDescription}</p>
+                            <p><strong>Contato:</strong> {selectedForm.contact}</p>
+                            <p><strong>Email:</strong> {selectedForm.email}</p>
+                            <p><strong>Endereço:</strong> {selectedForm.address}</p>
+                            <p><strong>Data/Hora:</strong> {new Date(selectedForm.timestamp).toLocaleString()}</p>
+                        </>
+                    )}
+                </div>
+                <Buttons>
+                <button id="approve" onClick={handleApprove}>Aprovar</button>
+                <button id="reject" onClick={handleReject}>Reprovar</button>
+                <button id="close" onClick={closeModal}>Fechar</button>
+                </Buttons>
+            </CustomModal>
             )}
         </Container>
     );

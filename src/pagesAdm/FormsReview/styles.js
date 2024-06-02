@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Modal from 'react-modal';
 
 export const Container = styled.div`
   width: 100%;
@@ -101,4 +102,71 @@ export const Pagination = styled.div`
     font-size: 14px;
     color: #666;
 }
+`
+
+export const CustomModal = styled(Modal)`
+  &.ReactModal__Overlay {
+    background-color: rgba(0, 0, 0, 0.75) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.ReactModal__Content {
+    background-color: #f0f0f0 !important;
+    padding: 20px !important;
+    border-radius: 10px !important;
+    width: 80% !important;
+    max-width: 600px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    position: relative !important;
+    transform: translate(-50%, -50%) !important;
+    top: 50% !important;
+    left: 50% !important;
+    gap: 10px;
+  }
+
+  > h2 {
+    color: #e4ac46;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  > div{
+    margin-bottom: 30px;
+  }
+
+
+  
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+    justify-content: space-between;
+
+    > button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+
+    color: #f3f3eb;
+
+    &:hover{
+      
+    }
+
+
+  }
+
+  > #approve{
+    background-color: #6bbf59;
+  }
+
+  > #reject{
+    background-color: #d9534f;
+  }
+
+  > #close{
+    background-color: #4B5563
+  }
 `

@@ -2,7 +2,7 @@ import { Container } from "./styles";
 
 export function Select({ options, value, onChange }) {
     if (!Array.isArray(options)) {
-        return null; // Retorna null ou outra representação quando options não é um array válido
+        return null; // Return null or another representation when options is not a valid array
     }
 
     return (

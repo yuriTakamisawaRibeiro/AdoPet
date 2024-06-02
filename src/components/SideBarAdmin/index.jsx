@@ -22,8 +22,8 @@ export function SideBarAdmin() {
           <IoIosPaper />
         </Link>
       </li>
-      <li className={active === '/pets' ? 'active' : ''}>
-        <Link to="/pets" onClick={() => setActive('/pets')}>
+      <li className={active === '/petslist' ? 'active' : ''}>
+        <Link to="/petslist" onClick={() => setActive('/petslist')}>
           <FaPaw />
         </Link>
       </li>

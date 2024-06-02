@@ -58,14 +58,23 @@ export function PetRegister() {
     }));
   };
 
+  const handleSelectChange = (name, selectedOption) => {
+    console.log(selectedOption); // Add this line to check the selected option
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: selectedOption,
+    }));
+  };
+
   const handleFileChange = (selectedFiles) => {
     // Convert FileList to an array
     const filesArray = Array.from(selectedFiles);
     // Update the state with the selected files
     setFiles(filesArray);
   };
-
+  
   const handleSubmit = async () => {
+    console.log(formData)
     try {
       // Adiciona os dados do formData ao Firestore
       const formsPetsCollectionRef = collection(firestore, "formsPets");
@@ -73,21 +82,16 @@ export function PetRegister() {
       console.log("Documento adicionado com ID:", docRef.id);
 
       // Envia os arquivos para o Storage
-      const files = formData.selectedFiles; // Obtém a lista de arquivos selecionados
-      const petFilesRef = ref(storage, `petsForms/${docRef.id}`);
+      const petFilesRef = ref(storage, `pets/${docRef.id}`);
 
       // Itera sobre cada arquivo e envia para o Storage
+      
       files.forEach(async (file) => {
         const fileRef = ref(petFilesRef, file.name);
         await uploadBytes(fileRef, file);
         console.log(`Arquivo ${file.name} enviado com sucesso.`);
       });
 
-      Object.keys(files).forEach((fileKey) => {
-        const file = files[fileKey];
-        const storageRef = ref(storage, `formsPets/${docRef.id}/${file.name}`);
-        const uploadTask = uploadBytes(storageRef, file);
-      });
     } catch (error) {
       console.error("Erro ao adicionar documento:", error);
     }
@@ -182,8 +186,8 @@ export function PetRegister() {
                 <Select
                   options={optionsSexo}
                   name="gender"
-                  value={formData.gender}
-                  onChange={handleInputChange}
+                  value={formData.gender} 
+                  onChange={(selectedOption) => handleSelectChange("gender", selectedOption)}
                 />
               </div>
               <div>
@@ -209,8 +213,8 @@ export function PetRegister() {
                 <Select
                   options={optionsSize}
                   name="size"
-                  value={formData.size}
-                  onChange={handleInputChange}
+                  value={optionsSize.find(option => option.value === formData.size)}
+                  onChange={(selectedOption) => handleSelectChange("size", selectedOption)}
                 />
               </div>
               <div>

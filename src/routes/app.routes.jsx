@@ -12,6 +12,7 @@ import { EducaPet } from '../pages/EducaPet';
 import { FormAdotante } from '../pages/FormAdotante';
 import { FormsReview } from "../pagesAdm/FormsReview"
 import { PostRegister } from '../pages/PostRegister';
+import { PetsList } from '../pagesAdm/PetsList';
 
 
 export function AppRoutes() {
@@ -31,6 +32,7 @@ export function AppRoutes() {
 
                 <Route path="/dashboardAdmin" element={<Dashboard/>} />
                 <Route path="/formsReview" element={<FormsReview/>} />
+                <Route path="/petslist" element={<PetsList/>}/>
                     
             </Routes>
     );
