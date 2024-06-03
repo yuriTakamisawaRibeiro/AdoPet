@@ -107,7 +107,7 @@ export const FilterIcon = styled(LuListFilter)`
 
 export const BuscaPataSection = styled.div`
     margin-top: 30px;
-    height: 120vh;
+    /* height: 120vh; */
     align-items: center;
     text-align: left;
     gap: 50px;
@@ -122,7 +122,7 @@ export const Pets = styled.div`
   gap: 20px;
   width: 100%; /* Define a largura do contêiner */
   max-width: 100%; /* Define a largura máxima */
-  height: 600px; /* Define a altura do contêiner */
+  max-height: 600px; /* Define a altura do contêiner */
   padding-bottom: 20px; /* Adiciona um espaço para evitar que os itens fiquem colados à borda inferior */
   -webkit-overflow-scrolling: touch; /* Adiciona rolagem suave para dispositivos iOS */
   scroll-behavior: smooth; /* Adiciona rolagem suave para navegadores modernos */

@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../Button";
-import { ButtonFavorite, Container } from "./styles";
+import { ButtonFavorite, Container , ImageArea, NameArea} from "./styles";
 import { AiOutlineHeart } from "react-icons/ai";
 
 
-export function PetCard({imageURL, title, description}){
+export function PetCard({fileUrls, breed, species}){
     const navigate = useNavigate()
 
     
@@ -18,16 +18,18 @@ export function PetCard({imageURL, title, description}){
                 <AiOutlineHeart />
             </ButtonFavorite>
 
+            <ImageArea>
             <img 
-            src={imageURL} 
+            src={fileUrls} 
             alt=""
             />
+            </ImageArea>
 
-            <a>
-                <h2>{title}</h2>
-            </a>
+            <NameArea>
+                <h2>{breed}</h2>
+                <p>{species}</p>
+            </NameArea>
 
-            <p>{description}</p>
 
             <Button onClick={navigateToAboutPet} title="Ver Mais"/>
 

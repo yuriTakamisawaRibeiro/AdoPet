@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    width: 300px;
+    min-width: 300px;
+    max-width:300px;
     height: 450px;
-
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,35 +19,17 @@ export const Container = styled.div`
     position: relative;
 
     @media (max-width: 768px) {
-
+        
         width: 200px;
         height: 350px;
   }
 
 
     
-    img {
-        width: 175px;
+    
 
-        @media (max-width: 768px) {
 
-        width: 120px;
-  }
-    }
-
-    h2 {
-        font-weight: 700;
-        line-height: 3.6rem;
-        text-align: center;
-    }
-
-    p {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 2.24rem;
-        color: #4B5563;
-        text-align: center;
-    }
+    
 
   
 `;
@@ -71,4 +54,49 @@ export const ButtonFavorite = styled.div`
 }
 
 
+`
+
+
+export const ImageArea = styled.div`
+    width: 200px;
+    height: 200px; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; 
+    }
+
+    @media (max-width: 768px) {
+        width: 140px;
+        height: 140px; 
+    }
+`
+
+
+
+
+export const NameArea = styled.div`
+h2 {
+        font-weight: 700;
+        line-height: 3.6rem;
+        text-align: center;
+        
+        overflow-wrap: break-word; // quebra a linha se o texto for muito grande
+        word-wrap: break-word; // quebra a linha se o texto for muito grande
+      }
+      
+      p {
+        font-weight: 400;
+        text-align: center;
+        font-size: 14px;
+        line-height: 2.24rem;
+        color: #4B5563;
+        width: 100%; // define a largura
+        overflow-wrap: break-word; // quebra a linha se o texto for muito grande
+        word-wrap: break-word; // quebra a linha se o texto for muito grande
+    }
 `

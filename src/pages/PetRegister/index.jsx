@@ -24,12 +24,14 @@ import { useState } from "react";
 import { firestore, storage } from "../../services/firebaseConfig";
 import { addDoc, collection, serverTimestamp, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 export function PetRegister() {
   const [currentStep, setCurrentStep] = useState(0);
   const [infoPetVisible, setInfoPetVisible] = useState(true);
   const [descriptionPetVisible, setDescriptionPetVisible] = useState(false);
   const [contactVisible, setContactVisible] = useState(false);
+  const navigate = useNavigate();
   const [termsAndConditionsVisible, setTermsAndConditionsVisible] =
     useState(false);
   const [formData, setFormData] = useState({
@@ -97,7 +99,7 @@ export function PetRegister() {
       // Atualiza o documento no Firestore com as URLs das imagens
       await updateDoc(docRef, { fileUrls });
       console.log("Documento atualizado com as URLs das imagens:", fileUrls);
-  
+      navigate("/petfinder");
     } catch (error) {
       console.error("Erro ao adicionar documento:", error);
     }
@@ -180,7 +182,7 @@ export function PetRegister() {
           <Form>
             <Row>
               <div>
-                <InputTitle>Espécie *</InputTitle>
+                <InputTitle>Nome do pet *</InputTitle>
                 <InputPetRegister
                   name="species"
                   value={formData.species}
