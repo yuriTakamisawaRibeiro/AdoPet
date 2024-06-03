@@ -65,7 +65,9 @@ export const SearchDiv = styled.div`
 `
 
 export const Pets = styled.div`
-
+display: flex;
+flex-direction: column;
+  gap: 15px;
 `
 
 export const PetCard = styled.div`

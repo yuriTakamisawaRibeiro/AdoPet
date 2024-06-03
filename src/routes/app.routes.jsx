@@ -14,6 +14,7 @@ import { FormsReview } from "../pagesAdm/FormsReview"
 import { PostRegister } from '../pages/PostRegister';
 import { PetsList } from '../pagesAdm/PetsList';
 import { EducaPetReview } from '../pagesAdm/EducaPetReview';
+import { SupportCentral } from '../pagesAdm/SupportCentral';
 
 
 export function AppRoutes() {
@@ -36,6 +37,7 @@ export function AppRoutes() {
                 <Route path="/formsReview" element={<FormsReview/>} />
                 <Route path="/petslist" element={<PetsList/>}/>
                 <Route path='/educapetreview' element={<EducaPetReview/>}/>
+                <Route path='/supportcentral' element={<SupportCentral/>}/>
              
             </Routes>
     );

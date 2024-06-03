@@ -32,8 +32,8 @@ export function SideBarAdmin() {
           <FaBook />
         </Link>
       </li>
-      <li className={active === '/support' ? 'active' : ''}>
-        <Link to="/support" onClick={() => setActive('/support')}>
+      <li className={active === '/supportcentral' ? 'active' : ''}>
+        <Link to="/supportcentral" onClick={() => setActive('/supportcentral')}>
           <FaHeadphones />
         </Link>
       </li>
