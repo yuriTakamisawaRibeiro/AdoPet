@@ -10,19 +10,32 @@ import { Newsletter } from "../../components/Newsletter";
 import { useNavigate } from "react-router-dom";
 import { PetCard } from "../../components/PetCard";
 import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 import { db } from '../../services/firebaseConfig';
+
+
 export default function BuscaPata() {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const [pets, setPets] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         const fetchPets = async () => {
             try {
-                const querySnapshot = await getDocs(collection(db, 'pets'));
+                const petsQuery = collection(db, 'pets');
+                
+                // Construir a consulta com base no termo de pesquisa
+                const querySnapshot = await getDocs(petsQuery);
                 const fetchedPets = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                setPets(fetchedPets);
+
+                // Filtrar os pets com base no termo de pesquisa
+                const filteredPets = fetchedPets.filter(pet => {
+                    const petAttributes = Object.values(pet).join(" ").toLowerCase();
+                    return petAttributes.includes(searchTerm.toLowerCase());
+                });
+
+                setPets(filteredPets);
             } catch (error) {
                 console.error('Error fetching pets:', error);
             } finally {
@@ -31,7 +44,11 @@ export default function BuscaPata() {
         };
 
         fetchPets();
-    }, []);
+    }, [searchTerm]);
+
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
 
     function handlePetRegister(){
         navigate("/petregister")
@@ -46,6 +63,8 @@ export default function BuscaPata() {
     };
 
     
+
+    
     return (
         <Container>
             <Header />
@@ -53,7 +72,9 @@ export default function BuscaPata() {
                 <BuscaPataFrame1 src={CatAndDogImage} alt="Descrição da imagem" />
                 <BuscaPataFrame1Mobile src={CatAndDogImageMobile} alt="Descrição da imagem"/>
                 <Search>
-                    <Input icon={MagnifierIcon} placeholder="Faça aqui sua pesquisa" />
+                    <Input icon={MagnifierIcon} placeholder="Faça aqui sua pesquisa" 
+                    value={searchTerm}
+                    onChange={handleSearchChange}/>
                     <FilterButton>
                         <FilterIcon />Filtros
                     </FilterButton>
