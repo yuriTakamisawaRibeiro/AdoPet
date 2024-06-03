@@ -13,6 +13,7 @@ import { FormAdotante } from '../pages/FormAdotante';
 import { FormsReview } from "../pagesAdm/FormsReview"
 import { PostRegister } from '../pages/PostRegister';
 import { PetsList } from '../pagesAdm/PetsList';
+import { EducaPetReview } from '../pagesAdm/EducaPetReview';
 
 
 export function AppRoutes() {
@@ -30,10 +31,12 @@ export function AppRoutes() {
                 <Route path='/formadotante' element={<FormAdotante/>}/>
                 <Route path='/postregister' element={<PostRegister/>}/>
 
+
                 <Route path="/dashboardAdmin" element={<Dashboard/>} />
                 <Route path="/formsReview" element={<FormsReview/>} />
                 <Route path="/petslist" element={<PetsList/>}/>
-                    
+                <Route path='/educapetreview' element={<EducaPetReview/>}/>
+             
             </Routes>
     );
 }

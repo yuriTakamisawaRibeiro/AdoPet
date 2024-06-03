@@ -45,71 +45,61 @@ padding: 30px;
 
 `
 
-export const SearchDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    
-    gap: 10px;
-    margin-bottom: 20px;
+export const Search = styled.div`
+  grid-area: search;
+  padding: 64px 64px 0;
+  
+`;
 
-    > p{
+export const Section = styled.section`
+  margin: 28px 0;
+
+  > h2 {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #4B5563;
+
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+
+    color: #4B5563;
     font-size: 20px;
-    margin-top: 50px;
-}
+    font-weight: 400;
+  }
+`;
 
-> .line{
-    border-bottom: 1px solid #3E3B47;
-    
-}
-
-`
-
-export const Pets = styled.div`
-
-`
-
-export const PetCard = styled.div`
-    display: flex;
-    justify-content: space-between;
+export const New = styled.div`
     width: 100%;
-    padding: 25px;
-    align-items: center;
-
     background-color: #E8E8E0;
 
+    border: none;
     border-radius: 10px;
 
-    
+    padding: 22px;
+    margin-bottom: 16px;
 
-    > div{
-        display: flex;
-        align-items: center;
-        gap: 20px;
-
-        > img{
-          max-width: 150px;
-        }
-
-        > button{
-            background: none;
-            border: none;
-
-            font-size: 22px;
-            color: #4B5563;
-
-            cursor: pointer;
-
-            &:hover{    
-                color: #3E434A;
-                font-size: 23px;
-                transform: none;
-                padding: 0;
-            }
-        }
-
-
+    > h1 {
+        flex: 1;
+        text-align: left;
+        font-weight: 700;
+        font-size: 24px;
+        color: #4B5563;
     }
 
-    
-`
+    > footer{
+        width: 100%;
+        display: flex;
+        margin-top: 24px;
 
+        > span{
+            font-size: 12px;
+            padding: 5px 14px;
+            border-radius: 5px;
+            margin-right: 6px;
+            color: #f3f3eb;
+            background-color: #e4ac46;
+        }
+    }
+
+
+`

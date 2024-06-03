@@ -27,8 +27,8 @@ export function SideBarAdmin() {
           <FaPaw />
         </Link>
       </li>
-      <li className={active === '/educapetReview' ? 'active' : ''}>
-        <Link to="/educapetReview" onClick={() => setActive('/educapetReview')}>
+      <li className={active === '/educapetreview' ? 'active' : ''}>
+        <Link to="/educapetreview" onClick={() => setActive('/educapetreview')}>
           <FaBook />
         </Link>
       </li>

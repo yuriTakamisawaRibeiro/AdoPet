@@ -134,7 +134,17 @@ export const CustomModal = styled(Modal)`
 
   > div{
     margin-bottom: 30px;
+
+    > ul li{
+      list-style: none;
+    }
+    > ul li a{
+      text-align: center;
+    font-size: 14px;
   }
+  }
+
+  
 
 
   

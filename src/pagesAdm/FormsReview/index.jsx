@@ -4,8 +4,9 @@ import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import { Input } from "../../components/Input";
 import { BiSearchAlt } from "react-icons/bi";
 import { useEffect, useState } from "react";
-import { addDoc, collection, deleteDoc, doc, getDocs, setDoc } from "firebase/firestore"; // Certifique-se de que o caminho esteja correto para sua configuração
-import { firestore } from "../../services/firebaseConfig";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore"; // Certifique-se de que o caminho esteja correto para sua configuração
+import { firestore, storage } from "../../services/firebaseConfig"; // Inclua a importação do storage
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage"; // Inclua as funções necessárias do storage
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root'); // Ajuste conforme necessário para o ambiente de sua aplicação
@@ -81,9 +82,21 @@ export function FormsReview() {
         setCurrentPage(1); // Reset to first page when changing search term
     };
 
-    const handleRowClick = (form) => {
-        setSelectedForm(form);
-        setIsModalOpen(true);
+    const handleRowClick = async (form) => {
+        const collectionName = formType === "pets" ? "formsPets" : "formsPartner";
+        const formDocRef = doc(firestore, collectionName, form.id);
+
+        try {
+            const formDoc = await getDoc(formDocRef);
+            if (formDoc.exists()) {
+                setSelectedForm({ id: formDoc.id, ...formDoc.data() });
+                setIsModalOpen(true);
+            } else {
+                console.error("No such document!");
+            }
+        } catch (error) {
+            console.error("Error getting document:", error);
+        }
     };
 
     const closeModal = () => {
@@ -111,7 +124,7 @@ export function FormsReview() {
     
             alert('Aprovado com sucesso!');
             closeModal();
-            window.location.reload()
+            window.location.reload();
         } catch (error) {
             console.error('Erro ao aprovar o formulário:', error);
         }
@@ -124,7 +137,7 @@ export function FormsReview() {
         
         alert('Reprovado com sucesso!');
         closeModal();
-        window.location.reload()
+        window.location.reload();
     };
 
     return (
@@ -233,6 +246,18 @@ export function FormsReview() {
                             <p><strong>Email do Tutor:</strong> {selectedForm.tutorEmail}</p>
                             <p><strong>Telefone do Tutor:</strong> {selectedForm.tutorPhone}</p>
                             <p><strong>Redes Sociais do Tutor:</strong> {selectedForm.tutorSocialMedia}</p>
+                            {selectedForm.fileUrls && (
+                                <>
+                                  <h3>URLs das Imagens:</h3>
+                                    <ul>
+                                        {selectedForm.fileUrls.map((url, index) => (
+                                            <li key={index}>
+                                                <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </>
+                            )}
                         </>
                     ) : (
                         <>

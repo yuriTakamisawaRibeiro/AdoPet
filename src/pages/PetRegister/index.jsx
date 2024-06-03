@@ -22,8 +22,8 @@ import { StepsButtons } from "../../components/StepsButtons";
 import { PetRegisterHeader } from "../../components/PetRegisterHeader";
 import { useState } from "react";
 import { firestore, storage } from "../../services/firebaseConfig";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
+import { addDoc, collection, serverTimestamp, updateDoc } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 export function PetRegister() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -74,24 +74,30 @@ export function PetRegister() {
   };
   
   const handleSubmit = async () => {
-    console.log(formData)
+    console.log(formData);
     try {
       // Adiciona os dados do formData ao Firestore
       const formsPetsCollectionRef = collection(firestore, "formsPets");
       const docRef = await addDoc(formsPetsCollectionRef, formData);
       console.log("Documento adicionado com ID:", docRef.id);
-
-      // Envia os arquivos para o Storage
+  
+      // Envia os arquivos para o Storage e obtém as URLs
       const petFilesRef = ref(storage, `pets/${docRef.id}`);
-
-      // Itera sobre cada arquivo e envia para o Storage
-      
-      files.forEach(async (file) => {
+      const fileUploadPromises = files.map(async (file) => {
         const fileRef = ref(petFilesRef, file.name);
         await uploadBytes(fileRef, file);
-        console.log(`Arquivo ${file.name} enviado com sucesso.`);
+        const url = await getDownloadURL(fileRef);
+        console.log(`Arquivo ${file.name} enviado com sucesso. URL: ${url}`);
+        return url;
       });
-
+  
+      // Espera até que todas as promessas de upload sejam resolvidas e obtenha as URLs
+      const fileUrls = await Promise.all(fileUploadPromises);
+  
+      // Atualiza o documento no Firestore com as URLs das imagens
+      await updateDoc(docRef, { fileUrls });
+      console.log("Documento atualizado com as URLs das imagens:", fileUrls);
+  
     } catch (error) {
       console.error("Erro ao adicionar documento:", error);
     }

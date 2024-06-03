@@ -7,40 +7,33 @@ import { BiSearchAlt } from "react-icons/bi";
 import { IoMdEye } from "react-icons/io";
 import { IoPencil } from "react-icons/io5";
 import { collection, getDocs } from "firebase/firestore";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
-import { firestore, storage } from "../../services/firebaseConfig";
+import { firestore } from "../../services/firebaseConfig";
 
 export function PetsList() {
     const [pets, setPets] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         const fetchPets = async () => {
             const petsCollection = collection(firestore, "pets");
             const petsSnapshot = await getDocs(petsCollection);
             const petsData = [];
-            
-            for (const doc of petsSnapshot.docs) {
-                const id = doc.id;
-                const petData = doc.data();
-                
-                const listRef = ref(storage, `pets/${id}`);
 
-                // Find all the prefixes and items.
-                listAll(listRef)
-                  .then((res) => {
-                    res.items.forEach((itemRef) => {
-                      console.log(itemRef)
-                    });
-                  }).catch((error) => {
-                    console.log(error)
-                  });
-            }
-        
+            petsSnapshot.forEach(doc => {
+                const petData = doc.data();
+                petsData.push({ id: doc.id, ...petData });
+            });
+
             setPets(petsData);
         };
 
         fetchPets();
     }, []);
+
+    const filteredPets = pets.filter(pet => {
+        const searchTermLower = searchTerm.toLowerCase();
+        return pet.id.toLowerCase().includes(searchTermLower) || pet.breed.toLowerCase().includes(searchTermLower);
+    });
 
     return (
         <Container>
@@ -53,25 +46,27 @@ export function PetsList() {
                     <Input
                         icon={BiSearchAlt}
                         placeholder="Pesquisar pela Raça ou ID"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                     />
 
                     <p>
-                        Pet´s Registrados
+                        Pets Registrados
                     </p>
 
                     <div className="line"></div>
                 </SearchDiv>
 
                 <Pets>
-                    {pets.map((pet) => (
+                    {filteredPets.map((pet) => (
                         <PetCard key={pet.id}>
                             <div>
-                                <img src={pet.imageUrl} alt="" />
-                                <h1>{pet.breed} {pet.id}</h1>
+                                {/* Exibe a primeira imagem do pet */}
+                                <img src={pet.fileUrls[0]} alt="" />
+                                <h1>{`${pet.breed} #${pet.id}`}</h1>
                             </div>
                             <div>
                                 <button> <IoMdEye /></button>
-                                <button><IoPencil /></button>
                             </div>
                         </PetCard>
                     ))}
