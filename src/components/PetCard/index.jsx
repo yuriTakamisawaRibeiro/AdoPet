@@ -4,13 +4,11 @@ import { ButtonFavorite, Container , ImageArea, NameArea} from "./styles";
 import { AiOutlineHeart } from "react-icons/ai";
 
 
-export function PetCard({fileUrls, breed, species}){
+export function PetCard({ id ,fileUrls, breed, species, onClick}){
     const navigate = useNavigate()
 
     
-    const navigateToAboutPet = () => {
-        navigate('/aboutpet');
-    };
+   
 
     return(
         <Container>
@@ -26,12 +24,12 @@ export function PetCard({fileUrls, breed, species}){
             </ImageArea>
 
             <NameArea>
-                <h2>{breed}</h2>
-                <p>{species}</p>
+                <h2>{species}</h2>
+                <p>{breed}</p>
             </NameArea>
 
 
-            <Button onClick={navigateToAboutPet} title="Ver Mais"/>
+            <Button onClick={onClick} title="Ver Mais"/>
 
         </Container>
     )

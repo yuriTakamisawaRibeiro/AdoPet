@@ -22,6 +22,10 @@ export const Content = styled.div`
   @media(max-width: 1500px){
     gap: 100px
   }
+
+  @media (max-width: 425px) {
+    gap: 50px;
+  }
 `
 
 export const InfosPet = styled.div`
@@ -35,7 +39,7 @@ export const Line1 = styled.div`
 
    
     > img{
-        width: 300px;
+        max-width: 300px;
     }
 
     > div{
@@ -110,14 +114,18 @@ export const GridInfos = styled.div`
     >div{
         display: flex;
         justify-content: space-between;
-
-        > h4{
-            cursor: pointer;
-        }
+        
     }
-
+    > h4{
+        cursor: pointer;
+        margin-top:10px;
+    }
+    
     > p {
         margin-top: 15px;
+        font-size: 12px;
+        text-align:justify;
+        
     }
 
     
@@ -138,7 +146,15 @@ export const GridInfos = styled.div`
 
 
 `
+export const Info1 = styled.div`
 
+`
+
+export const Info2 = styled.div`
+display: flex;
+flex-direction: column;
+margin-top:10px;
+`
 export const InfosAdopet = styled.div`
 
 `
@@ -150,34 +166,48 @@ export const SendForm = styled.div`
     flex-direction: column;
     gap: 35px;
     align-items: center;
-
     border-radius: 10px;
-   
-
     box-shadow: 1px #4B5563;
 
     @media (max-width: 768px) {
         padding: 15px;
         margin-top: 30px;
         gap: 0;
-    > div {
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-    }
-  }
 
-  @media (max-width: 1500px) {
-    padding: 10px 40px;
-    width: 450px;
-
-    > button{
-        width: 200px
+        > div {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
     }
-}
-`
+
+    @media (max-width: 1500px) {
+        padding: 10px 40px;
+        width: 450px;
+
+        > button {
+            width: 200px;
+        }
+    }
+
+    @media (max-width: 425px) {
+        padding: 10px;
+        width: 100%;
+        > h2 {
+            text-align:center;
+            margin-bottom:10px;
+        }
+
+        > h5 {
+            text-align:center;
+        }
+        > button {
+            width: 100%;
+        }
+    }
+`;
 
 export const AdoptionTerms = styled.div`
 display: flex;

@@ -41,6 +41,10 @@ export default function BuscaPata() {
         navigate("/profile")
     }
 
+    const navigateToAboutPet = (id) => {
+        navigate(`/aboutpet/${id}`);
+    };
+
     
     return (
         <Container>
@@ -69,6 +73,7 @@ export default function BuscaPata() {
                                     breed={pet.breed} 
                                     species={pet.species} 
                                     fileUrls={pet.fileUrls}
+                                    onClick={() => navigateToAboutPet(pet.id)}
                                 />
                             ))
                         )}

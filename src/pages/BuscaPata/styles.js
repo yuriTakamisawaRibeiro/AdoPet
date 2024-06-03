@@ -127,6 +127,12 @@ export const Pets = styled.div`
   -webkit-overflow-scrolling: touch; /* Adiciona rolagem suave para dispositivos iOS */
   scroll-behavior: smooth; /* Adiciona rolagem suave para navegadores modernos */
   white-space: nowrap;
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    overflow-x: hidden;
+    
+  }
 `
 
 export const Title = styled.h1`
