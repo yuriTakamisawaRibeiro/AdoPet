@@ -23,7 +23,7 @@ import { useEffect, useState } from "react";
 import Post from "../../components/Post";
 import { db } from "../../services/firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 
 export function EducaPet() {
     const [posts, setPosts] = useState([]);
@@ -77,25 +77,7 @@ export function EducaPet() {
     (post) => post.id!== (motherNew? motherNew.id : null)
   );
 
-  const sortedPosts = filteredPosts.sort((a, b) => {
-    const searchTermLower = searchTerm.toLowerCase();
-    const aMatches =
-      a.title.toLowerCase().includes(searchTermLower) ||
-      a.description.toLowerCase().includes(searchTermLower) ||
-      a.author.toLowerCase().includes(searchTermLower);
-    const bMatches =
-      b.title.toLowerCase().includes(searchTermLower) ||
-      b.description.toLowerCase().includes(searchTermLower) ||
-      b.author.toLowerCase().includes(searchTermLower);
-
-    if (aMatches &&!bMatches) {
-      return -1; 
-    } else if (!aMatches && bMatches) {
-      return 1;
-    } else {
-      return 0; 
-    }
-  });
+  
 
   return (
     <Container>
@@ -108,7 +90,6 @@ export function EducaPet() {
           <Input
             icon={BiSearchAlt}
             placeholder="Pesquise aqui o conteúdo"
-            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </SearchDiv>
@@ -116,7 +97,7 @@ export function EducaPet() {
       <Content>
         <FilterDiv>
           {motherNew? (
-            <MotherNew>
+            <MotherNew onClick={() => navigateToAboutPost(motherNew.id)}>
               <img src={motherNew.image_url || imageExample} alt="" />
               <div>
                 <GrCluster />
