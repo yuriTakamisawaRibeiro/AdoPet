@@ -40,7 +40,7 @@ export function FormAdotante({ donorEmail }) {
     created_at: serverTimestamp(),
   });
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Correção: Adicionando useNavigate
 
   async function fetchAddress(cep) {
     try {
