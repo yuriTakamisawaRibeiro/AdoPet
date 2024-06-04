@@ -1,5 +1,6 @@
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
+import { Footer } from "../../components/Footer";
 import { Commands, Container, Content, FilterDate, FilterDiv, Filters, ListDiv, MotherNew, New, SearchDiv, Topics } from "./styles";
 import { BiSearchAlt } from "react-icons/bi";
 import { GrCluster } from "react-icons/gr";
@@ -128,6 +129,7 @@ export function EducaPet() {
                     <button><IoIosArrowForward /></button>
                 </Commands>
             </Content>
+            <Footer />
         </Container>
     );
 }
