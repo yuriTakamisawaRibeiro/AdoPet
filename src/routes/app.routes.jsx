@@ -15,8 +15,32 @@ import { PostRegister } from '../pages/PostRegister';
 import { PetsList } from '../pagesAdm/PetsList';
 import { EducaPetReview } from '../pagesAdm/EducaPetReview';
 import { SupportCentral } from '../pagesAdm/SupportCentral';
+import { useEffect, useState } from 'react';
+import { auth, db } from '../services/firebaseConfig';
+import { doc, getDoc } from 'firebase/firestore';
+import { NotFoundPage } from '../pages/404';
 
 export function AppRoutes() {
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const user = auth.currentUser;
+            if (user) {
+                try {
+                    const userDoc = await getDoc(doc(db, "users", user.uid));
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        setIsAdmin(userData.admin === true);
+                    }
+                } catch (error) {
+                    console.error("Erro ao obter dados do usuário:", error);
+                }
+            }
+        };
+
+        fetchUserData();
+    }, []);
     return (
         <Routes>
             <Route path="/home" element={<Home />} />
@@ -34,7 +58,7 @@ export function AppRoutes() {
             <Route path="/dashboardAdmin" element={<Dashboard />} />
             <Route path="/formsReview" element={<FormsReview />} />
             <Route path="/petslist" element={<PetsList />} />
-            <Route path='/educapetreview' element={<EducaPetReview />} />
+            <Route path='/educapetreview' element={isAdmin ? <EducaPetReview /> : <NotFoundPage />}  />
             <Route path='/supportcentral' element={<SupportCentral />} />
         </Routes>
     );
