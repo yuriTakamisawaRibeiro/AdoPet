@@ -5,8 +5,10 @@ import { firestore, storage } from "../../services/firebaseConfig";
 import { addDoc, collection, serverTimestamp, updateDoc, doc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export function PostRegister() {
+    const navigate = useNavigate();
     const optionsCategories = [
         { label: 'Selecione uma opção', value: '' },
         { label: 'Treinamento', value: 'trainment' },
@@ -71,7 +73,7 @@ export function PostRegister() {
                 console.log("Documento atualizado com a URL da imagem.");
             }
             alert("Post adicionado com sucesso.")
-            window.location.reload();
+            navigate('/educapetreview');
         } catch (error) {
             console.error("Error adding document:", error);
         }

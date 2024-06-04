@@ -5,8 +5,7 @@ height: 500px;
     width: 350px;
 
     > img{
-        max-width: 300px;
-        max-height: 168px;
+        width: 100%;
         border-radius: 10px;
     }
 
