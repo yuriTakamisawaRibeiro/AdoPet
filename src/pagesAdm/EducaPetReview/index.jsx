@@ -36,10 +36,10 @@ const customStyles = {
 const DeleteConfirmationModal = ({ isOpen, onCancel, onConfirm }) => {
     return (
         <Modal isOpen={isOpen} style={customStyles}>
-            <h2 style={{marginBottom: '8px'}}>Tem certeza que deseja excluir?</h2>
-            <div className="button-container" style={{display: 'flex', justifyContent: 'space-around', gap: '30px'}}> 
-                <button onClick={onConfirm} className="confirm-button" style={{backgroundColor: 'red', color: 'white', border: 'none', borderRadius: '10px', padding: '20px'}}>Sim</button>
-                <button onClick={onCancel} className="cancel-button" style={{border: 'none', padding: '20px', borderRadius: '10px'}}>Cancelar</button>
+            <h2 style={{ marginBottom: '8px' }}>Tem certeza que deseja excluir?</h2>
+            <div className="button-container" style={{ display: 'flex', justifyContent: 'space-around', gap: '30px' }}>
+                <button onClick={onConfirm} className="confirm-button" style={{ backgroundColor: 'red', color: 'white', border: 'none', borderRadius: '10px', padding: '20px' }}>Sim</button>
+                <button onClick={onCancel} className="cancel-button" style={{ border: 'none', padding: '20px', borderRadius: '10px' }}>Cancelar</button>
             </div>
         </Modal>
     );
@@ -126,7 +126,10 @@ export function EducaPetReview() {
 
                     {posts.map(post => (
                         <New key={post.id} onClick={() => handlePostClick(post)}>
-                            <div className="left-box">
+                            <div
+                                className="left-box"
+                                style={{ cursor: "pointer" }}
+                            >
                                 <h1>{post.title}</h1>
                                 <p>({post.id})</p>
                                 <footer>
@@ -151,16 +154,16 @@ export function EducaPetReview() {
                         <p><strong>Título:</strong> {selectedPost.title}</p>
                         <p><strong>Descrição:</strong> {selectedPost.description}</p>
                         <p><strong>Categoria:</strong> {selectedPost.category}</p>
-                        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '10px', marginBottom: '10px'}}>
-                        <p><strong>Imagem:</strong><img style={{maxHeight: '100px', marginLeft: '15px'}} src={selectedPost.image_url} alt="" /></p>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '10px', marginBottom: '10px' }}>
+                            <p><strong>Imagem:</strong><img style={{ maxHeight: '100px', marginLeft: '15px' }} src={selectedPost.image_url} alt="" /></p>
                         </div>
                         <p><strong>Autor:</strong> {selectedPost.author}</p>
-                        <button onClick={closeModal} style={{border: 'none', float:'right', backgroundColor: 'lightgray', padding: '10px', borderRadius: '10px', marginTop: '5px'}}>Fechar</button>
+                        <button onClick={closeModal} style={{ border: 'none', float: 'right', backgroundColor: 'lightgray', padding: '10px', borderRadius: '10px', marginTop: '5px' }}>Fechar</button>
                     </div>
                 </CustomModal>
             )}
-            {}
-            <DeleteConfirmationModal 
+            { }
+            <DeleteConfirmationModal
                 isOpen={deleteConfirmationOpen}
                 onCancel={cancelDeletePost}
                 onConfirm={confirmDeletePost}

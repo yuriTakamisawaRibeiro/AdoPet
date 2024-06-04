@@ -116,10 +116,13 @@ export function PetRegister() {
 
   const handleBack = () => {
     if (currentStep > 0) {
-      setCurrentStep((prevStep) => prevStep - 1);
-      toggleVisibility(currentStep - 1);
+        setCurrentStep((prevStep) => prevStep - 1);
+        toggleVisibility(currentStep - 1);
+    } else {
+        // Redirecionar para a página /petfinder
+        navigate('/petfinder');
     }
-  };
+};
 
   const toggleVisibility = (step) => {
     switch (step) {
@@ -160,9 +163,9 @@ export function PetRegister() {
 
   const optionsSize = [
     { label: "Selecione uma opção", value: "" },
-    { label: "Porte Pequeno", value: "pequeno" },
-    { label: "Porte Médio", value: "medio" },
-    { label: "Porte Grande", value: "grande" },
+    { label: "Pequeno", value: "pequeno" },
+    { label: "Médio", value: "medio" },
+    { label: "Grande", value: "grande" },
   ];
 
   return (

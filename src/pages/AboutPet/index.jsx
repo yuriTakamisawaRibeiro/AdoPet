@@ -72,6 +72,7 @@ export function AboutPet() {
                   ? pet.fileUrls[0]
                   : "https://via.placeholder.com/150"
               }
+              style={{borderRadius: '10px'}}
               alt={pet.name}
             />
             <div>
