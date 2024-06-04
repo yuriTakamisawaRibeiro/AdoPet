@@ -59,13 +59,16 @@ export function EducaPetReview() {
             const querySnapshot = await getDocs(q);
             const postsData = [];
             querySnapshot.forEach((doc) => {
-                postsData.push({ id: doc.id, ...doc.data() });
+                const postData = { id: doc.id, ...doc.data() };
+                if (postData.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    postsData.push(postData);
+                }
             });
             setPosts(postsData);
         };
 
         fetchPosts();
-    }, []);
+    }, [searchTerm]);
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -162,7 +165,6 @@ export function EducaPetReview() {
                     </div>
                 </CustomModal>
             )}
-            { }
             <DeleteConfirmationModal
                 isOpen={deleteConfirmationOpen}
                 onCancel={cancelDeletePost}
