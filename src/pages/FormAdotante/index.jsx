@@ -19,7 +19,6 @@ import { Select } from "../../components/Select";
 import { useState } from "react";
 import { serverTimestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 export function FormAdotante({ donorEmail }) {
   const [currentStep, setCurrentStep] = useState(0);
@@ -40,6 +39,8 @@ export function FormAdotante({ donorEmail }) {
     city: "",
     created_at: serverTimestamp(),
   });
+
+  const navigate = useNavigate();
 
   async function fetchAddress(cep) {
     try {
