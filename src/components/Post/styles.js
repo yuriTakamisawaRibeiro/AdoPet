@@ -7,13 +7,16 @@ height: 500px;
     > img{
         width: 100%;
         border-radius: 10px;
+        margin-bottom: 6px;
     }
 
     > h1{
             font-size: 14px;
+            margin-top: 6px;
         }
 
     > p{
+        margin-top: 3px;
         font-size: 12px;
         text-align: justify;
     }
