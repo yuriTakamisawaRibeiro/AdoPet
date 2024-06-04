@@ -18,9 +18,11 @@ import { StepsButtons } from "../../components/StepsButtons";
 import { Select } from "../../components/Select";
 import { useState } from "react";
 import { serverTimestamp } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export function FormAdotante({ donorEmail }) { // Recebe o email do doador como prop
   const [currentStep, setCurrentStep] = useState(0);
+  const navigate = useNavigate();
   const [infoPersonVisible, setInfoPersonVisible] = useState(true);
   const [residentialInfoVisible, setResidentialInfoVisible] = useState(false);
   const [termsAndConditionsVisible, setTermsAndConditionsVisible] = useState(false);
@@ -111,10 +113,13 @@ export function FormAdotante({ donorEmail }) { // Recebe o email do doador como 
 
   const handleBack = () => {
     if (currentStep > 0) {
-      setCurrentStep((prevStep) => prevStep - 1);
-      toggleVisibility(currentStep - 1);
+        setCurrentStep((prevStep) => prevStep - 1);
+        toggleVisibility(currentStep - 1);
+    } else {
+        // Redirecionar para a página /petfinder
+        navigate('/petfinder');
     }
-  };
+};
 
   const handleSubmit = () => {
     const emailData = {
