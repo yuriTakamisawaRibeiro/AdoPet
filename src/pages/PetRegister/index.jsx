@@ -163,9 +163,9 @@ export function PetRegister() {
 
   const optionsSize = [
     { label: "Selecione uma opção", value: "" },
-    { label: "Porte Pequeno", value: "pequeno" },
-    { label: "Porte Médio", value: "medio" },
-    { label: "Porte Grande", value: "grande" },
+    { label: "Pequeno", value: "pequeno" },
+    { label: "Médio", value: "medio" },
+    { label: "Grande", value: "grande" },
   ];
 
   return (
@@ -224,7 +224,7 @@ export function PetRegister() {
                 <Select
                   options={optionsSize}
                   name="size"
-                  value={optionsSize.find(option => option.value === formData.size)}
+                  value={formData.size} 
                   onChange={(selectedOption) => handleSelectChange("size", selectedOption)}
                 />
               </div>
