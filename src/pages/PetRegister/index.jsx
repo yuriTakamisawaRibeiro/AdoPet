@@ -116,10 +116,13 @@ export function PetRegister() {
 
   const handleBack = () => {
     if (currentStep > 0) {
-      setCurrentStep((prevStep) => prevStep - 1);
-      toggleVisibility(currentStep - 1);
+        setCurrentStep((prevStep) => prevStep - 1);
+        toggleVisibility(currentStep - 1);
+    } else {
+        // Redirecionar para a página /petfinder
+        navigate('/petfinder');
     }
-  };
+};
 
   const toggleVisibility = (step) => {
     switch (step) {

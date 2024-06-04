@@ -55,11 +55,11 @@ export function AppRoutes() {
             <Route path='/formadotante' element={<FormAdotante />} />
             <Route path='/postregister' element={<PostRegister />} />
 
-            <Route path="/dashboardAdmin" element={<Dashboard />} />
-            <Route path="/formsReview" element={<FormsReview />} />
-            <Route path="/petslist" element={<PetsList />} />
+            <Route path="/dashboardAdmin" element={isAdmin ? <Dashboard /> : <NotFoundPage/>} />
+            <Route path="/formsReview" element={isAdmin ? <FormsReview /> : <NotFoundPage/>} />
+            <Route path="/petslist" element={isAdmin ? <PetsList /> : <NotFoundPage/>} />
             <Route path='/educapetreview' element={isAdmin ? <EducaPetReview /> : <NotFoundPage />}  />
-            <Route path='/supportcentral' element={<SupportCentral />} />
+            <Route path='/supportcentral' element={isAdmin ? <SupportCentral /> : <NotFoundPage/>} />
         </Routes>
     );
 }
