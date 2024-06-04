@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const Menu = styled.div`
   grid-area: menu;
   background-color: #E8E8E0;
-  padding-top: 64px;
+  padding-top: 100px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   font-size: 30px;
   gap: 54px;

@@ -1,16 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../Button";
-import { ButtonFavorite, Container } from "./styles";
+import { ButtonFavorite, Container , ImageArea, NameArea} from "./styles";
 import { AiOutlineHeart } from "react-icons/ai";
 
 
-export function PetCard({imageURL, title, description}){
+export function PetCard({ id ,fileUrls, breed, species, onClick}){
     const navigate = useNavigate()
 
     
-    const navigateToAboutPet = () => {
-        navigate('/aboutpet');
-    };
+   
 
     return(
         <Container>
@@ -18,18 +16,20 @@ export function PetCard({imageURL, title, description}){
                 <AiOutlineHeart />
             </ButtonFavorite>
 
+            <ImageArea>
             <img 
-            src={imageURL} 
+            src={fileUrls} 
             alt=""
             />
+            </ImageArea>
 
-            <a>
-                <h2>{title}</h2>
-            </a>
+            <NameArea>
+                <h2>{species}</h2>
+                <p>{breed}</p>
+            </NameArea>
 
-            <p>{description}</p>
 
-            <Button onClick={navigateToAboutPet} title="Ver Mais"/>
+            <Button onClick={onClick} title="Ver Mais"/>
 
         </Container>
     )

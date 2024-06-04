@@ -1,19 +1,12 @@
 import { IoIosPaper } from 'react-icons/io';
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
-import { Brand, Charts, Container, Content, TablePartners} from './styles';
+import { Brand, Charts, Container, Content, TablePartners } from './styles';
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from '../../services/firebaseConfig';
 import { Bar } from 'react-chartjs-2';
 import { Line } from 'react-chartjs-2';
 import { getCurrentUser } from '../../services/utils';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { Paginator } from 'primereact/paginator';
-import { StyleClass } from 'primereact/styleclass';
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,7 +19,6 @@ import {
   Legend,
 } from 'chart.js';
 import { SideBarAdmin } from '../../components/SideBarAdmin';
-
 
 ChartJS.register(
   CategoryScale,
@@ -43,26 +35,19 @@ export function Dashboard() {
   const [userData, setUserData] = useState([]);
   const [petsData, setPetsData] = useState([]);
   const [userName, setUserName] = useState('');
-  const [partners, setPartners] = useState([])
-
-
-
-
+  const [partners, setPartners] = useState([]);
 
   useEffect(() => {
-
-
     const fetchData = async () => {
       const user = await getCurrentUser();
       setUserName(user?.name.split(' ')[0]);
 
-      const petsRef = collection(firestore, "formsPets")
-
+      const petsRef = collection(firestore, 'formsPets');
       try {
         const snapshot = await getDocs(petsRef);
-        const petsData = snapshot.docs.map(doc => ({
+        const petsData = snapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
         setPetsData(petsData);
       } catch (error) {
@@ -70,30 +55,27 @@ export function Dashboard() {
       }
 
       const usersRef = collection(firestore, 'users');
-
       try {
         const snapshot = await getDocs(usersRef);
-        const userData = snapshot.docs.map(doc => ({
+        const userData = snapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
         setUserData(userData);
       } catch (error) {
         console.error('Error fetching users:', error);
       }
 
-
-      const partnersRef = collection(firestore, "partner")
-
+      const partnersRef = collection(firestore, 'partners');
       try {
-        const snpPtr = await getDocs(partnersRef)
-        const PtrData = snpPtr.docs.map(doc => ({
+        const snapshot = await getDocs(partnersRef);
+        const partnersData = snapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
-        }))
-        setPartners(PtrData)
+          ...doc.data(),
+        }));
+        setPartners(partnersData);
       } catch (error) {
-        console.error('Error fetching users:', error)
+        console.error('Error fetching partners:', error);
       }
     };
 
@@ -102,14 +84,13 @@ export function Dashboard() {
 
   const chartStyle = {
     width: '300px',
-    height: '300px'
+    height: '300px',
   };
 
   const getPetsByMonth = () => {
     const petsCountsByMonth = {};
 
-    petsData.forEach(pet => {
-      // Check if pet object has 'created_at' and it's a valid Firestore Timestamp
+    petsData.forEach((pet) => {
       if (pet.created_at && pet.created_at.toDate instanceof Function) {
         const createdAt = pet.created_at.toDate();
         const monthYear = `${createdAt.getMonth() + 1}/${createdAt.getFullYear()}`;
@@ -149,19 +130,15 @@ export function Dashboard() {
         label: 'Pets Cadastrados',
         backgroundColor: '#E4AC46',
         borderColor: '#E4AC46',
-
         data: [petsCountsByMonth[previousMonthKey] || 0, petsCountsByMonth[currentMonthKey] || 0],
-      }
-    ]
+      },
+    ],
   };
 
-
-  // Process user data to get counts by month
   const getUsersByMonth = () => {
     const userCountsByMonth = {};
 
-    userData.forEach(user => {
-      // Check if user object has 'created_at' and it's a valid Firestore Timestamp
+    userData.forEach((user) => {
       if (user.created_at && user.created_at.toDate instanceof Function) {
         const createdAt = user.created_at.toDate();
         const monthYear = `${createdAt.getMonth() + 1}/${createdAt.getFullYear()}`;
@@ -173,7 +150,6 @@ export function Dashboard() {
         }
       } else {
         console.warn(`Invalid 'created_at' timestamp for user: ${user.id}`);
-        // Handle or log the error (e.g., skip this user, set a default date, etc.)
       }
     });
 
@@ -182,7 +158,6 @@ export function Dashboard() {
 
   const userCountsByMonth = getUsersByMonth();
 
-  // Prepare data for chart
   const chartData = {
     labels: Object.keys(userCountsByMonth),
     datasets: [
@@ -191,25 +166,21 @@ export function Dashboard() {
         backgroundColor: '#E4AC46',
         borderColor: '#4B5563',
         borderWidth: 1,
-        data: Object.values(userCountsByMonth)
-      }
-    ]
+        data: Object.values(userCountsByMonth),
+      },
+    ],
   };
+
   return (
     <Container>
       <Brand>
         <img src={AdopetImg} alt="Logo do site" />
       </Brand>
-
-
-
-    <SideBarAdmin/>
-
+      <SideBarAdmin />
       <Content>
-
-        <h1>Olá <span>{userName}
-        </span></h1>
-
+        <h1>
+          Olá <span>{userName}</span>
+        </h1>
         <h4>Bem vindo ao painel de administrador</h4>
         <Charts>
           <Bar
@@ -222,20 +193,19 @@ export function Dashboard() {
                   labels: Object.keys(userCountsByMonth),
                   title: {
                     display: true,
-                    text: 'Mês'
-                  }
+                    text: 'Mês',
+                  },
                 },
                 y: {
                   beginAtZero: true,
                   title: {
                     display: true,
-                    text: 'Número de usuários'
-                  }
-                }
-              }
+                    text: 'Número de usuários',
+                  },
+                },
+              },
             }}
           />
-
           <Line
             style={chartStyle}
             data={chartDataPets}
@@ -245,60 +215,46 @@ export function Dashboard() {
                   type: 'category',
                   title: {
                     display: true,
-                    text: 'Mês'
-                  }
+                    text: 'Mês',
+                  },
                 },
                 y: {
                   beginAtZero: true,
                   title: {
                     display: true,
-                    text: 'Número de pets em relação ao mês anterior'
-                  }
-                }
-              }
+                    text: 'Número de pets em relação ao mês anterior',
+                  },
+                },
+              },
             }}
           />
         </Charts>
-
         <TablePartners>
-        <h4>Lista de Parceiros</h4>
-        <table>
+          <h4>Lista de Parceiros</h4>
+          <table>
             <thead>
-                <tr>
-                    <th>Empresa</th>
-                    <th>ID Code</th>
-                    <th>Segmento</th>
-                    <th>Contato</th>
-                    <th>Responsável</th>
-                </tr>
+              <tr>
+                <th>Empresa</th>
+                <th>ID Code</th>
+                <th>Segmento</th>
+                <th>Contato</th>
+                <th>Email</th>
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Inataa</td>
-                    <td>#10624316000108</td>
-                    <td>TAA</td>
-                    <td>11 95158-0560</td>
-                    <td>Gabriel Maia</td>
+              {partners.map((partner) => (
+                <tr key={partner.id}>
+                  <td>{partner.companyName}</td>
+                  <td>{partner.id}</td>
+                  <td>{partner.businessSegment}</td>
+                  <td>{partner.contact}</td>
+                  <td>{partner.email}</td>
                 </tr>
-                <tr>
-                    <td> Inataa</td>
-                    <td>#10624316000108</td>
-                    <td>TAA</td>
-                    <td>11 95158-0560</td>
-                    <td>Gabriel Maia</td>
-                </tr>
-                <tr>
-                    <td> Inataa</td>
-                    <td>#10624316000108</td>
-                    <td>TAA</td>
-                    <td>11 95158-0560</td>
-                    <td>Gabriel Maia</td>
-                </tr>
+              ))}
             </tbody>
-        </table>
+          </table>
         </TablePartners>
-
       </Content>
     </Container>
-  )
+  );
 }

@@ -1,9 +1,14 @@
 import { FileInput } from "../../components/FileInput";
 import { Select } from "../../components/Select";
 import { Container, Form, InfoSection, InputPostAuthor, InputPostContent, InputPostDescription, InputPostTitle, InputTitle, PostButton, Row } from "./styles";
+import { firestore, storage } from "../../services/firebaseConfig";
+import { addDoc, collection, serverTimestamp, updateDoc, doc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export function PostRegister() {
-
+    const navigate = useNavigate();
     const optionsCategories = [
         { label: 'Selecione uma opção', value: '' },
         { label: 'Treinamento', value: 'trainment' },
@@ -11,6 +16,68 @@ export function PostRegister() {
         { label: 'Diversão', value: 'fun' },
         { label: 'Cuidados', value: 'care' },
     ];
+
+    const [formData, setFormData] = useState({
+        title: "",
+        category: "",
+        description: "",
+        content: "",
+        author: "",
+        created_at: serverTimestamp(),
+    });
+
+    const [files, setFiles] = useState([]);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleCategoryChange = (newValue) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            category: newValue,
+        }));
+    };
+
+    const handleFileChange = (selectedFiles) => {
+        const filesArray = Array.from(selectedFiles);
+        setFiles(filesArray);
+    };
+
+    const handleSubmit = async () => {
+        try {
+            // Add document to Firestore without the file
+            const posts = collection(firestore, "posts");
+            const docRef = await addDoc(posts, formData);
+            console.log("Documento adicionado com o ID:", docRef.id);
+
+            // Upload the file to Firebase Storage
+            const file = files[0];
+            if (file) {
+                const postImageRef = ref(storage, `posts/${docRef.id}/image`);
+                await uploadBytes(postImageRef, file);
+                console.log("Upload da imagem completo.");
+
+                // Get the download URL of the uploaded file
+                const imageUrl = await getDownloadURL(postImageRef);
+
+                // Update the Firestore document with the file URL
+                await updateDoc(doc(posts, docRef.id), {
+                    image_url: imageUrl
+                });
+
+                console.log("Documento atualizado com a URL da imagem.");
+            }
+            alert("Post adicionado com sucesso.")
+            navigate('/educapetreview');
+        } catch (error) {
+            console.error("Error adding document:", error);
+        }
+    };
 
     return (
         <Container>
@@ -22,38 +89,62 @@ export function PostRegister() {
                 <Row>
                     <div>
                         <InputTitle>Título da postagem</InputTitle>
-                        <InputPostTitle />
+                        <InputPostTitle
+                            name="title"
+                            value={formData.title}
+                            onChange={handleInputChange}
+                        />
                     </div>
                     <div className="post-category">
                         <InputTitle>Categoria da postagem</InputTitle>
-                        <Select options={optionsCategories} />
+                        <Select
+                            name="category"
+                            options={optionsCategories}
+                            value={formData.category}
+                            onChange={(newValue) => handleCategoryChange(newValue)}
+                        />
                     </div>
                 </Row>
                 <Row>
                     <div className="post-description">
                         <InputTitle>Descrição da postagem</InputTitle>
-                        <InputPostDescription />
+                        <InputPostDescription
+                            name="description"
+                            value={formData.description}
+                            onChange={handleInputChange}
+                        />
                     </div>
                 </Row>
                 <Row>
                     <div className="post-content">
                         <InputTitle>Conteúdo da postagem</InputTitle>
-                        <InputPostContent />
+                        <InputPostContent
+                            name="content"
+                            value={formData.content}
+                            onChange={handleInputChange}
+                        />
                     </div>
                 </Row>
                 <Row>
                     <div className="post-image">
                         <InputTitle>Imagem de capa da postagem</InputTitle>
-                        <FileInput />
+                        <FileInput onChange={handleFileChange} />
                     </div>
                 </Row>
                 <Row>
                     <div>
                         <InputTitle>Autor da postagem</InputTitle>
-                        <InputPostAuthor />
+                        <InputPostAuthor
+                            name="author"
+                            value={formData.author}
+                            onChange={handleInputChange}
+                        />
                     </div>
                     <div>
-                        <PostButton>Fazer postagem</PostButton>
+                        <PostButton
+                            type="button"
+                            onClick={handleSubmit}
+                        >Fazer postagem</PostButton>
                     </div>
                 </Row>
             </Form>

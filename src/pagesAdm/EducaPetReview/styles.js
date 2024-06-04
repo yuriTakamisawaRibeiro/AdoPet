@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Modal from 'react-modal';
 
 export const Container = styled.div`
-  width: 100%;
+ width: 100%;
   height: 100vh;
 
   display: grid;
@@ -15,8 +15,6 @@ export const Container = styled.div`
     "menu content";
 
   background-color: #F3F3EB;
-
-
 `
 
 export const Brand = styled.div`
@@ -38,70 +36,103 @@ export const Brand = styled.div`
   }
 `;
 
-
 export const Content = styled.div`
 grid-area: content;
-display: flex;
-flex-direction: column;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    gap: 10px;
-    width: 100%;
+
+padding: 30px;
+
+
+
+
 `
 
-export const SearchDiv = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+export const Search = styled.div`
+  padding: 64px 64px 0;
+  display: flex;
+  align-items: center;
 
-    > select{
-        padding: 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: #E8E8E0;
-    font-size: 16px;
-    cursor: pointer;
-    }
-`
+  > div {
+    width: 80%;
+  }
 
-export const TableForms = styled.table`
-width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  > a {
+    margin-left: 30px;
+  }
+`;
 
-    th, td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
+export const Section = styled.section`
+  margin: 28px 0;
 
-tbody tr:nth-child(even) {
-    background-color: #F9F9F9;
-}   
-`
+  > h2 {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #4B5563;
 
-export const Pagination = styled.div`
-    display: flex;
-    gap: 10px;
-    align-items: center;    
+    padding-bottom: 16px;
+    margin-bottom: 24px;
 
-    .page-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #E8E8E0;
     color: #4B5563;
-    cursor: pointer;
-    font-size: 16px;
-    margin-right: 5px;
-}
+    font-size: 20px;
+    font-weight: 400;
+  }
+`;
 
-.pagination span {
-    font-size: 14px;
-    color: #666;
-}
+export const New = styled.div`
+    width: 100%;
+    background-color: #E8E8E0;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 22px;
+    margin-bottom: 16px;
+
+    > .left-box {
+      width: 80%;
+    }
+
+    > .delete {
+      width: 10%;
+    background-color: #4B5563;
+    color: #F3F3EB;
+
+    height: 56px;
+    border: 0;
+    padding: 0 16px;
+    margin-top: 16px;
+    border-radius: 10px;
+    font-weight: 500;
+
+    &:disabled{
+        opacity: 0.5;
+    }
+    }
+
+    > h1 {
+        flex: 1;
+        text-align: left;
+        font-weight: 700;
+        font-size: 24px;
+        color: #4B5563;
+    }
+
+    > footer{
+        width: 100%;
+        display: flex;
+        margin-top: 24px;
+
+        > span{
+            font-size: 12px;
+            padding: 5px 14px;
+            border-radius: 5px;
+            margin-right: 6px;
+            color: #f3f3eb;
+            background-color: #e4ac46;
+        }
+    }
 `
 
 export const CustomModal = styled(Modal)`
@@ -114,7 +145,7 @@ export const CustomModal = styled(Modal)`
 
   &.ReactModal__Content {
     background-color: #f0f0f0 !important;
-    padding: 20px !important;
+    padding: 40px !important;
     border-radius: 10px !important;
     width: 80% !important;
     max-width: 600px !important;
@@ -145,38 +176,5 @@ export const CustomModal = styled(Modal)`
   }
 
   
-
-
-  
 `;
 
-export const Buttons = styled.div`
-  display: flex;
-    justify-content: space-between;
-
-    > button {
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-
-    color: #f3f3eb;
-
-    &:hover{
-      
-    }
-
-
-  }
-
-  > #approve{
-    background-color: #6bbf59;
-  }
-
-  > #reject{
-    background-color: #d9534f;
-  }
-
-  > #close{
-    background-color: #4B5563
-  }
-`

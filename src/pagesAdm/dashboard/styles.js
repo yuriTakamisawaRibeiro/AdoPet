@@ -63,29 +63,11 @@ export const Content = styled.div`
   > h1 span{
     color: #E4AC46;
   }
-
-  .p-datatable-custom {
-  /* Adicione seus estilos personalizados aqui */
-}
-
-/* Estilo personalizado para as células da tabela */
-.p-datatable-custom .p-datatable-tbody td {
-  /* Adicione seus estilos personalizados aqui */
-}
-
-/* Estilo personalizado para o cabeçalho da tabela */
-.p-datatable-custom .p-datatable-thead th {
-  /* Adicione seus estilos personalizados aqui */
-}
-
-/* Estilo personalizado para o rodapé da tabela */
-.p-datatable-custom .p-datatable-tfoot td {
-  /* Adicione seus estilos personalizados aqui */
-}
   
 `;
 
 export const TablePartners = styled.div`
+    
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(75, 85, 99, 0.7);

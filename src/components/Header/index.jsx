@@ -1,20 +1,41 @@
+import React, { useState, useEffect } from 'react';
 import { Container, Content, Icon, Navigation, UserIcon, DivisionLine, HeaderMobile, MenuIcon, MenuMobile, MenuHeader, Accessibility, Contrast } from "./styles";
 import AdopetImg from '../../assets/images/AdopetLogo.svg';
 import contrast from '../../assets/images/contrast.svg';
 import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-// eslint-disable-next-line no-unused-vars
 import { getAuth, signOut } from "firebase/auth"; // Importa métodos corretos do Firebase Authentication
-import { auth } from "../../services/firebaseConfig"; // Supondo que "auth" seja o objeto de autenticação do Firebase
-import { useState } from "react";
+import { auth, db } from "../../services/firebaseConfig"; // Supondo que "auth" seja o objeto de autenticação do Firebase e "db" o Firestore
+import { doc, getDoc } from "firebase/firestore"; // Importa métodos do Firestore
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isHighContrast, setIsHighContrast] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const user = auth.currentUser;
+            if (user) {
+                try {
+                    const userDoc = await getDoc(doc(db, "users", user.uid));
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        setIsAdmin(userData.admin === true);
+                    }
+                } catch (error) {
+                    console.error("Erro ao obter dados do usuário:", error);
+                }
+            }
+        };
+
+        fetchUserData();
+    }, []);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
     const handleSignOut = async () => {
         try {
             await signOut(auth); // Faz o logout usando o objeto "auth" do Firebase
@@ -29,7 +50,6 @@ export function Header() {
 
     function handleProfile() {
         window.location.href = '/profile';
-
     }
 
     const toggleContrast = () => {
@@ -60,6 +80,7 @@ export function Header() {
                         <li><Link to="/petfinder">BuscaPata</Link></li>
                         <li><Link to="/contact">Contato</Link></li>
                         <li><Link to="/aboutus">Sobre Nós</Link></li>
+                        {isAdmin && <li><Link to="/dashboardAdmin">Admin</Link></li>}
                     </ul>
                 </Navigation>
                 <Icon>
@@ -83,11 +104,11 @@ export function Header() {
                         <li><Link to="/petfinder">BuscaPata</Link></li>
                         <li><Link to="/contact">Contato</Link></li>
                         <li><Link to="/aboutus">Sobre Nós</Link></li>
+                        {isAdmin && <li><Link to="/dashboardAdmin">Admin</Link></li>}
                     </ul>
                 </MenuMobile>
             )}
             <DivisionLine></DivisionLine>
-
         </Container>
     );
 }

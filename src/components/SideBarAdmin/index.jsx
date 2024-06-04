@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IoIosPaper } from 'react-icons/io';
-import { FaPaw, FaHeadphones } from 'react-icons/fa';
+import { FaPaw, FaHeadphones, FaBook } from 'react-icons/fa';
 import { RiDashboardFill } from 'react-icons/ri';
 import { HiUsers } from 'react-icons/hi';
 import { Menu } from './styles';
@@ -22,18 +22,18 @@ export function SideBarAdmin() {
           <IoIosPaper />
         </Link>
       </li>
-      <li className={active === '/pets' ? 'active' : ''}>
-        <Link to="/pets" onClick={() => setActive('/pets')}>
+      <li className={active === '/petslist' ? 'active' : ''}>
+        <Link to="/petslist" onClick={() => setActive('/petslist')}>
           <FaPaw />
         </Link>
       </li>
-      <li className={active === '/users' ? 'active' : ''}>
-        <Link to="/users" onClick={() => setActive('/users')}>
-          <HiUsers />
+      <li className={active === '/educapetreview' ? 'active' : ''}>
+        <Link to="/educapetreview" onClick={() => setActive('/educapetreview')}>
+          <FaBook />
         </Link>
       </li>
-      <li className={active === '/support' ? 'active' : ''}>
-        <Link to="/support" onClick={() => setActive('/support')}>
+      <li className={active === '/supportcentral' ? 'active' : ''}>
+        <Link to="/supportcentral" onClick={() => setActive('/supportcentral')}>
           <FaHeadphones />
         </Link>
       </li>

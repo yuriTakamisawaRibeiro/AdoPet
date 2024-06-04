@@ -19,8 +19,8 @@ export function Footer() {
                 <Title2>Navegação</Title2>
                 <ul>
                         <Link to="/petfinder">BuscaPata </Link>
-                        <Link>EducaPet</Link>
-                        <Link>Editar Perfil</Link>
+                        <Link to="/educapet">EducaPet</Link>
+                        <Link to="/profile">Editar Perfil</Link>
                         <Link to="/companyregister">Cadastro Parceiros</Link>
                         </ul>
                 </Navigation>
@@ -28,8 +28,6 @@ export function Footer() {
                     <Title2>Suporte</Title2>
                     <ul>
                         <Link to="/aboutus">Sobre Nós</Link>
-                        <Link>FAQ</Link>
-                        <Link>Blog</Link>
                         <Link to="/contact">Fale Conosco</Link>
                     </ul>
                 </Suport>

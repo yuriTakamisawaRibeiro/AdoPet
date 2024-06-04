@@ -19,9 +19,11 @@ import { Select } from "../../components/Select";
 import { useState } from "react";
 import { serverTimestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function FormAdotante({ donorEmail }) {
   const [currentStep, setCurrentStep] = useState(0);
+
   const navigate = useNavigate();
   const [infoPersonVisible, setInfoPersonVisible] = useState(true);
   const [residentialInfoVisible, setResidentialInfoVisible] = useState(false);
@@ -113,12 +115,13 @@ export function FormAdotante({ donorEmail }) {
 
   const handleBack = () => {
     if (currentStep > 0) {
-      setCurrentStep((prevStep) => prevStep - 1);
-      toggleVisibility(currentStep - 1);
+        setCurrentStep((prevStep) => prevStep - 1);
+        toggleVisibility(currentStep - 1);
     } else {
-      navigate('/petfinder');
+        // Redirecionar para a página /petfinder
+        navigate('/petfinder');
     }
-  };
+};
 
   const handleSubmit = () => {
     const templateParams = {
