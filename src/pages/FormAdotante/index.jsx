@@ -23,8 +23,6 @@ import { useNavigate } from "react-router-dom";
 
 export function FormAdotante({ donorEmail }) {
   const [currentStep, setCurrentStep] = useState(0);
-
-  const navigate = useNavigate();
   const [infoPersonVisible, setInfoPersonVisible] = useState(true);
   const [residentialInfoVisible, setResidentialInfoVisible] = useState(false);
   const [termsAndConditionsVisible, setTermsAndConditionsVisible] = useState(false);
