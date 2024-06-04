@@ -12,15 +12,17 @@ import {
   TermsStep,
   TermsArea,
 } from "./styles";
-import { firestore } from "../../services/firebaseConfig"; // Atualize o caminho conforme necessário
+import emailjs from "emailjs-com";
 import { AdotanteRegisterHeader } from "./../../components/AdotanteRegisterHeader";
 import { StepsButtons } from "../../components/StepsButtons";
 import { Select } from "../../components/Select";
 import { useState } from "react";
 import { serverTimestamp } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
-export function FormAdotante({ donorEmail }) { // Recebe o email do doador como prop
+export function FormAdotante({ donorEmail }) {
   const [currentStep, setCurrentStep] = useState(0);
+  const navigate = useNavigate();
   const [infoPersonVisible, setInfoPersonVisible] = useState(true);
   const [residentialInfoVisible, setResidentialInfoVisible] = useState(false);
   const [termsAndConditionsVisible, setTermsAndConditionsVisible] = useState(false);
@@ -113,23 +115,33 @@ export function FormAdotante({ donorEmail }) { // Recebe o email do doador como 
     if (currentStep > 0) {
       setCurrentStep((prevStep) => prevStep - 1);
       toggleVisibility(currentStep - 1);
+    } else {
+      navigate('/petfinder');
     }
   };
 
   const handleSubmit = () => {
-    const emailData = {
-      to: donorEmail, // Enviar o email ao doador
-      subject: "Novo Formulário de Adoção",
-      text: `Nome Completo: ${formData.fullName}\nCPF: ${formData.cpf}\nTelefone: ${formData.phone}\nCEP: ${formData.cep}\nEndereço: ${formData.adress}, ${formData.adressNumber}\nComplemento: ${formData.complement}\nBairro: ${formData.district}\nEstado: ${formData.estate}\nCidade: ${formData.city}`,
+    const templateParams = {
+      to_email: donorEmail,
+      fullName: formData.fullName,
+      cpf: formData.cpf,
+      phone: formData.phone,
+      cep: formData.cep,
+      adress: formData.adress,
+      adressNumber: formData.adressNumber,
+      complement: formData.complement,
+      district: formData.district,
+      estate: formData.estate,
+      city: formData.city,
     };
 
-    firestore.collection('emails').add(emailData)
+    emailjs.send('service_emywa7r', 'template_1hubjap', templateParams, 'cdNIxP8tir0wbcjsf')
       .then(() => {
-        console.log('Email data added to Firestore');
+        console.log('Email enviado com sucesso');
         alert('Formulário enviado com sucesso!');
       })
       .catch((error) => {
-        console.error('Erro ao enviar dados do formulário:', error);
+        console.error('Erro ao enviar email:', error);
         alert('Ocorreu um erro ao enviar o formulário. Tente novamente.');
       });
 
