@@ -1,7 +1,19 @@
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { Footer } from "../../components/Footer";
-import { Commands, Container, Content, FilterDate, FilterDiv, Filters, ListDiv, MotherNew, New, SearchDiv, Topics } from "./styles";
+import {
+  Commands,
+  Container,
+  Content,
+  FilterDate,
+  FilterDiv,
+  Filters,
+  ListDiv,
+  MotherNew,
+  New,
+  SearchDiv,
+  Topics,
+} from "./styles";
 import { BiSearchAlt } from "react-icons/bi";
 import { GrCluster } from "react-icons/gr";
 import imageExample from "../../assets/images/educapetExample.png";
@@ -10,28 +22,34 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useEffect, useState } from "react";
 import Post from "../../components/Post";
 import { db } from "../../services/firebaseConfig";
+import { useNavigate } from "react-router-dom";
+
 
 export function EducaPet() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [motherNew, setMotherNew] = useState(null);
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, 'posts'));
-                const fetchedPosts = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                setPosts(fetchedPosts);
-            } catch (error) {
-                console.error('Error fetching documents:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "posts"));
+        const fetchedPosts = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+         ...doc.data(),
+        }));
+        setPosts(fetchedPosts);
+      } catch (error) {
+        console.error("Error fetching documents:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
         const fetchMotherNew = async () => {
             try {
-                const docRef = doc(db, 'posts', 'OU1hauBUWLcS1eafqYdC');
+                const docRef = doc(db, 'posts', 'NQcQaPzy78i6Umphlv1c');
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     setMotherNew({ id: docSnap.id, ...docSnap.data() });
@@ -47,53 +65,67 @@ export function EducaPet() {
         fetchMotherNew();
     }, []);
 
-    const categoryTranslations = {
-        'trainment': 'Treinamento',
+    const navigateToAboutPost = (idParam) => {
+        navigate(`/aboutpost/${idParam}`);
     };
 
-    const filteredPosts = posts.filter(post => post.id !== (motherNew ? motherNew.id : null));
+  const categoryTranslations = {
+    trainment: "Treinamento",
+  };
 
-    return (
-        <Container>
-            <Header />
-            <SearchDiv>
-                <div>
-                    <h1> EducaPet </h1>
-                    <h3> Conteúdos novos toda semana </h3>
+  const filteredPosts = posts.filter(
+    (post) => post.id!== (motherNew? motherNew.id : null)
+  );
 
-                    <Input icon={BiSearchAlt} placeholder="Pesquise aqui o conteúdo" />
-                </div>
-            </SearchDiv>
+  
 
-            <Content>
-                <FilterDiv>
-                    {motherNew ? (
-                        <MotherNew>
-                            <img src={motherNew.image_url || imageExample} alt="" />
-                            <div>
-                                <GrCluster />
-                                <h5>{categoryTranslations[motherNew.category] || motherNew.category}</h5>
-                                <p>{motherNew.date}</p>
-                            </div>
-                            <h1>{motherNew.title}</h1>
-                            <p>{motherNew.description}</p>
-                            <div>
-                                <p>Autor | {motherNew.author}</p>
-                            </div>
-                        </MotherNew>
-                    ) : (
-                        <p>Loading...</p>
-                    )}
-                    <Filters>
-                        <Topics>
-                            <ul>
-                                <p> Tópicos </p>
-                                <li> Treinamento </li>
-                                <li>Cuidados</li>
-                                <li>Saúde</li>
-                                <li>Notícias</li>
-                            </ul>
-                        </Topics>
+  return (
+    <Container>
+      <Header />
+      <SearchDiv>
+        <div>
+          <h1> EducaPet </h1>
+          <h3> Conteúdos novos toda semana </h3>
+
+          <Input
+            icon={BiSearchAlt}
+            placeholder="Pesquise aqui o conteúdo"
+          />
+        </div>
+      </SearchDiv>
+
+      <Content>
+        <FilterDiv>
+          {motherNew? (
+            <MotherNew onClick={() => navigateToAboutPost(motherNew.id)}>
+              <img src={motherNew.image_url || imageExample} alt="" />
+              <div>
+                <GrCluster />
+                <h5>
+                  {categoryTranslations[motherNew.category] ||
+                    motherNew.category}
+                </h5>
+                <p>{motherNew.date}</p>
+              </div>
+              <h1>{motherNew.title}</h1>
+              <p>{motherNew.description}</p>
+              <div>
+                <p>Autor | {motherNew.author}</p>
+              </div>
+            </MotherNew>
+          ) : (
+            <p>Loading...</p>
+          )}
+          <Filters>
+            <Topics>
+              <ul>
+                <p> Tópicos </p>
+                <li> Treinamento </li>
+                <li>Cuidados</li>
+                <li>Saúde</li>
+                <li>Notícias</li>
+              </ul>
+            </Topics>
 
                         <FilterDate>
                             <label htmlFor="selectDate">Filtrar por</label>
@@ -109,8 +141,9 @@ export function EducaPet() {
                         <p>Loading...</p>
                     ) : (
                         filteredPosts.map(post => (
-                            <Post
+                            <Post 
                                 key={post.id}
+                                id = {post.id}
                                 title={post.title}
                                 date={post.date}
                                 description={post.description}
@@ -118,6 +151,7 @@ export function EducaPet() {
                                 author={post.author}
                                 category={post.category}
                                 image_url={post.image_url}
+                                onClick={() => navigateToAboutPost(post.id)}
                             />
                         ))
                     )}

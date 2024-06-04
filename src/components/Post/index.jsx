@@ -1,6 +1,7 @@
 import React from 'react';
 import { GrCluster } from "react-icons/gr";
 import { Container } from './styles';
+import { useNavigate } from 'react-router-dom';
 
 const categoryTranslations = {
     'trainment': 'Treinamento',
@@ -9,12 +10,15 @@ const categoryTranslations = {
     'care': 'Cuidados',
 };
 
-const Post = ({ title, date, description, author, category, image_url }) => {
+const Post = ({ title, date, description, author, category, image_url, onClick }) => {
 
     const translatedCategory = categoryTranslations[category] || category;
+    const navigate = useNavigate()
+    
+ 
 
     return (
-        <Container>
+        <Container onClick={onClick}>
             <img src={image_url} alt="" />
             <div>
                 <GrCluster />

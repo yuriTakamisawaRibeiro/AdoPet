@@ -224,7 +224,7 @@ export function PetRegister() {
                 <Select
                   options={optionsSize}
                   name="size"
-                  value={formData.size} 
+                  value={formData.size}
                   onChange={(selectedOption) => handleSelectChange("size", selectedOption)}
                 />
               </div>

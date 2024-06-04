@@ -19,6 +19,7 @@ import { useEffect, useState } from 'react';
 import { auth, db } from '../services/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import { NotFoundPage } from '../pages/404';
+import { AboutPost } from '../pages/AboutPost';
 
 export function AppRoutes() {
     const [isAdmin, setIsAdmin] = useState(false);
@@ -54,6 +55,8 @@ export function AppRoutes() {
             <Route path="/educapet" element={<EducaPet />} />
             <Route path='/formadotante' element={<FormAdotante />} />
             <Route path='/postregister' element={<PostRegister />} />
+            <Route path='/aboutPost/:id' element={<AboutPost/>}/>
+            
 
             <Route path="/dashboardAdmin" element={isAdmin ? <Dashboard /> : <NotFoundPage/>} />
             <Route path="/formsReview" element={isAdmin ? <FormsReview /> : <NotFoundPage/>} />
