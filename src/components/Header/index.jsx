@@ -80,7 +80,7 @@ export function Header() {
                         <li><Link to="/petfinder">BuscaPata</Link></li>
                         <li><Link to="/contact">Contato</Link></li>
                         <li><Link to="/aboutus">Sobre Nós</Link></li>
-                        {isAdmin && <li><Link to="/dashboardAdmin">Área do Admin</Link></li>}
+                        {isAdmin && <li><Link to="/dashboardAdmin">Admin</Link></li>}
                     </ul>
                 </Navigation>
                 <Icon>
@@ -104,7 +104,7 @@ export function Header() {
                         <li><Link to="/petfinder">BuscaPata</Link></li>
                         <li><Link to="/contact">Contato</Link></li>
                         <li><Link to="/aboutus">Sobre Nós</Link></li>
-                        {isAdmin && <li><Link to="/dashboardAdmin">Área do Admin</Link></li>}
+                        {isAdmin && <li><Link to="/dashboardAdmin">Admin</Link></li>}
                     </ul>
                 </MenuMobile>
             )}
