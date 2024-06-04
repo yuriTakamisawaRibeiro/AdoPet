@@ -10,11 +10,13 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useEffect, useState } from "react";
 import Post from "../../components/Post";
 import { db } from "../../services/firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 export function EducaPet() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [motherNew, setMotherNew] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,7 +33,7 @@ export function EducaPet() {
 
         const fetchMotherNew = async () => {
             try {
-                const docRef = doc(db, 'posts', 'OU1hauBUWLcS1eafqYdC');
+                const docRef = doc(db, 'posts', 'NQcQaPzy78i6Umphlv1c');
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     setMotherNew({ id: docSnap.id, ...docSnap.data() });
@@ -46,6 +48,10 @@ export function EducaPet() {
         fetchData();
         fetchMotherNew();
     }, []);
+
+    const navigateToAboutPost = (idParam) => {
+        navigate(`/aboutpost/${idParam}`);
+    };
 
     const categoryTranslations = {
         'trainment': 'Treinamento',
@@ -109,8 +115,9 @@ export function EducaPet() {
                         <p>Loading...</p>
                     ) : (
                         filteredPosts.map(post => (
-                            <Post
+                            <Post 
                                 key={post.id}
+                                id = {post.id}
                                 title={post.title}
                                 date={post.date}
                                 description={post.description}
@@ -118,6 +125,7 @@ export function EducaPet() {
                                 author={post.author}
                                 category={post.category}
                                 image_url={post.image_url}
+                                onClick={() => navigateToAboutPost(post.id)}
                             />
                         ))
                     )}
