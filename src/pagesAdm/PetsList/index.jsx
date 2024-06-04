@@ -63,7 +63,8 @@ export function PetsList() {
                             <div>
                                 {/* Exibe a primeira imagem do pet */}
                                 <img src={pet.fileUrls[0]} alt="" />
-                                <h1>{`${pet.breed} #${pet.id}`}</h1>
+                                <h1>{`${pet.breed}`}</h1>
+                                <p>{`#${pet.id}`}</p>
                             </div>
                             <div>
                                 <button> <IoMdEye /></button>

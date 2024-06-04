@@ -131,10 +131,10 @@ export function EducaPetReview() {
                                 style={{ cursor: "pointer" }}
                             >
                                 <h1>{post.title}</h1>
-                                <p>({post.id})</p>
-                                <footer>
-                                    <span>{categoryTranslations[post.category]}</span>
+                                <footer style={{marginTop: '5px', marginBottom: '10px'}}>
+                                    <span style={{backgroundColor: '#f2d193', color: '#d69826', padding: '5px', borderRadius: '5px'}}>{categoryTranslations[post.category]}</span>
                                 </footer>
+                                <p>({post.id})</p>
                             </div>
                             <button className="delete" onClick={(e) => { e.stopPropagation(); handleDeletePost(post.id); }}>
                                 <FiTrash />
